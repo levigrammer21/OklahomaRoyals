@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oklahoma Royals HQ • 8U & 9U</title>
-  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, sponsors, donations, and fundraisers. Updated from Google Sheets." />
+  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, sponsors, donations, and fundraisers." />
 
   <style>
     :root{
@@ -201,7 +201,7 @@
         <div class="logo" aria-hidden="true">👑</div>
         <div>
           <h1>Oklahoma Royals</h1>
-          <p>okroyals.com</p>
+          <p>8U & 9U • okroyals.com</p>
         </div>
       </a>
 
@@ -232,9 +232,9 @@
     <section class="hero">
       <div class="heroGrid">
         <div class="card heroMain">
-          <span class="tag" id="nextGameTag">⚾ <b>Next:</b>Born Royal</span>
+          <span class="tag" id="nextGameTag">👑 <b>Oklahoma Royals</b> • 8U &amp; 9U</span>
           <h2 class="heroTitle">Royals <span class="glow">HQ</span> 👑</h2>
-          <p class="heroDesc">Everything Oklahoma Royals Baseball!.</p>
+          <p class="heroDesc">Schedules, updates, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
 
           <div class="heroActions">
             <button class="btn primary" type="button" data-team-filter="All">👑 All</button>
@@ -244,7 +244,7 @@
             <a class="btn" href="#announcements">📣 Announcements</a>
           </div>
 
-          <p class="small" style="margin:12px 0 0; color:var(--muted)">👑.</p>
+          <p class="small" style="margin:12px 0 0; color:var(--muted)">First names only recommended.</p>
         </div>
 
         <div class="card heroSide">
@@ -264,7 +264,7 @@
       <div class="sectionHead">
         <div>
           <h2>Announcements</h2>
-          <p>🚨Everything New with Royals🚨.</p>
+          <p>Team updates and reminders.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -278,7 +278,7 @@
       <div class="sectionHead">
         <div>
           <h2>Schedule</h2>
-          <p>Tourney Schedule.</p>
+          <p>Game and practice schedule.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -312,7 +312,7 @@
       <div class="sectionHead">
         <div>
           <h2>Roster</h2>
-          <p>The Royal Roster</p>
+          <p>Current roster.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -333,7 +333,7 @@
       <div class="sectionHead">
         <div>
           <h2>👑 Royal of the Week</h2>
-          <p>Born for the Crown 👑</p>
+          <p>Recognizing effort, attitude, and hustle.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -359,7 +359,7 @@
               </div>
               <div>
                 <div style="font-weight:1000">ROYAL MODE</div>
-                <div class="small">Rise to the Lights!</div>
+                <div class="small">Spotlight player of the week.</div>
               </div>
             </div>
           </div>
@@ -400,7 +400,7 @@
       <div class="sectionHead">
         <div>
           <h2>🎯 Fundraisers</h2>
-          <p>Only shows <b>Active</b> + <b>Upcoming</b>.</p>
+          <p>Ways to support the team.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -416,7 +416,7 @@
       <div class="sectionHead">
         <div>
           <h2>🤝 Sponsors</h2>
-          <p>Logo-only grid.</p>
+          <p>Thank you to our supporters.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -430,7 +430,7 @@
       <div class="sectionHead">
         <div>
           <h2>Links</h2>
-          <p>Quick stuff.</p>
+          <p>Quick links.</p>
         </div>
         <span class="pill">Quick</span>
       </div>
@@ -449,8 +449,8 @@
 
         <div class="card" style="padding:14px">
           <div class="miniCard" style="background: rgba(0,0,0,.12)">
-            <h3>Admin note</h3>
-            <p>Update the Google Sheet tabs (Announcements, Schedule, Roster, RoyalOfTheWeek, Fundraisers, Sponsors).</p>
+            <h3>Contact</h3>
+            <p>Check GameChanger for live updates and messaging.</p>
           </div>
           <div class="miniCard" style="background: rgba(0,0,0,.12)">
             <h3>Donate</h3>
@@ -471,7 +471,7 @@
             </div>
           </div>
         </div>
-        <div class="small">Updated from Google Sheets.</div>
+        <div class="small">Oklahoma Royals Baseball • Family • Team • Hustle</div>
       </div>
     </footer>
 
@@ -607,7 +607,7 @@
     const f = items.filter(g=>matchTeam(g.team));
     if (!f.length){
       body.innerHTML = `<tr><td colspan="5">No schedule yet — add rows in the <b>Schedule</b> tab.</td></tr>`;
-      $('#nextGameTag').innerHTML = `⚾ <b>Next:</b> Add a game in the Sheet`;
+      $('#nextGameTag').innerHTML = `👑 <b>Oklahoma Royals</b> • 8U &amp; 9U`;
       window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
       return;
     }
