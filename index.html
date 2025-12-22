@@ -1,748 +1,852 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Team Name Baseball</title>
-  <meta name="description" content="Official website for Team Name Baseball — schedule, roster, announcements, and photos." />
+  <title>Oklahoma Royals HQ • 8U & 9U</title>
+  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, sponsors, donations, and fundraisers. Updated from Google Sheets." />
+
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#121c2f;
-      --panel2:#0f172a;
+      --bg:#070b14;
       --text:#e6edf7;
       --muted:#b6c2d6;
-      --brand:#5aa3ff;
-      --brand2:#7c3aed;
+      --royal:#2563eb;
+      --gold:#f5c84b;
       --good:#22c55e;
       --warn:#f59e0b;
+      --bad:#ef4444;
       --shadow: 0 12px 30px rgba(0,0,0,.35);
       --radius: 18px;
-      --ring: 0 0 0 2px rgba(90,163,255,.25);
-      --max: 1100px;
-    }*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  background: radial-gradient(1200px 700px at 20% -10%, rgba(124,58,237,.35), transparent 55%),
-              radial-gradient(1000px 600px at 80% 0%, rgba(90,163,255,.35), transparent 55%),
-              linear-gradient(180deg, var(--bg), #070b14 70%);
-  color:var(--text);
-  line-height:1.45;
-}
-a{color:inherit; text-decoration:none}
-img{max-width:100%; display:block}
+      --ring: 0 0 0 2px rgba(37,99,235,.28);
+      --max: 1120px;
+    }
 
-.container{max-width:var(--max); margin:0 auto; padding:0 18px}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 520px at 20% -10%, rgba(245,200,75,.22), transparent 60%),
+        radial-gradient(1000px 600px at 85% -5%, rgba(37,99,235,.38), transparent 58%),
+        radial-gradient(900px 520px at 70% 110%, rgba(245,200,75,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), #04060c 70%);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
 
-/* Header */
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter: blur(10px);
-  background: rgba(11,18,32,.65);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 0;
-  gap:12px;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width: 220px;
-}
-.logo{
-  width:42px; height:42px; border-radius:14px;
-  background: linear-gradient(135deg, var(--brand), var(--brand2));
-  box-shadow: var(--shadow);
-  display:grid; place-items:center;
-  font-weight:800;
-}
-.brand h1{font-size:14px; margin:0}
-.brand p{margin:0; font-size:12px; color:var(--muted)}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
 
-nav ul{
-  display:flex;
-  gap:12px;
-  list-style:none;
-  margin:0;
-  padding:0;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-nav a{
-  display:inline-flex;
-  align-items:center;
-  padding:8px 10px;
-  border-radius:12px;
-  color:var(--muted);
-  border: 1px solid transparent;
-}
-nav a:hover{color:var(--text); border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.05)}
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,11,20,.70);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 0;
+      gap:12px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;min-width: 240px;}
+    .logo{
+      width:44px; height:44px; border-radius:16px;
+      background: radial-gradient(120px 120px at 30% 20%, rgba(245,200,75,.55), transparent 55%),
+                  linear-gradient(135deg, rgba(37,99,235,.95), rgba(17,24,39,.55));
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      font-weight:1000;
+    }
+    .brand h1{font-size:14px; margin:0}
+    .brand p{margin:0; font-size:12px; color:var(--muted)}
 
-.cta{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  justify-content:flex-end;
-  min-width: 240px;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.06);
-  color:var(--text);
-  box-shadow: none;
-  cursor:pointer;
-  user-select:none;
-  font-weight:650;
-}
-.btn:hover{background: rgba(255,255,255,.09)}
-.btn.primary{
-  border-color: rgba(90,163,255,.35);
-  background: linear-gradient(135deg, rgba(90,163,255,.24), rgba(124,58,237,.18));
-  box-shadow: var(--shadow);
-}
-.btn.primary:hover{filter:brightness(1.06)}
+    nav ul{display:flex;gap:10px;list-style:none;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end;}
+    nav a{display:inline-flex;align-items:center;padding:8px 10px;border-radius:12px;color:var(--muted);border: 1px solid transparent;}
+    nav a:hover{color:var(--text); border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.05)}
 
-/* Hero */
-.hero{
-  padding: 34px 0 18px;
-}
-.heroGrid{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap:18px;
-  align-items:stretch;
-}
-.card{
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow: var(--shadow);
-  overflow:hidden;
-}
-.heroMain{
-  padding:22px;
-  position:relative;
-  overflow:hidden;
-}
-.heroMain:before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background: radial-gradient(700px 220px at 20% 0%, rgba(90,163,255,.24), transparent 60%),
-              radial-gradient(600px 240px at 90% 30%, rgba(124,58,237,.20), transparent 60%);
-  pointer-events:none;
-}
-.heroMain > *{position:relative}
+    .cta{display:flex;gap:10px;align-items:center;justify-content:flex-end;min-width: 240px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 12px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      user-select:none;
+      font-weight:800;
+    }
+    .btn:hover{background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(37,99,235,.50);
+      background: radial-gradient(400px 140px at 20% 0%, rgba(245,200,75,.20), transparent 60%),
+                  linear-gradient(135deg, rgba(37,99,235,.34), rgba(245,200,75,.12));
+      box-shadow: var(--shadow);
+    }
 
-.tag{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:6px 10px;
-  border-radius: 999px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(0,0,0,.10);
-  color: var(--muted);
-  font-size: 12px;
-}
-.tag b{color:var(--text)}
+    .hero{padding: 28px 0 10px;}
+    .heroGrid{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch;}
+    .card{border-radius: var(--radius);background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);box-shadow: var(--shadow);overflow:hidden;}
+    .heroMain{padding:22px;position:relative;overflow:hidden;}
+    .heroMain:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(800px 260px at 10% 0%, rgba(37,99,235,.32), transparent 60%),
+        radial-gradient(700px 280px at 90% 30%, rgba(245,200,75,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .heroMain > *{position:relative}
 
-.heroTitle{
-  margin:14px 0 8px;
-  font-size: 34px;
-  line-height:1.1;
-  letter-spacing:-.02em;
-}
-.heroDesc{margin:0 0 16px; color:var(--muted); max-width: 58ch}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.10);color: var(--muted);font-size:12px;}
+    .tag b{color:var(--text)}
 
-.heroActions{display:flex; gap:10px; flex-wrap:wrap}
+    .heroTitle{margin:14px 0 8px;font-size: 34px;line-height:1.05;letter-spacing:-.02em;}
+    .heroTitle .glow{color: var(--royal);text-shadow: 0 0 16px rgba(37,99,235,.35);}
+    .heroDesc{margin:0 0 16px; color:var(--muted); max-width: 62ch}
+    .heroActions{display:flex;gap:10px;flex-wrap:wrap}
 
-.heroSide{
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.miniCard{
-  border-radius: 16px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-  padding:14px;
-}
-.miniCard h3{margin:0 0 6px; font-size:14px}
-.miniCard p{margin:0; color:var(--muted); font-size:13px}
+    .heroSide{padding:16px; display:flex; flex-direction:column; gap:12px;}
+    .miniCard{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:14px;}
+    .miniCard h3{margin:0 0 6px; font-size:14px}
+    .miniCard p{margin:0; color:var(--muted); font-size:13px}
 
-/* Sections */
-section{padding: 18px 0}
-.sectionHead{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:14px;
-  margin-bottom: 12px;
-}
-.sectionHead h2{margin:0; font-size:18px}
-.sectionHead p{margin:0; color:var(--muted); font-size:13px}
+    section{padding: 18px 0}
+    .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom: 12px;}
+    .sectionHead h2{margin:0; font-size:18px}
+    .sectionHead p{margin:0; color:var(--muted); font-size:13px}
 
-.grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-.grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
 
-/* Announcements */
-.announceList{display:grid; gap:10px; padding:14px}
-.announce{
-  padding:12px;
-  border-radius: 14px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-}
-.announceTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
-.announce h4{margin:0; font-size:14px}
-.pill{font-size:12px; color:var(--muted); border:1px solid rgba(255,255,255,.12); padding:4px 8px; border-radius:999px}
-.announce p{margin:6px 0 0; color:var(--muted); font-size:13px}
+    .pill{font-size:12px; color:var(--muted); border:1px solid rgba(255,255,255,.12); padding:4px 8px; border-radius:999px}
+    .status{font-size:12px; padding:4px 8px; border-radius:999px; display:inline-flex; border:1px solid rgba(255,255,255,.12); color: var(--muted)}
+    .status.good{border-color: rgba(34,197,94,.35); color: rgba(187,247,208,1)}
+    .status.warn{border-color: rgba(245,158,11,.35); color: rgba(254,215,170,1)}
 
-/* Schedule */
-.scheduleWrap{padding:14px}
-.controls{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
-.input{
-  flex:1;
-  min-width: 220px;
-  padding:10px 12px;
-  border-radius: 14px;
-  border:1px solid rgba(255,255,255,.12);
-  background: rgba(0,0,0,.18);
-  color: var(--text);
-  outline:none;
-}
-.input:focus{box-shadow: var(--ring); border-color: rgba(90,163,255,.35)}
+    .wrap{padding:14px}
+    .controls{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+    .input{flex:1;min-width: 220px;padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.18);color: var(--text);outline:none;}
+    .input:focus{box-shadow: var(--ring); border-color: rgba(37,99,235,.45)}
 
-table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius: 16px; border:1px solid rgba(255,255,255,.10)}
-th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
-th{background: rgba(255,255,255,.06); color: var(--muted); font-weight:700}
-tr:last-child td{border-bottom:none}
-.right{text-align:right}
-.status{font-size:12px; padding:4px 8px; border-radius:999px; display:inline-flex; border:1px solid rgba(255,255,255,.12); color: var(--muted)}
-.status.good{border-color: rgba(34,197,94,.35); color: rgba(187,247,208,1)}
-.status.warn{border-color: rgba(245,158,11,.35); color: rgba(254,215,170,1)}
+    table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius: 16px; border:1px solid rgba(255,255,255,.10)}
+    th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
+    th{background: rgba(255,255,255,.06); color: var(--muted); font-weight:800}
+    tr:last-child td{border-bottom:none}
+    .right{text-align:right}
 
-/* Roster */
-.rosterWrap{padding:14px}
-.rosterGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
-.player{
-  border-radius: 16px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-  padding:12px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  min-height: 132px;
-}
-.playerTop{display:flex; align-items:center; justify-content:space-between; gap:8px}
-.num{
-  width:34px; height:34px; border-radius: 14px;
-  display:grid; place-items:center;
-  background: linear-gradient(135deg, rgba(90,163,255,.20), rgba(124,58,237,.18));
-  border:1px solid rgba(255,255,255,.10);
-  font-weight:800;
-}
-.player h4{margin:0; font-size:14px}
-.meta{margin:0; color:var(--muted); font-size:12px}
+    .rosterGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
+    .player{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:12px;display:flex;flex-direction:column;gap:8px;min-height: 128px;}
+    .playerTop{display:flex; align-items:center; justify-content:space-between; gap:8px}
+    .num{width:34px; height:34px; border-radius: 14px;display:grid; place-items:center;background: radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));border:1px solid rgba(255,255,255,.10);font-weight:900;}
+    .player h4{margin:0; font-size:14px}
+    .meta{margin:0; color:var(--muted); font-size:12px}
 
-/* Gallery */
-.gallery{padding:14px}
-.galleryGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px}
-.photo{
-  border-radius: 16px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-  overflow:hidden;
-  aspect-ratio: 4/3;
-  position:relative;
-}
-.photo .ph{
-  position:absolute; inset:0;
-  display:grid; place-items:center;
-  color: rgba(230,237,247,.7);
-  font-size: 13px;
-  background:
-    radial-gradient(500px 240px at 20% 20%, rgba(90,163,255,.18), transparent 60%),
-    radial-gradient(500px 240px at 90% 80%, rgba(124,58,237,.18), transparent 60%),
-    rgba(0,0,0,.10);
-}
+    .announceList{display:grid; gap:10px; padding:14px}
+    .announce{padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);}
+    .announceTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
 
-/* Footer */
-footer{padding: 28px 0 44px; color: var(--muted)}
-.foot{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  justify-content:space-between;
-  align-items:center;
-  border-top: 1px solid rgba(255,255,255,.10);
-  padding-top: 16px;
-}
-.small{font-size:12px}
+    .rotwPhoto{width:120px; height:120px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.25);position:relative;}
+    .rotwPhoto img{width:100%; height:100%; object-fit:cover; display:none}
+    .rotwPhoto .ph{position:absolute; inset:0; display:grid; place-items:center; color:rgba(230,237,247,.7)}
 
-/* Responsive */
-@media (max-width: 980px){
-  .heroGrid{grid-template-columns: 1fr}
-  .cta{min-width: auto}
-  .brand{min-width:auto}
-  .rosterGrid{grid-template-columns: repeat(3, 1fr)}
-}
-@media (max-width: 720px){
-  nav ul{display:none}
-  .grid2{grid-template-columns: 1fr}
-  .grid3{grid-template-columns: 1fr}
-  .rosterGrid{grid-template-columns: repeat(2, 1fr)}
-  .galleryGrid{grid-template-columns: repeat(2, 1fr)}
-  .heroTitle{font-size: 30px}
-}
-@media (max-width: 420px){
-  .rosterGrid{grid-template-columns: 1fr}
-  .galleryGrid{grid-template-columns: 1fr}
-}
+    .fundGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .fundCard{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:14px;display:flex;flex-direction:column;gap:10px;min-height:160px;}
 
+    .donateGrid{display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:center}
+    .qr{width:180px; height:180px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.25);display:grid; place-items:center;}
+    .qr img{width:100%; height:100%; object-fit:cover; display:none}
+
+    .sponsorGrid{display:grid;grid-template-columns: repeat(6, 1fr);gap:12px;padding:14px;}
+    .sponsor{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);aspect-ratio: 1/1;display:grid;place-items:center;overflow:hidden;}
+    .sponsor img{width:100%; height:100%; object-fit:contain; padding:10px}
+
+    footer{padding: 28px 0 44px; color: var(--muted)}
+    .foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top: 1px solid rgba(255,255,255,.10);padding-top: 16px;}
+    .small{font-size:12px}
+
+    @media (max-width: 1020px){
+      .heroGrid{grid-template-columns: 1fr}
+      .cta{min-width:auto}
+      .brand{min-width:auto}
+      .rosterGrid{grid-template-columns: repeat(3, 1fr)}
+      .sponsorGrid{grid-template-columns: repeat(4, 1fr)}
+      .fundGrid{grid-template-columns: repeat(2, 1fr)}
+      .donateGrid{grid-template-columns: 1fr}
+    }
+    @media (max-width: 720px){
+      nav ul{display:none}
+      .grid2{grid-template-columns: 1fr}
+      .rosterGrid{grid-template-columns: repeat(2, 1fr)}
+      .sponsorGrid{grid-template-columns: repeat(3, 1fr)}
+      .fundGrid{grid-template-columns: 1fr}
+      .heroTitle{font-size: 30px}
+    }
   </style>
 </head>
-<body><header>
+<body>
+
+<header>
   <div class="container">
     <div class="nav">
       <a class="brand" href="#top" aria-label="Go to top">
-        <div class="logo">TB</div>
+        <div class="logo" aria-hidden="true">👑</div>
         <div>
-          <h1>Team Name Baseball</h1>
-          <p>City, State • Season YYYY</p>
+          <h1>Oklahoma Royals</h1>
+          <p>8U & 9U • okroyals.com</p>
         </div>
-      </a><nav aria-label="Primary">
-    <ul>
-      <li><a href="#announcements">Announcements</a></li>
-      <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#roster">Roster</a></li>
-      <li><a href="#gallery">Photos</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+      </a>
 
-  <div class="cta">
-    <a class="btn" href="#schedule">View schedule</a>
-    <a class="btn primary" href="#contact">Join / info</a>
-  </div>
-</div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#announcements">Announcements</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#roster">Roster</a></li>
+          <li><a href="#royal">Royal of the Week</a></li>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#fundraisers">Fundraisers</a></li>
+          <li><a href="#sponsors">Sponsors</a></li>
+          <li><a href="#links">Links</a></li>
+        </ul>
+      </nav>
 
-  </div>
-</header><main id="top">
-  <div class="container"><section class="hero">
-  <div class="heroGrid">
-    <div class="card heroMain">
-      <span class="tag">⚾ <b>Next game:</b> Sat 3:00 PM • vs Wildcats</span>
-      <h2 class="heroTitle">Welcome to <span style="color: var(--brand)">Team Name</span> Baseball</h2>
-      <p class="heroDesc">All the stuff parents actually need in one place: game times, field info, roster, and quick updates. Bookmark this page.</p>
-      <div class="heroActions">
-        <a class="btn primary" href="#schedule">📅 Schedule & fields</a>
-        <a class="btn" href="#announcements">📣 Announcements</a>
-        <button class="btn" id="copyLinkBtn" type="button">🔗 Copy site link</button>
-      </div>
-    </div>
-
-    <div class="card heroSide">
-      <div class="miniCard">
-        <h3>Field</h3>
-        <p><b>Home:</b> Your Ballpark Name<br><span style="color: var(--muted)">1234 Park Rd, City</span></p>
-      </div>
-      <div class="miniCard">
-        <h3>Team chat</h3>
-        <p>Add your team GroupMe / TeamSnap link here.</p>
-      </div>
-      <div class="miniCard">
-        <h3>Volunteer slots</h3>
-        <p>Concessions, scoreboard, and dugout help. Add a sign-up link.</p>
+      <div class="cta">
+        <a class="btn" href="#schedule">Schedule</a>
+        <a class="btn primary" href="#donate">Donate</a>
       </div>
     </div>
   </div>
-</section>
+</header>
 
-<section id="announcements">
-  <div class="sectionHead">
-    <div>
-      <h2>Announcements</h2>
-      <p>Quick updates for parents/players.</p>
-    </div>
-    <span class="pill">Edit these in the HTML</span>
-  </div>
+<main id="top">
+  <div class="container">
 
-  <div class="card">
-    <div class="announceList" id="announceList">
-      <div class="announce">
-        <div class="announceTop">
-          <div>
-            <h4>Practice this week</h4>
-            <p class="meta">Updated: <span data-today></span></p>
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <span class="tag" id="nextGameTag">⚾ <b>Next:</b> Add a game in the Sheet</span>
+          <h2 class="heroTitle">Royals <span class="glow">HQ</span> 👑</h2>
+          <p class="heroDesc">No fake info. Everything pulls from your Google Sheet.</p>
+
+          <div class="heroActions">
+            <button class="btn primary" type="button" data-team-filter="All">👑 All</button>
+            <button class="btn" type="button" data-team-filter="9U">🔥 9U</button>
+            <button class="btn" type="button" data-team-filter="8U">⚡ 8U</button>
+            <a class="btn" href="#schedule">📅 Schedule</a>
+            <a class="btn" href="#announcements">📣 Announcements</a>
           </div>
-          <span class="status good">On</span>
-        </div>
-        <p>Tue 6:00 PM and Thu 6:00 PM at the home field. Bring water + batting helmet.</p>
-      </div>
 
-      <div class="announce">
-        <div class="announceTop">
-          <div>
-            <h4>Picture day</h4>
-            <p class="meta">Sat 1:15 PM • arrive early</p>
+          <p class="small" style="margin:12px 0 0; color:var(--muted)">First names only recommended.</p>
+        </div>
+
+        <div class="card heroSide">
+          <div class="miniCard">
+            <h3>Home Field</h3>
+            <p><b id="homeFieldName">Stroud Little League Field 2</b><br><span style="color: var(--muted)" id="homeFieldAddr"></span></p>
           </div>
-          <span class="status warn">Reminder</span>
-        </div>
-        <p>Jersey + pants, clean hat. Meet by the backstop 15 minutes early.</p>
-      </div>
-
-      <div class="announce">
-        <div class="announceTop">
-          <div>
-            <h4>Snack schedule</h4>
-            <p class="meta">Parents rotation</p>
+          <div class="miniCard">
+            <h3>GameChanger</h3>
+            <p><a id="teamChatLink" href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener" style="color:var(--gold)">Join Oklahoma Royals 9U on GameChanger</a></p>
           </div>
-          <span class="status">Info</span>
-        </div>
-        <p>We’ll do 2 families per game. Add the signup link in the contact section.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="schedule">
-  <div class="sectionHead">
-    <div>
-      <h2>Schedule</h2>
-      <p>Search by opponent, field, or date.</p>
-    </div>
-    <span class="pill">Tip: link fields in Google Maps</span>
-  </div>
-
-  <div class="card">
-    <div class="scheduleWrap">
-      <div class="controls">
-        <input class="input" id="scheduleSearch" placeholder="Search schedule… (e.g., Wildcats, Field 2, Mar 12)" />
-        <button class="btn" id="resetSchedule" type="button">Reset</button>
-      </div>
-
-      <div style="overflow:auto; border-radius: 16px">
-        <table aria-label="Team schedule">
-          <thead>
-            <tr>
-              <th style="width:120px">Date</th>
-              <th style="width:95px">Time</th>
-              <th>Opponent</th>
-              <th>Field</th>
-              <th class="right" style="width:140px">Status</th>
-            </tr>
-          </thead>
-          <tbody id="scheduleBody">
-            <!-- Edit these rows -->
-            <tr>
-              <td>Mar 2</td>
-              <td>3:00 PM</td>
-              <td>vs Wildcats</td>
-              <td><a href="#contact" title="Replace with a Maps link">Home Field</a></td>
-              <td class="right"><span class="status good">Game</span></td>
-            </tr>
-            <tr>
-              <td>Mar 9</td>
-              <td>5:30 PM</td>
-              <td>@ Hawks</td>
-              <td>Away Field</td>
-              <td class="right"><span class="status">Game</span></td>
-            </tr>
-            <tr>
-              <td>Mar 12</td>
-              <td>6:00 PM</td>
-              <td>Practice</td>
-              <td>Home Field</td>
-              <td class="right"><span class="status warn">Practice</span></td>
-            </tr>
-            <tr>
-              <td>Mar 16</td>
-              <td>2:00 PM</td>
-              <td>vs Tigers</td>
-              <td>Field 2</td>
-              <td class="right"><span class="status">Game</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="small" style="margin:10px 2px 0; color:var(--muted)">
-        Want this to auto-sync? You can replace this table with a Google Sheet embed.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="roster">
-  <div class="sectionHead">
-    <div>
-      <h2>Roster</h2>
-      <p>Keep it simple (first names only is common for youth teams).</p>
-    </div>
-    <span class="pill">Edit roster cards below</span>
-  </div>
-
-  <div class="card">
-    <div class="rosterWrap">
-      <div class="controls" style="margin-bottom:12px">
-        <input class="input" id="rosterSearch" placeholder="Search roster… (name, position)" />
-        <button class="btn" id="resetRoster" type="button">Reset</button>
-      </div>
-
-      <div class="rosterGrid" id="rosterGrid">
-        <!-- Player cards (edit these) -->
-        <div class="player" data-search="12 jackson pitcher">
-          <div class="playerTop">
-            <div class="num">12</div>
-            <div style="text-align:right">
-              <h4>Jackson</h4>
-              <p class="meta">Pitcher</p>
-            </div>
-          </div>
-          <p class="meta">Bats/Throws: R/R</p>
-        </div>
-
-        <div class="player" data-search="7 liam catcher">
-          <div class="playerTop">
-            <div class="num">7</div>
-            <div style="text-align:right">
-              <h4>Liam</h4>
-              <p class="meta">Catcher</p>
-            </div>
-          </div>
-          <p class="meta">Speed: ⭐⭐⭐</p>
-        </div>
-
-        <div class="player" data-search="3 noah infield">
-          <div class="playerTop">
-            <div class="num">3</div>
-            <div style="text-align:right">
-              <h4>Noah</h4>
-              <p class="meta">Infield</p>
-            </div>
-          </div>
-          <p class="meta">Glove: ⭐⭐⭐⭐</p>
-        </div>
-
-        <div class="player" data-search="9 mason outfield">
-          <div class="playerTop">
-            <div class="num">9</div>
-            <div style="text-align:right">
-              <h4>Mason</h4>
-              <p class="meta">Outfield</p>
-            </div>
-          </div>
-          <p class="meta">Arm: ⭐⭐⭐⭐</p>
-        </div>
-
-        <div class="player" data-search="20 oliver utility">
-          <div class="playerTop">
-            <div class="num">20</div>
-            <div style="text-align:right">
-              <h4>Oliver</h4>
-              <p class="meta">Utility</p>
-            </div>
-          </div>
-          <p class="meta">Hustle: ⭐⭐⭐⭐⭐</p>
-        </div>
-
-        <div class="player" data-search="4 ethan infield">
-          <div class="playerTop">
-            <div class="num">4</div>
-            <div style="text-align:right">
-              <h4>Ethan</h4>
-              <p class="meta">Infield</p>
-            </div>
-          </div>
-          <p class="meta">Contact: ⭐⭐⭐⭐</p>
-        </div>
-
-        <div class="player" data-search="11 aiden outfield">
-          <div class="playerTop">
-            <div class="num">11</div>
-            <div style="text-align:right">
-              <h4>Aiden</h4>
-              <p class="meta">Outfield</p>
-            </div>
-          </div>
-          <p class="meta">Tracking: ⭐⭐⭐⭐</p>
-        </div>
-
-        <div class="player" data-search="2 lucas pitcher">
-          <div class="playerTop">
-            <div class="num">2</div>
-            <div style="text-align:right">
-              <h4>Lucas</h4>
-              <p class="meta">Pitcher</p>
-            </div>
-          </div>
-          <p class="meta">Control: ⭐⭐⭐</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="gallery">
-  <div class="sectionHead">
-    <div>
-      <h2>Photos</h2>
-      <p>Swap placeholders for real images later.</p>
-    </div>
-    <span class="pill">Add images in /images</span>
-  </div>
-
-  <div class="card">
-    <div class="gallery">
-      <div class="galleryGrid">
-        <div class="photo"><div class="ph">Team photo placeholder</div></div>
-        <div class="photo"><div class="ph">Game action placeholder</div></div>
-        <div class="photo"><div class="ph">Dugout fun placeholder</div></div>
-        <div class="photo"><div class="ph">Coach + kids placeholder</div></div>
-        <div class="photo"><div class="ph">Big hit placeholder</div></div>
-        <div class="photo"><div class="ph">W after the game placeholder</div></div>
-      </div>
-      <p class="small" style="margin:10px 2px 0; color:var(--muted)">
-        Pro move: keep photos kid-safe (no last names, no school name, no exact home addresses).
-      </p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="sectionHead">
-    <div>
-      <h2>Contact</h2>
-      <p>Put the important links here.</p>
-    </div>
-    <span class="pill">Edit contact info</span>
-  </div>
-
-  <div class="grid2">
-    <div class="card" style="padding:14px">
-      <div class="miniCard" style="background: rgba(0,0,0,.12)">
-        <h3>Coach / Team Manager</h3>
-        <p>
-          <b>Name:</b> Coach Name<br>
-          <b>Phone:</b> (555) 555-5555<br>
-          <b>Email:</b> coach@email.com
-        </p>
-      </div>
-
-      <div class="miniCard" style="background: rgba(0,0,0,.12)">
-        <h3>Links</h3>
-        <p>
-          • <a href="#" style="color:var(--brand)">Team chat (GroupMe/TeamSnap)</a><br>
-          • <a href="#" style="color:var(--brand)">Snack / volunteer sign-up</a><br>
-          • <a href="#" style="color:var(--brand)">Google Maps: Home field</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="card" style="padding:14px">
-      <div class="miniCard" style="background: rgba(0,0,0,.12)">
-        <h3>Quick note to parents</h3>
-        <p>Weather updates will post here 60–90 minutes before game time. If lightning is within 10 miles, we’ll pause and follow league rules.</p>
-      </div>
-      <div class="miniCard" style="background: rgba(0,0,0,.12)">
-        <h3>Questions?</h3>
-        <p>Text the team manager — it’s the fastest way. (You can remove this box.)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="foot">
-    <div>
-      <div style="display:flex; align-items:center; gap:10px">
-        <div class="logo" style="width:34px; height:34px; border-radius:14px">TB</div>
+    <section id="announcements">
+      <div class="sectionHead">
         <div>
-          <div style="font-weight:800">Team Name Baseball</div>
-          <div class="small">© <span id="year"></span> • Built with ❤️ for the squad</div>
+          <h2>Announcements</h2>
+          <p>Empty until you add rows in the Sheet.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card">
+        <div class="announceList" id="announceList"></div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="sectionHead">
+        <div>
+          <h2>Schedule</h2>
+          <p>Add games in the Sheet — it auto-fills.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card">
+        <div class="wrap">
+          <div class="controls">
+            <input class="input" id="scheduleSearch" placeholder="Search schedule…" />
+            <button class="btn" id="resetSchedule" type="button">Reset</button>
+          </div>
+
+          <div style="overflow:auto; border-radius: 16px">
+            <table aria-label="Royals schedule">
+              <thead>
+                <tr>
+                  <th style="width:120px">Date</th>
+                  <th style="width:95px">Time</th>
+                  <th>Opponent</th>
+                  <th>Field</th>
+                  <th class="right" style="width:140px">Status</th>
+                </tr>
+              </thead>
+              <tbody id="scheduleBody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="small">Need help updating this? Edit the placeholders and re-upload.</div>
-  </div>
-</footer>
+    </section>
+
+    <section id="roster">
+      <div class="sectionHead">
+        <div>
+          <h2>Roster</h2>
+          <p>Add players in the Sheet — it auto-fills.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card">
+        <div class="wrap">
+          <div class="controls" style="margin-bottom:12px">
+            <input class="input" id="rosterSearch" placeholder="Search roster…" />
+            <button class="btn" id="resetRoster" type="button">Reset</button>
+          </div>
+
+          <div class="rosterGrid" id="rosterGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="royal">
+      <div class="sectionHead">
+        <div>
+          <h2>👑 Royal of the Week</h2>
+          <p>Empty until you add a row in the Sheet.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card" style="padding:14px">
+        <div class="grid2" style="align-items:center">
+          <div class="miniCard" style="background: rgba(0,0,0,.18)">
+            <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start">
+              <div>
+                <h3 id="rotwName" style="margin:0 0 6px; font-size:18px"></h3>
+                <p class="meta" id="rotwMeta" style="margin:0"></p>
+              </div>
+              <span class="status" id="rotwBadge">Royal</span>
+            </div>
+            <p id="rotwBio" style="margin:10px 0 0; color:var(--muted)"></p>
+          </div>
+
+          <div class="miniCard" style="background: rgba(0,0,0,.18)">
+            <div style="display:flex; gap:12px; align-items:center">
+              <div class="rotwPhoto">
+                <img id="rotwImg" alt="Royal of the Week photo" src="" />
+                <div id="rotwImgPh" class="ph">Photo</div>
+              </div>
+              <div>
+                <div style="font-weight:1000">ROYAL MODE</div>
+                <div class="small">Add name + bio + optional photo URL in the Sheet.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate">
+      <div class="sectionHead">
+        <div>
+          <h2>❤️ Donate</h2>
+          <p>Donate via Cash App QR.</p>
+        </div>
+        <span class="pill">QR</span>
+      </div>
+
+      <div class="card" style="padding:14px">
+        <div class="donateGrid">
+          <div class="miniCard" style="background: rgba(0,0,0,.18)">
+            <h3 style="margin:0 0 6px">Support the Oklahoma Royals</h3>
+            <p style="margin:0; color:var(--muted)">Scan the QR code to donate via Cash App.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <a class="btn primary" href="https://cash.app/$OkRoyals" target="_blank" rel="noopener">Open Cash App</a>
+            </div>
+          </div>
+
+          <div class="miniCard" style="background: rgba(0,0,0,.18); display:flex; justify-content:center; align-items:center">
+            <div class="qr">
+              <img id="donateQrImg" alt="Donation QR code" src="" />
+              <div id="donateQrPh" class="ph">QR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fundraisers">
+      <div class="sectionHead">
+        <div>
+          <h2>🎯 Fundraisers</h2>
+          <p>Only shows <b>Active</b> + <b>Upcoming</b>.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card">
+        <div class="wrap">
+          <div class="fundGrid" id="fundGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="sectionHead">
+        <div>
+          <h2>🤝 Sponsors</h2>
+          <p>Logo-only grid.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card">
+        <div class="sponsorGrid" id="sponsorGrid"></div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="sectionHead">
+        <div>
+          <h2>Links</h2>
+          <p>Quick stuff.</p>
+        </div>
+        <span class="pill">Quick</span>
+      </div>
+
+      <div class="grid2">
+        <div class="card" style="padding:14px">
+          <div class="miniCard" style="background: rgba(0,0,0,.12)">
+            <h3>GameChanger</h3>
+            <p><a href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener" style="color:var(--gold)">Join Oklahoma Royals 9U on GameChanger</a></p>
+          </div>
+          <div class="miniCard" style="background: rgba(0,0,0,.12)">
+            <h3>Home Field</h3>
+            <p><b>Stroud Little League Field 2</b></p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:14px">
+          <div class="miniCard" style="background: rgba(0,0,0,.12)">
+            <h3>Admin note</h3>
+            <p>Update the Google Sheet tabs (Announcements, Schedule, Roster, RoyalOfTheWeek, Fundraisers, Sponsors).</p>
+          </div>
+          <div class="miniCard" style="background: rgba(0,0,0,.12)">
+            <h3>Donate</h3>
+            <p>Cash App: <a href="https://cash.app/$OkRoyals" target="_blank" rel="noopener" style="color:var(--gold)">cash.app/$OkRoyals</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px">
+            <div class="logo" style="width:34px; height:34px; border-radius:14px" aria-hidden="true">👑</div>
+            <div>
+              <div style="font-weight:1000">Oklahoma Royals</div>
+              <div class="small">© <span id="year"></span> • okroyals.com</div>
+            </div>
+          </div>
+        </div>
+        <div class="small">Updated from Google Sheets.</div>
+      </div>
+    </footer>
 
   </div>
-</main><script>
-  // Set date/year
-  const now = new Date();
-  document.querySelectorAll('[data-today]').forEach(el => {
-    el.textContent = now.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-  });
-  document.getElementById('year').textContent = now.getFullYear();
+</main>
 
-  // Copy link button
-  document.getElementById('copyLinkBtn').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      const btn = document.getElementById('copyLinkBtn');
-      const old = btn.textContent;
-      btn.textContent = '✅ Copied!';
-      setTimeout(() => (btn.textContent = old), 1200);
-    } catch (e) {
-      alert('Could not copy link on this device.');
+<script>
+  const SHEET_ID = "1FQufd7usdD8Xeqyq5g9u4pagcEqH6HDbRPaMbavidmM";
+  let ACTIVE_TEAM = "All";
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+  const escapeHtml = (x) => String(x ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+
+  function csvToRows(csvText){
+    const rows=[];
+    let row=[];
+    let cell="";
+    let inQuotes=false;
+
+    for (let i=0;i<csvText.length;i++){
+      const c=csvText[i];
+      const next=csvText[i+1];
+      if (c==='"'){
+        if (inQuotes && next==='"'){ cell+='"'; i++; }
+        else { inQuotes=!inQuotes; }
+      } else if (c===',' && !inQuotes){
+        row.push(cell); cell="";
+      } else if ((c==='\n' || c==='\r') && !inQuotes){
+        if (c==='\r' && next==='\n') i++;
+        row.push(cell); cell="";
+        if (row.some(v=>String(v).trim()!=="")) rows.push(row);
+        row=[];
+      } else {
+        cell += c;
+      }
     }
-  });
+    row.push(cell);
+    if (row.some(v=>String(v).trim()!=="")) rows.push(row);
+    return rows;
+  }
 
-  // Schedule search
-  const scheduleSearch = document.getElementById('scheduleSearch');
-  const scheduleBody = document.getElementById('scheduleBody');
-  const scheduleRows = Array.from(scheduleBody.querySelectorAll('tr'));
+  function normalizeHeader(s){
+    return String(s ?? "").trim().toLowerCase().replace(/\s+/g, "_");
+  }
 
+  function rowsToObjects(rows){
+    if (!rows.length) return [];
+    const header = rows[0].map(normalizeHeader);
+    return rows.slice(1).map(r=>{
+      const o={};
+      header.forEach((h,idx)=>o[h]=(r[idx]??"").trim());
+      return o;
+    }).filter(o=>Object.values(o).some(v=>String(v).trim()!==""));
+  }
+
+  async function fetchTabCsv(tab){
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Could not load tab: ${tab}`);
+    return await res.text();
+  }
+
+  async function fetchOptionalTab(tab){
+    try { return await fetchTabCsv(tab); }
+    catch { return ""; }
+  }
+
+  function matchTeam(t){
+    t = String(t||"").trim();
+    if (!t || t.toLowerCase()==='all') return true;
+    if (ACTIVE_TEAM==='All') return true;
+    return t.toLowerCase()===ACTIVE_TEAM.toLowerCase();
+  }
+
+  function setTeam(team){
+    ACTIVE_TEAM = team;
+    $$('[data-team-filter]').forEach(b=>b.classList.toggle('primary', b.getAttribute('data-team-filter')===team));
+    renderAnnouncements(window.__ann || []);
+    renderSchedule(window.__sched || []);
+    renderRoster(window.__rost || []);
+  }
+
+  function renderAnnouncements(items){
+    const wrap = $('#announceList');
+    const f = items.filter(a=>matchTeam(a.team));
+    if (!f.length){
+      wrap.innerHTML = `
+        <div class="announce">
+          <div class="announceTop">
+            <div>
+              <h4>No announcements yet</h4>
+              <p class="meta">Add rows in the <b>Announcements</b> tab.</p>
+            </div>
+            <span class="status">Info</span>
+          </div>
+          <p></p>
+        </div>
+      `;
+      return;
+    }
+    wrap.innerHTML = f.slice(0,10).map(a=>{
+      const title = escapeHtml(a.title||'Update');
+      const date  = escapeHtml(a.date||'');
+      const tag   = escapeHtml(a.tag || a.team || 'Info');
+      const body  = escapeHtml(a.body||'');
+      const cls = tag.toLowerCase().includes('practice') ? 'warn' : (tag.toLowerCase().includes('game') ? 'good' : '');
+      return `
+        <div class="announce">
+          <div class="announceTop">
+            <div>
+              <h4>${title}</h4>
+              <p class="meta">${date}${a.team?` • ${escapeHtml(a.team)}`:''}</p>
+            </div>
+            <span class="status ${cls}">${tag}</span>
+          </div>
+          <p>${body}</p>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderSchedule(items){
+    const body = $('#scheduleBody');
+    const f = items.filter(g=>matchTeam(g.team));
+    if (!f.length){
+      body.innerHTML = `<tr><td colspan="5">No schedule yet — add rows in the <b>Schedule</b> tab.</td></tr>`;
+      $('#nextGameTag').innerHTML = `⚾ <b>Next:</b> Add a game in the Sheet`;
+      window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
+      return;
+    }
+    body.innerHTML = f.map(g=>{
+      const date = escapeHtml(g.date);
+      const time = escapeHtml(g.time);
+      const opp  = escapeHtml(g.opponent);
+      const field= escapeHtml(g.field);
+      const status = escapeHtml(g.status||'Game');
+      const cls = status.toLowerCase().includes('practice') ? 'warn' : (status.toLowerCase().includes('game') ? 'good' : '');
+      return `
+        <tr>
+          <td>${date}</td>
+          <td>${time}</td>
+          <td>${opp}${g.team?` <span class="pill" style="margin-left:8px">${escapeHtml(g.team)}</span>`:''}</td>
+          <td>${field}</td>
+          <td class="right"><span class="status ${cls}">${status}</span></td>
+        </tr>
+      `;
+    }).join('');
+    window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
+    const next = f[0];
+    const nextLine = `${next.date||''} ${next.time||''} • ${next.opponent||''}`.trim();
+    if (nextLine) $('#nextGameTag').innerHTML = `⚾ <b>Next:</b> ${escapeHtml(nextLine)}`;
+  }
+
+  function renderRoster(items){
+    const grid = $('#rosterGrid');
+    const f = items.filter(p=>matchTeam(p.team));
+    if (!f.length){
+      grid.innerHTML = `
+        <div class="player">
+          <div class="playerTop">
+            <div class="num">—</div>
+            <div style="text-align:right">
+              <h4>No roster yet</h4>
+              <p class="meta">Add rows in <b>Roster</b> tab</p>
+            </div>
+          </div>
+          <p class="meta"></p>
+        </div>
+      `;
+      window.__rosterCards = Array.from(grid.querySelectorAll('.player'));
+      return;
+    }
+    grid.innerHTML = f.map(p=>{
+      const num = escapeHtml(p.number||'');
+      const name= escapeHtml(p.name||'Player');
+      const pos = escapeHtml(p.position||'');
+      const note= escapeHtml(p.note||'');
+      const team= escapeHtml(p.team||'');
+      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team}`.toLowerCase());
+      return `
+        <div class="player" data-search="${hay}">
+          <div class="playerTop">
+            <div class="num">${num||'—'}</div>
+            <div style="text-align:right">
+              <h4>${name}</h4>
+              <p class="meta">${pos}${team?` • ${team}`:''}</p>
+            </div>
+          </div>
+          <p class="meta">${note}</p>
+        </div>
+      `;
+    }).join('');
+    window.__rosterCards = Array.from(grid.querySelectorAll('.player'));
+  }
+
+  function renderRotw(items){
+    const cur = items[0] || {};
+    const name = cur.name || 'No Royal yet';
+    const team = cur.team || '';
+    const week = cur.week || '';
+    const bio  = cur.bio || '';
+    const photo= cur.photo_url || '';
+
+    $('#rotwName').textContent = name;
+    $('#rotwMeta').textContent = (name==='No Royal yet') ? 'Add a row in RoyalOfTheWeek' : [team, week].filter(Boolean).join(' • ');
+    $('#rotwBio').textContent = bio;
+    $('#rotwBadge').textContent = team ? team : 'Royal';
+
+    const img = $('#rotwImg');
+    const ph = $('#rotwImgPh');
+    if (photo){
+      img.src = photo;
+      img.style.display = 'block';
+      ph.style.display = 'none';
+      img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
+    } else {
+      img.style.display='none';
+      ph.style.display='grid';
+    }
+  }
+
+  function renderSite(items){
+    const s = items[0] || {};
+    $('#homeFieldName').textContent = s.home_field_name || 'Stroud Little League Field 2';
+    $('#homeFieldAddr').textContent = s.home_field_address || '';
+    const chatLabel = s.team_chat_label || 'Join Oklahoma Royals 9U on GameChanger';
+    const chatUrl = s.team_chat_url || 'https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link';
+    const link = $('#teamChatLink');
+    link.textContent = chatLabel;
+    link.href = chatUrl;
+  }
+
+  function renderFundraisers(items){
+    const grid = $('#fundGrid');
+    const keep = items.filter(f=>{
+      const s = String(f.status||'').trim().toLowerCase();
+      return s==='active' || s==='upcoming';
+    });
+    if (!keep.length){
+      grid.innerHTML = `
+        <div class="fundCard">
+          <h3>No fundraisers yet</h3>
+          <p>Add rows in the <b>Fundraisers</b> tab (status Active/Upcoming).</p>
+        </div>
+      `;
+      return;
+    }
+    grid.innerHTML = keep.slice(0,6).map(f=>{
+      const title = escapeHtml(f.title||'Fundraiser');
+      const status= escapeHtml(f.status||'Active');
+      const body  = escapeHtml(f.body||'');
+      const link  = (f.link||'').trim();
+      const cls = status.toLowerCase()==='active' ? 'good' : 'warn';
+      const btn = link ? `<a class="btn primary" href="${escapeHtml(link)}" target="_blank" rel="noopener">Open</a>` : '';
+      return `
+        <div class="fundCard">
+          <div style="display:flex; justify-content:space-between; gap:10px; align-items:flex-start">
+            <h3>${title}</h3>
+            <span class="status ${cls}">${status}</span>
+          </div>
+          <p style="margin:0; color:var(--muted)">${body}</p>
+          <div style="margin-top:auto; display:flex; gap:10px; flex-wrap:wrap">${btn}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderSponsors(items){
+    const grid = $('#sponsorGrid');
+    if (!items.length){
+      grid.innerHTML = `<div class="sponsor"><div class="ph" style="color:rgba(230,237,247,.7)">Add sponsor logos in <b>Sponsors</b> tab</div></div>`;
+      return;
+    }
+    grid.innerHTML = items.slice(0,24).map(s=>{
+      const logo = (s.logo_url||'').trim();
+      const url  = (s.website_url||'').trim();
+      const inner = logo
+        ? `<img src="${escapeHtml(logo)}" alt="Sponsor logo" onerror="this.style.display='none'">`
+        : `<div class="ph" style="color:rgba(230,237,247,.7)">Logo</div>`;
+      return url
+        ? `<a class="sponsor" href="${escapeHtml(url)}" target="_blank" rel="noopener">${inner}</a>`
+        : `<div class="sponsor">${inner}</div>`;
+    }).join('');
+  }
+
+  function setupDonateQr(){
+    const cashLink = 'https://cash.app/$OkRoyals';
+    const qrUrl = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${encodeURIComponent(cashLink)}`;
+    const img = $('#donateQrImg');
+    const ph = $('#donateQrPh');
+    img.src = qrUrl;
+    img.style.display = 'block';
+    ph.style.display = 'none';
+    img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
+  }
+
+  // Search wiring
+  const scheduleSearch = $('#scheduleSearch');
   function filterSchedule(){
     const q = scheduleSearch.value.trim().toLowerCase();
-    scheduleRows.forEach(row => {
-      const text = row.innerText.toLowerCase();
-      row.style.display = text.includes(q) ? '' : 'none';
-    });
+    const rows = window.__scheduleRows || Array.from($('#scheduleBody').querySelectorAll('tr'));
+    rows.forEach(r=>r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none');
   }
   scheduleSearch.addEventListener('input', filterSchedule);
-  document.getElementById('resetSchedule').addEventListener('click', () => {
-    scheduleSearch.value = '';
-    filterSchedule();
-  });
+  $('#resetSchedule').addEventListener('click', ()=>{ scheduleSearch.value=''; filterSchedule(); });
 
-  // Roster search
-  const rosterSearch = document.getElementById('rosterSearch');
-  const rosterGrid = document.getElementById('rosterGrid');
-  const players = Array.from(rosterGrid.querySelectorAll('.player'));
-
+  const rosterSearch = $('#rosterSearch');
   function filterRoster(){
     const q = rosterSearch.value.trim().toLowerCase();
-    players.forEach(card => {
-      const hay = (card.getAttribute('data-search') || card.innerText).toLowerCase();
-      card.style.display = hay.includes(q) ? '' : 'none';
+    const cards = window.__rosterCards || Array.from($('#rosterGrid').querySelectorAll('.player'));
+    cards.forEach(c=>{
+      const hay = (c.getAttribute('data-search') || c.innerText).toLowerCase();
+      c.style.display = hay.includes(q) ? '' : 'none';
     });
   }
   rosterSearch.addEventListener('input', filterRoster);
-  document.getElementById('resetRoster').addEventListener('click', () => {
-    rosterSearch.value = '';
-    filterRoster();
-  });
-</script></body>
+  $('#resetRoster').addEventListener('click', ()=>{ rosterSearch.value=''; filterRoster(); });
+
+  // Team filter buttons
+  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>setTeam(btn.getAttribute('data-team-filter')||'All')));
+
+  async function loadAll(){
+    try{
+      const [annCsv, schedCsv, rostCsv, rotwCsv, siteCsv, sponsorCsv, fundCsv] = await Promise.all([
+        fetchTabCsv('Announcements'),
+        fetchTabCsv('Schedule'),
+        fetchTabCsv('Roster'),
+        fetchTabCsv('RoyalOfTheWeek'),
+        fetchTabCsv('Site'),
+        fetchOptionalTab('Sponsors'),
+        fetchOptionalTab('Fundraisers')
+      ]);
+
+      const ann = annCsv ? rowsToObjects(csvToRows(annCsv)) : [];
+      const sched= schedCsv? rowsToObjects(csvToRows(schedCsv)) : [];
+      const rost = rostCsv ? rowsToObjects(csvToRows(rostCsv)) : [];
+      const rotw = rotwCsv ? rowsToObjects(csvToRows(rotwCsv)) : [];
+      const site = siteCsv ? rowsToObjects(csvToRows(siteCsv)) : [];
+      const sponsors = sponsorCsv ? rowsToObjects(csvToRows(sponsorCsv)) : [];
+      const fund = fundCsv ? rowsToObjects(csvToRows(fundCsv)) : [];
+
+      window.__ann = ann;
+      window.__sched = sched;
+      window.__rost = rost;
+
+      renderSite(site);
+      renderAnnouncements(ann);
+      renderSchedule(sched);
+      renderRoster(rost);
+      renderRotw(rotw);
+      renderFundraisers(fund);
+      renderSponsors(sponsors);
+
+      setTeam('All');
+      setupDonateQr();
+
+    } catch(err){
+      console.error(err);
+      alert(
+        "Couldn't load the Google Sheet.\n\nFixes:\n1) Share the sheet as 'Anyone with link can view' OR File > Publish to web\n2) Make sure tabs are named exactly: Announcements, Schedule, Roster, RoyalOfTheWeek, Site\n\nError: " + err.message
+      );
+    }
+  }
+
+  loadAll();
+</script>
+
+</body>
 </html>
