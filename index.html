@@ -1,0 +1,748 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team Name Baseball</title>
+  <meta name="description" content="Official website for Team Name Baseball — schedule, roster, announcements, and photos." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#121c2f;
+      --panel2:#0f172a;
+      --text:#e6edf7;
+      --muted:#b6c2d6;
+      --brand:#5aa3ff;
+      --brand2:#7c3aed;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --ring: 0 0 0 2px rgba(90,163,255,.25);
+      --max: 1100px;
+    }*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1200px 700px at 20% -10%, rgba(124,58,237,.35), transparent 55%),
+              radial-gradient(1000px 600px at 80% 0%, rgba(90,163,255,.35), transparent 55%),
+              linear-gradient(180deg, var(--bg), #070b14 70%);
+  color:var(--text);
+  line-height:1.45;
+}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+
+.container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+/* Header */
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter: blur(10px);
+  background: rgba(11,18,32,.65);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 0;
+  gap:12px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width: 220px;
+}
+.logo{
+  width:42px; height:42px; border-radius:14px;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  box-shadow: var(--shadow);
+  display:grid; place-items:center;
+  font-weight:800;
+}
+.brand h1{font-size:14px; margin:0}
+.brand p{margin:0; font-size:12px; color:var(--muted)}
+
+nav ul{
+  display:flex;
+  gap:12px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+nav a{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 10px;
+  border-radius:12px;
+  color:var(--muted);
+  border: 1px solid transparent;
+}
+nav a:hover{color:var(--text); border-color: rgba(255,255,255,.10); background: rgba(255,255,255,.05)}
+
+.cta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:flex-end;
+  min-width: 240px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color:var(--text);
+  box-shadow: none;
+  cursor:pointer;
+  user-select:none;
+  font-weight:650;
+}
+.btn:hover{background: rgba(255,255,255,.09)}
+.btn.primary{
+  border-color: rgba(90,163,255,.35);
+  background: linear-gradient(135deg, rgba(90,163,255,.24), rgba(124,58,237,.18));
+  box-shadow: var(--shadow);
+}
+.btn.primary:hover{filter:brightness(1.06)}
+
+/* Hero */
+.hero{
+  padding: 34px 0 18px;
+}
+.heroGrid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  align-items:stretch;
+}
+.card{
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.heroMain{
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+.heroMain:before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(700px 220px at 20% 0%, rgba(90,163,255,.24), transparent 60%),
+              radial-gradient(600px 240px at 90% 30%, rgba(124,58,237,.20), transparent 60%);
+  pointer-events:none;
+}
+.heroMain > *{position:relative}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius: 999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.10);
+  color: var(--muted);
+  font-size: 12px;
+}
+.tag b{color:var(--text)}
+
+.heroTitle{
+  margin:14px 0 8px;
+  font-size: 34px;
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+.heroDesc{margin:0 0 16px; color:var(--muted); max-width: 58ch}
+
+.heroActions{display:flex; gap:10px; flex-wrap:wrap}
+
+.heroSide{
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.miniCard{
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  padding:14px;
+}
+.miniCard h3{margin:0 0 6px; font-size:14px}
+.miniCard p{margin:0; color:var(--muted); font-size:13px}
+
+/* Sections */
+section{padding: 18px 0}
+.sectionHead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom: 12px;
+}
+.sectionHead h2{margin:0; font-size:18px}
+.sectionHead p{margin:0; color:var(--muted); font-size:13px}
+
+.grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+.grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+
+/* Announcements */
+.announceList{display:grid; gap:10px; padding:14px}
+.announce{
+  padding:12px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+.announceTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
+.announce h4{margin:0; font-size:14px}
+.pill{font-size:12px; color:var(--muted); border:1px solid rgba(255,255,255,.12); padding:4px 8px; border-radius:999px}
+.announce p{margin:6px 0 0; color:var(--muted); font-size:13px}
+
+/* Schedule */
+.scheduleWrap{padding:14px}
+.controls{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.input{
+  flex:1;
+  min-width: 220px;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  outline:none;
+}
+.input:focus{box-shadow: var(--ring); border-color: rgba(90,163,255,.35)}
+
+table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius: 16px; border:1px solid rgba(255,255,255,.10)}
+th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
+th{background: rgba(255,255,255,.06); color: var(--muted); font-weight:700}
+tr:last-child td{border-bottom:none}
+.right{text-align:right}
+.status{font-size:12px; padding:4px 8px; border-radius:999px; display:inline-flex; border:1px solid rgba(255,255,255,.12); color: var(--muted)}
+.status.good{border-color: rgba(34,197,94,.35); color: rgba(187,247,208,1)}
+.status.warn{border-color: rgba(245,158,11,.35); color: rgba(254,215,170,1)}
+
+/* Roster */
+.rosterWrap{padding:14px}
+.rosterGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
+.player{
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height: 132px;
+}
+.playerTop{display:flex; align-items:center; justify-content:space-between; gap:8px}
+.num{
+  width:34px; height:34px; border-radius: 14px;
+  display:grid; place-items:center;
+  background: linear-gradient(135deg, rgba(90,163,255,.20), rgba(124,58,237,.18));
+  border:1px solid rgba(255,255,255,.10);
+  font-weight:800;
+}
+.player h4{margin:0; font-size:14px}
+.meta{margin:0; color:var(--muted); font-size:12px}
+
+/* Gallery */
+.gallery{padding:14px}
+.galleryGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px}
+.photo{
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  overflow:hidden;
+  aspect-ratio: 4/3;
+  position:relative;
+}
+.photo .ph{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  color: rgba(230,237,247,.7);
+  font-size: 13px;
+  background:
+    radial-gradient(500px 240px at 20% 20%, rgba(90,163,255,.18), transparent 60%),
+    radial-gradient(500px 240px at 90% 80%, rgba(124,58,237,.18), transparent 60%),
+    rgba(0,0,0,.10);
+}
+
+/* Footer */
+footer{padding: 28px 0 44px; color: var(--muted)}
+.foot{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:space-between;
+  align-items:center;
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding-top: 16px;
+}
+.small{font-size:12px}
+
+/* Responsive */
+@media (max-width: 980px){
+  .heroGrid{grid-template-columns: 1fr}
+  .cta{min-width: auto}
+  .brand{min-width:auto}
+  .rosterGrid{grid-template-columns: repeat(3, 1fr)}
+}
+@media (max-width: 720px){
+  nav ul{display:none}
+  .grid2{grid-template-columns: 1fr}
+  .grid3{grid-template-columns: 1fr}
+  .rosterGrid{grid-template-columns: repeat(2, 1fr)}
+  .galleryGrid{grid-template-columns: repeat(2, 1fr)}
+  .heroTitle{font-size: 30px}
+}
+@media (max-width: 420px){
+  .rosterGrid{grid-template-columns: 1fr}
+  .galleryGrid{grid-template-columns: 1fr}
+}
+
+  </style>
+</head>
+<body><header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <div class="logo">TB</div>
+        <div>
+          <h1>Team Name Baseball</h1>
+          <p>City, State • Season YYYY</p>
+        </div>
+      </a><nav aria-label="Primary">
+    <ul>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#roster">Roster</a></li>
+      <li><a href="#gallery">Photos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="cta">
+    <a class="btn" href="#schedule">View schedule</a>
+    <a class="btn primary" href="#contact">Join / info</a>
+  </div>
+</div>
+
+  </div>
+</header><main id="top">
+  <div class="container"><section class="hero">
+  <div class="heroGrid">
+    <div class="card heroMain">
+      <span class="tag">⚾ <b>Next game:</b> Sat 3:00 PM • vs Wildcats</span>
+      <h2 class="heroTitle">Welcome to <span style="color: var(--brand)">Team Name</span> Baseball</h2>
+      <p class="heroDesc">All the stuff parents actually need in one place: game times, field info, roster, and quick updates. Bookmark this page.</p>
+      <div class="heroActions">
+        <a class="btn primary" href="#schedule">📅 Schedule & fields</a>
+        <a class="btn" href="#announcements">📣 Announcements</a>
+        <button class="btn" id="copyLinkBtn" type="button">🔗 Copy site link</button>
+      </div>
+    </div>
+
+    <div class="card heroSide">
+      <div class="miniCard">
+        <h3>Field</h3>
+        <p><b>Home:</b> Your Ballpark Name<br><span style="color: var(--muted)">1234 Park Rd, City</span></p>
+      </div>
+      <div class="miniCard">
+        <h3>Team chat</h3>
+        <p>Add your team GroupMe / TeamSnap link here.</p>
+      </div>
+      <div class="miniCard">
+        <h3>Volunteer slots</h3>
+        <p>Concessions, scoreboard, and dugout help. Add a sign-up link.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="announcements">
+  <div class="sectionHead">
+    <div>
+      <h2>Announcements</h2>
+      <p>Quick updates for parents/players.</p>
+    </div>
+    <span class="pill">Edit these in the HTML</span>
+  </div>
+
+  <div class="card">
+    <div class="announceList" id="announceList">
+      <div class="announce">
+        <div class="announceTop">
+          <div>
+            <h4>Practice this week</h4>
+            <p class="meta">Updated: <span data-today></span></p>
+          </div>
+          <span class="status good">On</span>
+        </div>
+        <p>Tue 6:00 PM and Thu 6:00 PM at the home field. Bring water + batting helmet.</p>
+      </div>
+
+      <div class="announce">
+        <div class="announceTop">
+          <div>
+            <h4>Picture day</h4>
+            <p class="meta">Sat 1:15 PM • arrive early</p>
+          </div>
+          <span class="status warn">Reminder</span>
+        </div>
+        <p>Jersey + pants, clean hat. Meet by the backstop 15 minutes early.</p>
+      </div>
+
+      <div class="announce">
+        <div class="announceTop">
+          <div>
+            <h4>Snack schedule</h4>
+            <p class="meta">Parents rotation</p>
+          </div>
+          <span class="status">Info</span>
+        </div>
+        <p>We’ll do 2 families per game. Add the signup link in the contact section.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="sectionHead">
+    <div>
+      <h2>Schedule</h2>
+      <p>Search by opponent, field, or date.</p>
+    </div>
+    <span class="pill">Tip: link fields in Google Maps</span>
+  </div>
+
+  <div class="card">
+    <div class="scheduleWrap">
+      <div class="controls">
+        <input class="input" id="scheduleSearch" placeholder="Search schedule… (e.g., Wildcats, Field 2, Mar 12)" />
+        <button class="btn" id="resetSchedule" type="button">Reset</button>
+      </div>
+
+      <div style="overflow:auto; border-radius: 16px">
+        <table aria-label="Team schedule">
+          <thead>
+            <tr>
+              <th style="width:120px">Date</th>
+              <th style="width:95px">Time</th>
+              <th>Opponent</th>
+              <th>Field</th>
+              <th class="right" style="width:140px">Status</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody">
+            <!-- Edit these rows -->
+            <tr>
+              <td>Mar 2</td>
+              <td>3:00 PM</td>
+              <td>vs Wildcats</td>
+              <td><a href="#contact" title="Replace with a Maps link">Home Field</a></td>
+              <td class="right"><span class="status good">Game</span></td>
+            </tr>
+            <tr>
+              <td>Mar 9</td>
+              <td>5:30 PM</td>
+              <td>@ Hawks</td>
+              <td>Away Field</td>
+              <td class="right"><span class="status">Game</span></td>
+            </tr>
+            <tr>
+              <td>Mar 12</td>
+              <td>6:00 PM</td>
+              <td>Practice</td>
+              <td>Home Field</td>
+              <td class="right"><span class="status warn">Practice</span></td>
+            </tr>
+            <tr>
+              <td>Mar 16</td>
+              <td>2:00 PM</td>
+              <td>vs Tigers</td>
+              <td>Field 2</td>
+              <td class="right"><span class="status">Game</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="small" style="margin:10px 2px 0; color:var(--muted)">
+        Want this to auto-sync? You can replace this table with a Google Sheet embed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="roster">
+  <div class="sectionHead">
+    <div>
+      <h2>Roster</h2>
+      <p>Keep it simple (first names only is common for youth teams).</p>
+    </div>
+    <span class="pill">Edit roster cards below</span>
+  </div>
+
+  <div class="card">
+    <div class="rosterWrap">
+      <div class="controls" style="margin-bottom:12px">
+        <input class="input" id="rosterSearch" placeholder="Search roster… (name, position)" />
+        <button class="btn" id="resetRoster" type="button">Reset</button>
+      </div>
+
+      <div class="rosterGrid" id="rosterGrid">
+        <!-- Player cards (edit these) -->
+        <div class="player" data-search="12 jackson pitcher">
+          <div class="playerTop">
+            <div class="num">12</div>
+            <div style="text-align:right">
+              <h4>Jackson</h4>
+              <p class="meta">Pitcher</p>
+            </div>
+          </div>
+          <p class="meta">Bats/Throws: R/R</p>
+        </div>
+
+        <div class="player" data-search="7 liam catcher">
+          <div class="playerTop">
+            <div class="num">7</div>
+            <div style="text-align:right">
+              <h4>Liam</h4>
+              <p class="meta">Catcher</p>
+            </div>
+          </div>
+          <p class="meta">Speed: ⭐⭐⭐</p>
+        </div>
+
+        <div class="player" data-search="3 noah infield">
+          <div class="playerTop">
+            <div class="num">3</div>
+            <div style="text-align:right">
+              <h4>Noah</h4>
+              <p class="meta">Infield</p>
+            </div>
+          </div>
+          <p class="meta">Glove: ⭐⭐⭐⭐</p>
+        </div>
+
+        <div class="player" data-search="9 mason outfield">
+          <div class="playerTop">
+            <div class="num">9</div>
+            <div style="text-align:right">
+              <h4>Mason</h4>
+              <p class="meta">Outfield</p>
+            </div>
+          </div>
+          <p class="meta">Arm: ⭐⭐⭐⭐</p>
+        </div>
+
+        <div class="player" data-search="20 oliver utility">
+          <div class="playerTop">
+            <div class="num">20</div>
+            <div style="text-align:right">
+              <h4>Oliver</h4>
+              <p class="meta">Utility</p>
+            </div>
+          </div>
+          <p class="meta">Hustle: ⭐⭐⭐⭐⭐</p>
+        </div>
+
+        <div class="player" data-search="4 ethan infield">
+          <div class="playerTop">
+            <div class="num">4</div>
+            <div style="text-align:right">
+              <h4>Ethan</h4>
+              <p class="meta">Infield</p>
+            </div>
+          </div>
+          <p class="meta">Contact: ⭐⭐⭐⭐</p>
+        </div>
+
+        <div class="player" data-search="11 aiden outfield">
+          <div class="playerTop">
+            <div class="num">11</div>
+            <div style="text-align:right">
+              <h4>Aiden</h4>
+              <p class="meta">Outfield</p>
+            </div>
+          </div>
+          <p class="meta">Tracking: ⭐⭐⭐⭐</p>
+        </div>
+
+        <div class="player" data-search="2 lucas pitcher">
+          <div class="playerTop">
+            <div class="num">2</div>
+            <div style="text-align:right">
+              <h4>Lucas</h4>
+              <p class="meta">Pitcher</p>
+            </div>
+          </div>
+          <p class="meta">Control: ⭐⭐⭐</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="sectionHead">
+    <div>
+      <h2>Photos</h2>
+      <p>Swap placeholders for real images later.</p>
+    </div>
+    <span class="pill">Add images in /images</span>
+  </div>
+
+  <div class="card">
+    <div class="gallery">
+      <div class="galleryGrid">
+        <div class="photo"><div class="ph">Team photo placeholder</div></div>
+        <div class="photo"><div class="ph">Game action placeholder</div></div>
+        <div class="photo"><div class="ph">Dugout fun placeholder</div></div>
+        <div class="photo"><div class="ph">Coach + kids placeholder</div></div>
+        <div class="photo"><div class="ph">Big hit placeholder</div></div>
+        <div class="photo"><div class="ph">W after the game placeholder</div></div>
+      </div>
+      <p class="small" style="margin:10px 2px 0; color:var(--muted)">
+        Pro move: keep photos kid-safe (no last names, no school name, no exact home addresses).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sectionHead">
+    <div>
+      <h2>Contact</h2>
+      <p>Put the important links here.</p>
+    </div>
+    <span class="pill">Edit contact info</span>
+  </div>
+
+  <div class="grid2">
+    <div class="card" style="padding:14px">
+      <div class="miniCard" style="background: rgba(0,0,0,.12)">
+        <h3>Coach / Team Manager</h3>
+        <p>
+          <b>Name:</b> Coach Name<br>
+          <b>Phone:</b> (555) 555-5555<br>
+          <b>Email:</b> coach@email.com
+        </p>
+      </div>
+
+      <div class="miniCard" style="background: rgba(0,0,0,.12)">
+        <h3>Links</h3>
+        <p>
+          • <a href="#" style="color:var(--brand)">Team chat (GroupMe/TeamSnap)</a><br>
+          • <a href="#" style="color:var(--brand)">Snack / volunteer sign-up</a><br>
+          • <a href="#" style="color:var(--brand)">Google Maps: Home field</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:14px">
+      <div class="miniCard" style="background: rgba(0,0,0,.12)">
+        <h3>Quick note to parents</h3>
+        <p>Weather updates will post here 60–90 minutes before game time. If lightning is within 10 miles, we’ll pause and follow league rules.</p>
+      </div>
+      <div class="miniCard" style="background: rgba(0,0,0,.12)">
+        <h3>Questions?</h3>
+        <p>Text the team manager — it’s the fastest way. (You can remove this box.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px">
+        <div class="logo" style="width:34px; height:34px; border-radius:14px">TB</div>
+        <div>
+          <div style="font-weight:800">Team Name Baseball</div>
+          <div class="small">© <span id="year"></span> • Built with ❤️ for the squad</div>
+        </div>
+      </div>
+    </div>
+    <div class="small">Need help updating this? Edit the placeholders and re-upload.</div>
+  </div>
+</footer>
+
+  </div>
+</main><script>
+  // Set date/year
+  const now = new Date();
+  document.querySelectorAll('[data-today]').forEach(el => {
+    el.textContent = now.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  });
+  document.getElementById('year').textContent = now.getFullYear();
+
+  // Copy link button
+  document.getElementById('copyLinkBtn').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      const btn = document.getElementById('copyLinkBtn');
+      const old = btn.textContent;
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => (btn.textContent = old), 1200);
+    } catch (e) {
+      alert('Could not copy link on this device.');
+    }
+  });
+
+  // Schedule search
+  const scheduleSearch = document.getElementById('scheduleSearch');
+  const scheduleBody = document.getElementById('scheduleBody');
+  const scheduleRows = Array.from(scheduleBody.querySelectorAll('tr'));
+
+  function filterSchedule(){
+    const q = scheduleSearch.value.trim().toLowerCase();
+    scheduleRows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(q) ? '' : 'none';
+    });
+  }
+  scheduleSearch.addEventListener('input', filterSchedule);
+  document.getElementById('resetSchedule').addEventListener('click', () => {
+    scheduleSearch.value = '';
+    filterSchedule();
+  });
+
+  // Roster search
+  const rosterSearch = document.getElementById('rosterSearch');
+  const rosterGrid = document.getElementById('rosterGrid');
+  const players = Array.from(rosterGrid.querySelectorAll('.player'));
+
+  function filterRoster(){
+    const q = rosterSearch.value.trim().toLowerCase();
+    players.forEach(card => {
+      const hay = (card.getAttribute('data-search') || card.innerText).toLowerCase();
+      card.style.display = hay.includes(q) ? '' : 'none';
+    });
+  }
+  rosterSearch.addEventListener('input', filterRoster);
+  document.getElementById('resetRoster').addEventListener('click', () => {
+    rosterSearch.value = '';
+    filterRoster();
+  });
+</script></body>
+</html>
