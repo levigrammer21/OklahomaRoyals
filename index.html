@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oklahoma Royals HQ • 8U & 9U</title>
-  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, highlights, sponsors, donations, and fundraisers." />
+  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, sponsors, donations, and fundraisers." />
 
   <style>
     :root{
@@ -24,25 +24,17 @@
 
     *{box-sizing:border-box}
     html,body{height:100%}
-
-    /* ===== ROYAL THRONE BACKGROUND (uses your repo file) ===== */
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-        linear-gradient(180deg, rgba(7,11,20,.92), rgba(4,6,12,.92) 70%),
         radial-gradient(900px 520px at 20% -10%, rgba(245,200,75,.22), transparent 60%),
         radial-gradient(1000px 600px at 85% -5%, rgba(37,99,235,.38), transparent 58%),
         radial-gradient(900px 520px at 70% 110%, rgba(245,200,75,.12), transparent 60%),
-        url("images/Royalthrone.png");
-      background-size: cover, auto, auto, auto, cover;
-      background-position: center, 20% -10%, 85% -5%, 70% 110%, center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
+        linear-gradient(180deg, var(--bg), #04060c 70%);
       color:var(--text);
       line-height:1.45;
     }
-background-image: url("/images/Royalthrone.png?v=2");
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
 
@@ -64,8 +56,6 @@ background-image: url("/images/Royalthrone.png?v=2");
       gap:12px;
     }
     .brand{display:flex;align-items:center;gap:10px;min-width: 240px;}
-
-    /* ===== LOGO BOX ===== */
     .logo{
       width:44px; height:44px; border-radius:16px;
       background: radial-gradient(120px 120px at 30% 20%, rgba(245,200,75,.55), transparent 55%),
@@ -76,14 +66,6 @@ background-image: url("/images/Royalthrone.png?v=2");
       overflow:hidden;
       font-weight:1000;
     }
-    .logoImg{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      padding:6px;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
-    }
-
     .brand h1{font-size:14px; margin:0}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
 
@@ -127,10 +109,6 @@ background-image: url("/images/Royalthrone.png?v=2");
 
     .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.10);color: var(--muted);font-size:12px;}
     .tag b{color:var(--text)}
-    .tagLogo{
-      width:18px; height:18px; object-fit:contain;
-      filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
-    }
 
     .heroTitle{margin:14px 0 8px;font-size: 34px;line-height:1.05;letter-spacing:-.02em;}
     .heroTitle .glow{color: var(--royal);text-shadow: 0 0 16px rgba(37,99,235,.35);}
@@ -160,17 +138,56 @@ background-image: url("/images/Royalthrone.png?v=2");
     .input:focus{box-shadow: var(--ring); border-color: rgba(37,99,235,.45)}
 
     table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius: 16px; border:1px solid rgba(255,255,255,.10)}
-    th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
+    th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08); vertical-align: top;}
     th{background: rgba(255,255,255,.06); color: var(--muted); font-weight:800}
     tr:last-child td{border-bottom:none}
     .right{text-align:right}
 
     .rosterGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
-    .player{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:12px;display:flex;flex-direction:column;gap:8px;min-height: 128px;}
-    .playerTop{display:flex; align-items:center; justify-content:space-between; gap:8px}
-    .num{width:34px; height:34px; border-radius: 14px;display:grid; place-items:center;background: radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));border:1px solid rgba(255,255,255,.10);font-weight:900;}
+    .player{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:12px;display:flex;flex-direction:column;gap:10px;min-height: 160px;}
+    .playerTop{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .num{width:34px; height:34px; border-radius: 14px;display:grid; place-items:center;background: radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));border:1px solid rgba(255,255,255,.10);font-weight:900; flex: 0 0 auto;}
     .player h4{margin:0; font-size:14px}
     .meta{margin:0; color:var(--muted); font-size:12px}
+
+    /* NEW: roster photo + audio controls */
+    .playerMediaRow{display:flex; gap:10px; align-items:flex-start}
+    .playerPhotoWrap{
+      width:64px; height:64px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.25);
+      position:relative;
+      cursor:pointer;
+      flex: 0 0 auto;
+    }
+    .playerPhotoWrap img{width:100%; height:100%; object-fit:cover; display:none}
+    .playerPhotoWrap .ph{position:absolute; inset:0; display:grid; place-items:center; color:rgba(230,237,247,.7); font-size:12px}
+    .playBadge{
+      position:absolute;
+      right:6px; bottom:6px;
+      width:22px; height:22px;
+      border-radius:10px;
+      display:grid; place-items:center;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:12px;
+    }
+    .quote{
+      margin:6px 0 0;
+      color: rgba(230,237,247,.92);
+      font-size:12px;
+      line-height:1.35;
+      font-style: italic;
+    }
+    .songLine{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size:12px;
+    }
+    .songLine b{color: var(--text)}
+    .tinyNote{font-size:11px; color: rgba(182,194,214,.85); margin-top:6px}
 
     .announceList{display:grid; gap:10px; padding:14px}
     .announce{padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);}
@@ -191,48 +208,6 @@ background-image: url("/images/Royalthrone.png?v=2");
     .sponsor{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);aspect-ratio: 1/1;display:grid;place-items:center;overflow:hidden;}
     .sponsor img{width:100%; height:100%; object-fit:contain; padding:10px}
 
-    /* ===== HIGHLIGHTS (YouTube) ===== */
-    .mediaGrid{display:grid; grid-template-columns: 1.25fr .75fr; gap:14px; padding:14px;}
-    .embed{
-      width:100%;
-      aspect-ratio:16/9;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
-      display:none;
-    }
-    .playlist{display:grid; gap:10px}
-    .track{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding:12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      cursor:pointer;
-    }
-    .track:hover{background: rgba(255,255,255,.06)}
-    .trackTitle{font-weight:900; font-size:13px}
-    .trackMeta{font-size:12px; color:var(--muted); margin-top:2px}
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-    }
-    .dot.on{background: rgba(245,200,75,.95); border-color: rgba(245,200,75,.50)}
-    .miniRow{display:flex; gap:10px; flex-wrap:wrap}
-    .miniBtn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      cursor:pointer;
-      font-weight:900;
-      user-select:none;
-    }
-    .miniBtn:hover{background: rgba(255,255,255,.09)}
-
     footer{padding: 28px 0 44px; color: var(--muted)}
     .foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top: 1px solid rgba(255,255,255,.10);padding-top: 16px;}
     .small{font-size:12px}
@@ -245,7 +220,6 @@ background-image: url("/images/Royalthrone.png?v=2");
       .sponsorGrid{grid-template-columns: repeat(4, 1fr)}
       .fundGrid{grid-template-columns: repeat(2, 1fr)}
       .donateGrid{grid-template-columns: 1fr}
-      .mediaGrid{grid-template-columns: 1fr}
     }
     @media (max-width: 720px){
       nav ul{display:none}
@@ -263,9 +237,7 @@ background-image: url("/images/Royalthrone.png?v=2");
   <div class="container">
     <div class="nav">
       <a class="brand" href="#top" aria-label="Go to top">
-        <div class="logo" aria-hidden="true">
-          <img class="logoImg" src="images/Royals.png" alt="Oklahoma Royals logo" onerror="this.style.display='none'">
-        </div>
+        <div class="logo" aria-hidden="true">👑</div>
         <div>
           <h1>Oklahoma Royals</h1>
           <p>8U & 9U • okroyals.com</p>
@@ -280,7 +252,6 @@ background-image: url("/images/Royalthrone.png?v=2");
           <li><a href="#royal">Royal of the Week</a></li>
           <li><a href="#donate">Donate</a></li>
           <li><a href="#fundraisers">Fundraisers</a></li>
-          <li><a href="#highlights">Highlights</a></li>
           <li><a href="#sponsors">Sponsors</a></li>
           <li><a href="#links">Links</a></li>
         </ul>
@@ -300,23 +271,16 @@ background-image: url("/images/Royalthrone.png?v=2");
     <section class="hero">
       <div class="heroGrid">
         <div class="card heroMain">
-          <span class="tag" id="nextGameTag">
-            <img class="tagLogo" src="images/Royals.png" alt="" onerror="this.style.display='none'">
-            <b>Oklahoma Royals</b> • 8U &amp; 9U
-          </span>
-
-          <h2 class="heroTitle">Royals <span class="glow">HQ</span></h2>
+          <span class="tag" id="nextGameTag">👑 <b>Oklahoma Royals</b> • 8U &amp; 9U</span>
+          <h2 class="heroTitle">Royals <span class="glow">HQ</span> 👑</h2>
           <p class="heroDesc">Schedules, updates, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
 
           <div class="heroActions">
-            <button class="btn primary" type="button" data-team-filter="All">
-              <img class="tagLogo" src="images/Royals.png" alt="" onerror="this.style.display='none'"> All
-            </button>
+            <button class="btn primary" type="button" data-team-filter="All">👑 All</button>
             <button class="btn" type="button" data-team-filter="9U">🔥 9U</button>
             <button class="btn" type="button" data-team-filter="8U">⚡ 8U</button>
             <a class="btn" href="#schedule">📅 Schedule</a>
             <a class="btn" href="#announcements">📣 Announcements</a>
-            <a class="btn" href="#highlights">🎬 Highlights</a>
           </div>
 
           <p class="small" style="margin:12px 0 0; color:var(--muted)">First names only recommended.</p>
@@ -353,7 +317,7 @@ background-image: url("/images/Royalthrone.png?v=2");
       <div class="sectionHead">
         <div>
           <h2>Schedule</h2>
-          <p>Game and practice schedule.</p>
+          <p>Game and practice schedule (uniform + needs included).</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -373,6 +337,7 @@ background-image: url("/images/Royalthrone.png?v=2");
                   <th style="width:95px">Time</th>
                   <th>Opponent</th>
                   <th>Field</th>
+                  <th style="width:190px">Uniform / Needs</th>
                   <th class="right" style="width:140px">Status</th>
                 </tr>
               </thead>
@@ -387,7 +352,7 @@ background-image: url("/images/Royalthrone.png?v=2");
       <div class="sectionHead">
         <div>
           <h2>Roster</h2>
-          <p>Current roster.</p>
+          <p>Player cards with photo + quote + walk-up song.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -400,6 +365,7 @@ background-image: url("/images/Royalthrone.png?v=2");
           </div>
 
           <div class="rosterGrid" id="rosterGrid"></div>
+          <div class="tinyNote">Tip: Tap a player photo to play/pause their walk-up clip (if provided).</div>
         </div>
       </div>
     </section>
@@ -407,7 +373,7 @@ background-image: url("/images/Royalthrone.png?v=2");
     <section id="royal">
       <div class="sectionHead">
         <div>
-          <h2><img class="tagLogo" src="images/Royals.png" alt="" onerror="this.style.display='none'"> Royal of the Week</h2>
+          <h2>👑 Royal of the Week</h2>
           <p>Recognizing effort, attitude, and hustle.</p>
         </div>
         <span class="pill">Live</span>
@@ -487,48 +453,6 @@ background-image: url("/images/Royalthrone.png?v=2");
       </div>
     </section>
 
-    <!-- ===== NEW: HIGHLIGHTS ===== -->
-    <section id="highlights">
-      <div class="sectionHead">
-        <div>
-          <h2>🎬 Highlights</h2>
-          <p>YouTube playlist (tap one to play).</p>
-        </div>
-        <span class="pill">Live</span>
-      </div>
-
-      <div class="card">
-        <div class="mediaGrid">
-          <div class="miniCard" style="background: rgba(0,0,0,.18)">
-            <iframe id="ytPlayer" class="embed" title="Highlights player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-
-            <div id="ytPlayerPh" class="ph" style="aspect-ratio:16/9;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.22);display:grid;place-items:center;color:rgba(230,237,247,.7)">
-              Add YouTube links in the <b>Highlights</b> tab to start playing.
-            </div>
-
-            <div class="miniRow" style="margin-top:12px">
-              <button class="miniBtn" id="ytPrev" type="button">⏮ Prev</button>
-              <button class="miniBtn" id="ytNext" type="button">Next ⏭</button>
-              <a class="miniBtn" href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener">Live on GameChanger</a>
-            </div>
-          </div>
-
-          <div>
-            <div class="miniCard" style="background: rgba(0,0,0,.18)">
-              <h3 style="margin:0 0 6px">Playlist</h3>
-              <p class="small" style="margin:0;color:var(--muted)">
-                Add rows in the <b>Highlights</b> tab (status=active). Team filter buttons apply.
-              </p>
-            </div>
-
-            <div class="playlist" id="highlightList" style="margin-top:12px"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="sponsors">
       <div class="sectionHead">
         <div>
@@ -581,9 +505,7 @@ background-image: url("/images/Royalthrone.png?v=2");
       <div class="foot">
         <div>
           <div style="display:flex; align-items:center; gap:10px">
-            <div class="logo" style="width:34px; height:34px; border-radius:14px" aria-hidden="true">
-              <img class="logoImg" src="images/Royals.png" alt="" onerror="this.style.display='none'">
-            </div>
+            <div class="logo" style="width:34px; height:34px; border-radius:14px" aria-hidden="true">👑</div>
             <div>
               <div style="font-weight:1000">Oklahoma Royals</div>
               <div class="small">© <span id="year"></span> • okroyals.com</div>
@@ -680,7 +602,69 @@ background-image: url("/images/Royalthrone.png?v=2");
     renderAnnouncements(window.__ann || []);
     renderSchedule(window.__sched || []);
     renderRoster(window.__rost || []);
-    renderHighlights(window.__hl || []);
+  }
+
+  /* NEW: single-audio controller (only one walk-up plays at a time) */
+  let ACTIVE_AUDIO = null;
+  let ACTIVE_CARD_ID = null;
+
+  function stopActiveAudio(){
+    if (ACTIVE_AUDIO){
+      try { ACTIVE_AUDIO.pause(); } catch {}
+      ACTIVE_AUDIO = null;
+      ACTIVE_CARD_ID = null;
+    }
+    $$('.playBadge').forEach(b=>b.textContent='▶');
+  }
+
+  function toggleWalkUp(cardId, audioUrl){
+    if (!audioUrl) return;
+
+    // If tapping same one, toggle
+    if (ACTIVE_CARD_ID === cardId && ACTIVE_AUDIO){
+      if (ACTIVE_AUDIO.paused){
+        ACTIVE_AUDIO.play().catch(()=>{});
+        const badge = document.querySelector(`[data-playbadge="${cardId}"]`);
+        if (badge) badge.textContent = '⏸';
+      } else {
+        ACTIVE_AUDIO.pause();
+        const badge = document.querySelector(`[data-playbadge="${cardId}"]`);
+        if (badge) badge.textContent = '▶';
+      }
+      return;
+    }
+
+    // Otherwise stop existing and start new
+    stopActiveAudio();
+
+    const audio = new Audio(audioUrl);
+    audio.preload = 'none';
+    ACTIVE_AUDIO = audio;
+    ACTIVE_CARD_ID = cardId;
+
+    const badge = document.querySelector(`[data-playbadge="${cardId}"]`);
+    if (badge) badge.textContent = '⏸';
+
+    audio.addEventListener('ended', ()=>{
+      const b = document.querySelector(`[data-playbadge="${cardId}"]`);
+      if (b) b.textContent='▶';
+      ACTIVE_AUDIO = null;
+      ACTIVE_CARD_ID = null;
+    });
+
+    audio.addEventListener('error', ()=>{
+      const b = document.querySelector(`[data-playbadge="${cardId}"]`);
+      if (b) b.textContent='⚠';
+      ACTIVE_AUDIO = null;
+      ACTIVE_CARD_ID = null;
+      alert("Couldn't play this walk-up clip. Make sure the Walk Up Audio URL is a direct https link to an audio file (mp3/m4a/wav).");
+    });
+
+    audio.play().catch(()=>{
+      // Some phones require a user gesture—tap again if it blocks
+      const b = document.querySelector(`[data-playbadge="${cardId}"]`);
+      if (b) b.textContent='▶';
+    });
   }
 
   function renderAnnouncements(items){
@@ -725,30 +709,44 @@ background-image: url("/images/Royalthrone.png?v=2");
   function renderSchedule(items){
     const body = $('#scheduleBody');
     const f = items.filter(g=>matchTeam(g.team));
+
     if (!f.length){
-      body.innerHTML = `<tr><td colspan="5">No schedule yet — add rows in the <b>Schedule</b> tab.</td></tr>`;
-      $('#nextGameTag').innerHTML = `<img class="tagLogo" src="images/Royals.png" alt="" onerror="this.style.display='none'"><b>Oklahoma Royals</b> • 8U &amp; 9U`;
+      body.innerHTML = `<tr><td colspan="6">No schedule yet — add rows in the <b>Schedule</b> tab.</td></tr>`;
+      $('#nextGameTag').innerHTML = `👑 <b>Oklahoma Royals</b> • 8U &amp; 9U`;
       window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
       return;
     }
+
     body.innerHTML = f.map(g=>{
       const date = escapeHtml(g.date);
       const time = escapeHtml(g.time);
       const opp  = escapeHtml(g.opponent);
       const field= escapeHtml(g.field);
       const status = escapeHtml(g.status||'Game');
+      const uniform = escapeHtml(g.uniform || '');
+      const needs = escapeHtml(g.needs || '');
+
       const cls = status.toLowerCase().includes('practice') ? 'warn' : (status.toLowerCase().includes('game') ? 'good' : '');
+
+      const uniNeeds = `
+        ${uniform ? `<div class="meta"><b style="color:var(--text)">Uniform:</b> ${uniform}</div>` : `<div class="meta">—</div>`}
+        ${needs ? `<div class="meta"><b style="color:var(--text)">Needs:</b> ${needs}</div>` : ``}
+      `;
+
       return `
         <tr>
           <td>${date}</td>
           <td>${time}</td>
           <td>${opp}${g.team?` <span class="pill" style="margin-left:8px">${escapeHtml(g.team)}</span>`:''}</td>
           <td>${field}</td>
+          <td>${uniNeeds}</td>
           <td class="right"><span class="status ${cls}">${status}</span></td>
         </tr>
       `;
     }).join('');
+
     window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
+
     const next = f[0];
     const nextLine = `${next.date||''} ${next.time||''} • ${next.opponent||''}`.trim();
     if (nextLine) $('#nextGameTag').innerHTML = `⚾ <b>Next:</b> ${escapeHtml(nextLine)}`;
@@ -757,6 +755,7 @@ background-image: url("/images/Royalthrone.png?v=2");
   function renderRoster(items){
     const grid = $('#rosterGrid');
     const f = items.filter(p=>matchTeam(p.team));
+
     if (!f.length){
       grid.innerHTML = `
         <div class="player">
@@ -773,13 +772,31 @@ background-image: url("/images/Royalthrone.png?v=2");
       window.__rosterCards = Array.from(grid.querySelectorAll('.player'));
       return;
     }
-    grid.innerHTML = f.map(p=>{
+
+    grid.innerHTML = f.map((p, idx)=>{
       const num = escapeHtml(p.number||'');
       const name= escapeHtml(p.name||'Player');
       const pos = escapeHtml(p.position||'');
       const note= escapeHtml(p.note||'');
       const team= escapeHtml(p.team||'');
-      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team}`.toLowerCase());
+
+      // NEW fields (these map from your Sheet headers)
+      const photo = (p.photo_url || p.photo || '').trim(); // supports either "Photo URL" -> photo_url
+      const quote = escapeHtml(p.quote || '');
+      const song  = escapeHtml(p.walk_up_song || p.walkup_song || '');
+      const audio = (p.walk_up_audio_url || p.walkup_audio_url || p.audio_url || '').trim();
+
+      const cardId = `player_${idx}_${(p.number||'').replace(/\W/g,'')}_${(p.name||'').replace(/\W/g,'')}`.slice(0,80);
+
+      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team} ${quote} ${song}`.toLowerCase());
+
+      const hasAudio = !!audio;
+      const badge = hasAudio ? `<div class="playBadge" data-playbadge="${cardId}">▶</div>` : '';
+
+      const photoInner = photo
+        ? `<img src="${escapeHtml(photo)}" alt="${name} photo" onload="this.style.display='block'; this.parentElement.querySelector('.ph').style.display='none';" onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='grid';">`
+        : '';
+
       return `
         <div class="player" data-search="${hay}">
           <div class="playerTop">
@@ -789,10 +806,25 @@ background-image: url("/images/Royalthrone.png?v=2");
               <p class="meta">${pos}${team?` • ${team}`:''}</p>
             </div>
           </div>
-          <p class="meta">${note}</p>
+
+          <div class="playerMediaRow">
+            <div class="playerPhotoWrap" role="button" aria-label="Play walk up song"
+              onclick="${hasAudio ? `toggleWalkUp('${cardId}', '${escapeHtml(audio)}')` : ``}">
+              ${photoInner}
+              <div class="ph">Photo</div>
+              ${badge}
+            </div>
+
+            <div style="flex:1">
+              ${song ? `<div class="songLine">🎵 <b>Walk-up:</b> ${song}</div>` : `<div class="songLine">🎵 <b>Walk-up:</b> —</div>`}
+              ${quote ? `<div class="quote">“${quote}”</div>` : ``}
+              ${note ? `<div class="meta" style="margin-top:6px">${note}</div>` : ``}
+            </div>
+          </div>
         </div>
       `;
     }).join('');
+
     window.__rosterCards = Array.from(grid.querySelectorAll('.player'));
   }
 
@@ -897,117 +929,6 @@ background-image: url("/images/Royalthrone.png?v=2");
     img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
   }
 
-  /* ===== YouTube Highlights ===== */
-  let YT = { list: [], idx: 0 };
-
-  function youtubeIdFromUrl(url){
-    url = String(url||"").trim();
-    if (!url) return "";
-    let m = url.match(/youtu\.be\/([a-zA-Z0-9_-]{6,})/);
-    if (m) return m[1];
-    m = url.match(/[?&]v=([a-zA-Z0-9_-]{6,})/);
-    if (m) return m[1];
-    m = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/);
-    if (m) return m[1];
-    return "";
-  }
-
-  function renderYtList(){
-    const wrap = $('#highlightList');
-    if (!wrap) return;
-
-    if (!YT.list.length){
-      wrap.innerHTML = `
-        <div class="track" style="cursor:default">
-          <div style="min-width:0">
-            <div class="trackTitle">No highlights yet</div>
-            <div class="trackMeta">Add rows in the <b>Highlights</b> tab (status=active).</div>
-          </div>
-          <div><span class="dot"></span></div>
-        </div>
-      `;
-      return;
-    }
-
-    wrap.innerHTML = YT.list.map((t, i)=>{
-      const on = i===YT.idx;
-      const title = escapeHtml(t.title || `Highlight ${i+1}`);
-      const meta = [t.team, t.tag].filter(Boolean).map(escapeHtml).join(" • ");
-      return `
-        <div class="track" data-yt-index="${i}">
-          <div style="min-width:0">
-            <div class="trackTitle" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${title}</div>
-            <div class="trackMeta" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${meta || "Tap to play"}</div>
-          </div>
-          <div><span class="dot ${on?'on':''}"></span></div>
-        </div>
-      `;
-    }).join('');
-
-    $$('[data-yt-index]').forEach(el=>{
-      el.addEventListener('click', ()=>{
-        const i = Number(el.getAttribute('data-yt-index') || 0);
-        setYtIndex(i);
-      });
-    });
-  }
-
-  function setYtIndex(i){
-    if (!YT.list.length) return;
-    YT.idx = (i + YT.list.length) % YT.list.length;
-
-    const cur = YT.list[YT.idx];
-    const iframe = $('#ytPlayer');
-    const ph = $('#ytPlayerPh');
-
-    if (cur && cur.embed){
-      iframe.src = cur.embed;
-      iframe.style.display = "block";
-      ph.style.display = "none";
-    } else {
-      iframe.removeAttribute('src');
-      iframe.style.display = "none";
-      ph.style.display = "grid";
-    }
-    renderYtList();
-  }
-
-  function renderHighlights(items){
-    const iframe = $('#ytPlayer');
-    const ph = $('#ytPlayerPh');
-    const list = (items || [])
-      .filter(x=>{
-        const st = String(x.status||"active").trim().toLowerCase();
-        return st === "active" || st === "";
-      })
-      .filter(x=>matchTeam(x.team))
-      .map(x=>{
-        const id = youtubeIdFromUrl(x.url);
-        return {
-          title: String(x.title||"").trim(),
-          team: String(x.team||"").trim(),
-          tag: String(x.tag||"").trim(),
-          embed: id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1` : ""
-        };
-      })
-      .filter(x=>!!x.embed);
-
-    YT.list = list;
-    YT.idx = 0;
-
-    renderYtList();
-    if (YT.list.length){
-      setYtIndex(0);
-    } else {
-      iframe.removeAttribute('src');
-      iframe.style.display = "none";
-      ph.style.display = "grid";
-    }
-  }
-
-  $('#ytPrev')?.addEventListener('click', ()=>setYtIndex(YT.idx - 1));
-  $('#ytNext')?.addEventListener('click', ()=>setYtIndex(YT.idx + 1));
-
   // Search wiring
   const scheduleSearch = $('#scheduleSearch');
   function filterSchedule(){
@@ -1031,19 +952,21 @@ background-image: url("/images/Royalthrone.png?v=2");
   $('#resetRoster').addEventListener('click', ()=>{ rosterSearch.value=''; filterRoster(); });
 
   // Team filter buttons
-  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>setTeam(btn.getAttribute('data-team-filter')||'All')));
+  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>{
+    stopActiveAudio();
+    setTeam(btn.getAttribute('data-team-filter')||'All');
+  }));
 
   async function loadAll(){
     try{
-      const [annCsv, schedCsv, rostCsv, rotwCsv, siteCsv, sponsorCsv, fundCsv, hlCsv] = await Promise.all([
+      const [annCsv, schedCsv, rostCsv, rotwCsv, siteCsv, sponsorCsv, fundCsv] = await Promise.all([
         fetchTabCsv('Announcements'),
         fetchTabCsv('Schedule'),
         fetchTabCsv('Roster'),
         fetchTabCsv('RoyalOfTheWeek'),
         fetchTabCsv('Site'),
         fetchOptionalTab('Sponsors'),
-        fetchOptionalTab('Fundraisers'),
-        fetchOptionalTab('Highlights')
+        fetchOptionalTab('Fundraisers')
       ]);
 
       const ann = annCsv ? rowsToObjects(csvToRows(annCsv)) : [];
@@ -1053,12 +976,10 @@ background-image: url("/images/Royalthrone.png?v=2");
       const site = siteCsv ? rowsToObjects(csvToRows(siteCsv)) : [];
       const sponsors = sponsorCsv ? rowsToObjects(csvToRows(sponsorCsv)) : [];
       const fund = fundCsv ? rowsToObjects(csvToRows(fundCsv)) : [];
-      const highlights = hlCsv ? rowsToObjects(csvToRows(hlCsv)) : [];
 
       window.__ann = ann;
       window.__sched = sched;
       window.__rost = rost;
-      window.__hl = highlights;
 
       renderSite(site);
       renderAnnouncements(ann);
@@ -1067,7 +988,6 @@ background-image: url("/images/Royalthrone.png?v=2");
       renderRotw(rotw);
       renderFundraisers(fund);
       renderSponsors(sponsors);
-      renderHighlights(highlights);
 
       setTeam('All');
       setupDonateQr();
@@ -1075,7 +995,7 @@ background-image: url("/images/Royalthrone.png?v=2");
     } catch(err){
       console.error(err);
       alert(
-        "Couldn't load the Google Sheet.\n\nFixes:\n1) Share the sheet as 'Anyone with link can view' OR File > Publish to web\n2) Make sure tabs are named exactly: Announcements, Schedule, Roster, RoyalOfTheWeek, Site\n\nOptional tabs: Sponsors, Fundraisers, Highlights\n\nError: " + err.message
+        "Couldn't load the Google Sheet.\n\nFixes:\n1) Share the sheet as 'Anyone with link can view' OR File > Publish to web\n2) Make sure tabs are named exactly: Announcements, Schedule, Roster, RoyalOfTheWeek, Site\n\nError: " + err.message
       );
     }
   }
