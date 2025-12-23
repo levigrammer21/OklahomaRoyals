@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oklahoma Royals HQ • 8U & 9U</title>
-  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, sponsors, donations, and fundraisers." />
+  <meta name="description" content="Oklahoma Royals HQ — announcements, schedule, roster, Royal of the Week, sponsors, donations, fundraisers, highlights, and live." />
 
   <style>
     :root{
@@ -34,7 +34,25 @@
         linear-gradient(180deg, var(--bg), #04060c 70%);
       color:var(--text);
       line-height:1.45;
+      position: relative;
+      overflow-x:hidden;
     }
+
+    /* BACKGROUND IMAGE LAYER */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:url("images/royal-throne.png");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      opacity:.18;            /* strength */
+      filter: saturate(1.05);
+      z-index:-1;
+      pointer-events:none;
+    }
+
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
 
@@ -45,7 +63,7 @@
       top:0;
       z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(7,11,20,.70);
+      background: rgba(7,11,20,.72);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav{
@@ -65,6 +83,13 @@
       border:1px solid rgba(255,255,255,.12);
       overflow:hidden;
       font-weight:1000;
+    }
+    .logo img{
+      width: 78%;
+      height: 78%;
+      object-fit: contain;
+      display:block;
+      filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
     }
     .brand h1{font-size:14px; margin:0}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
@@ -138,56 +163,17 @@
     .input:focus{box-shadow: var(--ring); border-color: rgba(37,99,235,.45)}
 
     table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius: 16px; border:1px solid rgba(255,255,255,.10)}
-    th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08); vertical-align: top;}
+    th,td{padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08)}
     th{background: rgba(255,255,255,.06); color: var(--muted); font-weight:800}
     tr:last-child td{border-bottom:none}
     .right{text-align:right}
 
     .rosterGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
-    .player{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:12px;display:flex;flex-direction:column;gap:10px;min-height: 160px;}
-    .playerTop{display:flex; align-items:center; justify-content:space-between; gap:10px}
-    .num{width:34px; height:34px; border-radius: 14px;display:grid; place-items:center;background: radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));border:1px solid rgba(255,255,255,.10);font-weight:900; flex: 0 0 auto;}
+    .player{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);padding:12px;display:flex;flex-direction:column;gap:8px;min-height: 128px;}
+    .playerTop{display:flex; align-items:center; justify-content:space-between; gap:8px}
+    .num{width:34px; height:34px; border-radius: 14px;display:grid; place-items:center;background: radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));border:1px solid rgba(255,255,255,.10);font-weight:900;}
     .player h4{margin:0; font-size:14px}
     .meta{margin:0; color:var(--muted); font-size:12px}
-
-    /* NEW: roster photo + audio controls */
-    .playerMediaRow{display:flex; gap:10px; align-items:flex-start}
-    .playerPhotoWrap{
-      width:64px; height:64px;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.25);
-      position:relative;
-      cursor:pointer;
-      flex: 0 0 auto;
-    }
-    .playerPhotoWrap img{width:100%; height:100%; object-fit:cover; display:none}
-    .playerPhotoWrap .ph{position:absolute; inset:0; display:grid; place-items:center; color:rgba(230,237,247,.7); font-size:12px}
-    .playBadge{
-      position:absolute;
-      right:6px; bottom:6px;
-      width:22px; height:22px;
-      border-radius:10px;
-      display:grid; place-items:center;
-      background: rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.18);
-      font-size:12px;
-    }
-    .quote{
-      margin:6px 0 0;
-      color: rgba(230,237,247,.92);
-      font-size:12px;
-      line-height:1.35;
-      font-style: italic;
-    }
-    .songLine{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-size:12px;
-    }
-    .songLine b{color: var(--text)}
-    .tinyNote{font-size:11px; color: rgba(182,194,214,.85); margin-top:6px}
 
     .announceList{display:grid; gap:10px; padding:14px}
     .announce{padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);}
@@ -203,10 +189,51 @@
     .donateGrid{display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:center}
     .qr{width:180px; height:180px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.25);display:grid; place-items:center;}
     .qr img{width:100%; height:100%; object-fit:cover; display:none}
+    .ph{color:rgba(230,237,247,.7); display:grid; place-items:center; height:100%}
 
     .sponsorGrid{display:grid;grid-template-columns: repeat(6, 1fr);gap:12px;padding:14px;}
     .sponsor{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);aspect-ratio: 1/1;display:grid;place-items:center;overflow:hidden;}
     .sponsor img{width:100%; height:100%; object-fit:contain; padding:10px}
+
+    /* MEDIA */
+    .mediaGrid{display:grid; grid-template-columns: 1.35fr .65fr; gap:14px; align-items:stretch;}
+    .videoFrame{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      aspect-ratio: 16/9;
+    }
+    .videoFrame iframe{width:100%; height:100%; border:0}
+    .playlist{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      max-height: 420px;
+      overflow:auto;
+    }
+    .plItem{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+    }
+    .plItem:hover{background: rgba(255,255,255,.07)}
+    .plItem b{font-size:13px}
+    .plItem .small{font-size:12px; color:var(--muted)}
+    .plItem.active{outline: 2px solid rgba(37,99,235,.45);}
+
+    /* MUSIC */
+    .musicRow{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    audio{width:100%}
 
     footer{padding: 28px 0 44px; color: var(--muted)}
     .foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top: 1px solid rgba(255,255,255,.10);padding-top: 16px;}
@@ -220,6 +247,8 @@
       .sponsorGrid{grid-template-columns: repeat(4, 1fr)}
       .fundGrid{grid-template-columns: repeat(2, 1fr)}
       .donateGrid{grid-template-columns: 1fr}
+      .mediaGrid{grid-template-columns: 1fr}
+      .playlist{max-height: 240px}
     }
     @media (max-width: 720px){
       nav ul{display:none}
@@ -237,7 +266,9 @@
   <div class="container">
     <div class="nav">
       <a class="brand" href="#top" aria-label="Go to top">
-        <div class="logo" aria-hidden="true">👑</div>
+        <div class="logo" aria-hidden="true">
+          <img src="images/royals-logo.png" alt="Oklahoma Royals logo">
+        </div>
         <div>
           <h1>Oklahoma Royals</h1>
           <p>8U & 9U • okroyals.com</p>
@@ -247,6 +278,8 @@
       <nav aria-label="Primary">
         <ul>
           <li><a href="#announcements">Announcements</a></li>
+          <li><a href="#live">Live</a></li>
+          <li><a href="#highlights">Highlights</a></li>
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#roster">Roster</a></li>
           <li><a href="#royal">Royal of the Week</a></li>
@@ -258,7 +291,7 @@
       </nav>
 
       <div class="cta">
-        <a class="btn" href="#schedule">Schedule</a>
+        <a class="btn" href="#highlights">Highlights</a>
         <a class="btn primary" href="#donate">Donate</a>
       </div>
     </div>
@@ -271,14 +304,16 @@
     <section class="hero">
       <div class="heroGrid">
         <div class="card heroMain">
-          <span class="tag" id="nextGameTag">👑 <b>Oklahoma Royals</b> • 8U &amp; 9U</span>
-          <h2 class="heroTitle">Royals <span class="glow">HQ</span> 👑</h2>
-          <p class="heroDesc">Schedules, updates, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
+          <span class="tag" id="nextGameTag"><b>Oklahoma Royals</b> • 8U &amp; 9U</span>
+          <h2 class="heroTitle">Royals <span class="glow">HQ</span></h2>
+          <p class="heroDesc">Schedules, updates, live links, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
 
           <div class="heroActions">
-            <button class="btn primary" type="button" data-team-filter="All">👑 All</button>
+            <button class="btn primary" type="button" data-team-filter="All">All</button>
             <button class="btn" type="button" data-team-filter="9U">🔥 9U</button>
             <button class="btn" type="button" data-team-filter="8U">⚡ 8U</button>
+            <a class="btn" href="#live">📺 Live</a>
+            <a class="btn" href="#highlights">🎬 Highlights</a>
             <a class="btn" href="#schedule">📅 Schedule</a>
             <a class="btn" href="#announcements">📣 Announcements</a>
           </div>
@@ -313,11 +348,75 @@
       </div>
     </section>
 
+    <section id="live">
+      <div class="sectionHead">
+        <div>
+          <h2>📺 Live</h2>
+          <p>Quick access to live streams.</p>
+        </div>
+        <span class="pill">Live</span>
+      </div>
+
+      <div class="card" style="padding:14px">
+        <div class="grid2">
+          <div class="miniCard" style="background: rgba(0,0,0,.18)">
+            <h3 style="margin:0 0 8px">Watch Live</h3>
+            <p style="margin:0; color:var(--muted)">GameChanger live is usually best in the app. Use the button below.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <a class="btn primary" id="gcLiveBtn" href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener">Open GameChanger Live</a>
+              <a class="btn" id="gcTeamBtn" href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener">Team Page</a>
+            </div>
+            <p class="small" style="margin-top:10px; color:var(--muted)">Tip: If embed doesn’t show, it’s blocked by the provider. The button always works.</p>
+          </div>
+
+          <div class="miniCard" style="background: rgba(0,0,0,.18)">
+            <h3 style="margin:0 0 8px">Embedded Live (Optional)</h3>
+            <p style="margin:0; color:var(--muted)">If you add <b>gc_live_embed_url</b> in the <b>Site</b> tab and it allows embeds, it will appear here.</p>
+            <div class="videoFrame" style="margin-top:12px">
+              <iframe id="liveEmbed" title="Live stream" src="" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div id="liveEmbedPh" class="small" style="margin-top:10px; color:var(--muted)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <div class="sectionHead">
+        <div>
+          <h2>🎬 Highlights</h2>
+          <p>Sheet-driven highlights playlist (YouTube).</p>
+        </div>
+        <span class="pill">Media</span>
+      </div>
+
+      <div class="card" style="padding:14px">
+        <div class="mediaGrid">
+          <div>
+            <div class="videoFrame">
+              <iframe id="ytPlayer" title="Royals highlights" src="" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+
+            <div class="miniCard" style="background: rgba(0,0,0,.18); margin-top:14px">
+              <h3 style="margin:0 0 8px">🎵 Background Music (optional)</h3>
+              <p style="margin:0; color:var(--muted)">Add tracks in the <b>Music</b> tab. Tap Play — browsers usually block auto-play.</p>
+              <div class="musicRow" style="margin-top:10px">
+                <audio id="bgAudio" controls preload="none"></audio>
+              </div>
+              <div id="musicList" class="small" style="margin-top:10px; color:var(--muted)"></div>
+            </div>
+          </div>
+
+          <div class="playlist" id="mediaList"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="schedule">
       <div class="sectionHead">
         <div>
           <h2>Schedule</h2>
-          <p>Game and practice schedule (uniform + needs included).</p>
+          <p>Game and practice schedule.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -337,7 +436,6 @@
                   <th style="width:95px">Time</th>
                   <th>Opponent</th>
                   <th>Field</th>
-                  <th style="width:190px">Uniform / Needs</th>
                   <th class="right" style="width:140px">Status</th>
                 </tr>
               </thead>
@@ -352,7 +450,7 @@
       <div class="sectionHead">
         <div>
           <h2>Roster</h2>
-          <p>Player cards with photo + quote + walk-up song.</p>
+          <p>Current roster.</p>
         </div>
         <span class="pill">Live</span>
       </div>
@@ -365,7 +463,6 @@
           </div>
 
           <div class="rosterGrid" id="rosterGrid"></div>
-          <div class="tinyNote">Tip: Tap a player photo to play/pause their walk-up clip (if provided).</div>
         </div>
       </div>
     </section>
@@ -373,7 +470,7 @@
     <section id="royal">
       <div class="sectionHead">
         <div>
-          <h2>👑 Royal of the Week</h2>
+          <h2>Royal of the Week</h2>
           <p>Recognizing effort, attitude, and hustle.</p>
         </div>
         <span class="pill">Live</span>
@@ -480,7 +577,7 @@
         <div class="card" style="padding:14px">
           <div class="miniCard" style="background: rgba(0,0,0,.12)">
             <h3>GameChanger</h3>
-            <p><a href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener" style="color:var(--gold)">Join Oklahoma Royals 9U on GameChanger</a></p>
+            <p><a id="gcLink2" href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener" style="color:var(--gold)">Open team on GameChanger</a></p>
           </div>
           <div class="miniCard" style="background: rgba(0,0,0,.12)">
             <h3>Home Field</h3>
@@ -505,7 +602,9 @@
       <div class="foot">
         <div>
           <div style="display:flex; align-items:center; gap:10px">
-            <div class="logo" style="width:34px; height:34px; border-radius:14px" aria-hidden="true">👑</div>
+            <div class="logo" style="width:34px; height:34px; border-radius:14px" aria-hidden="true">
+              <img src="images/royals-logo.png" alt="Oklahoma Royals logo">
+            </div>
             <div>
               <div style="font-weight:1000">Oklahoma Royals</div>
               <div class="small">© <span id="year"></span> • okroyals.com</div>
@@ -602,69 +701,8 @@
     renderAnnouncements(window.__ann || []);
     renderSchedule(window.__sched || []);
     renderRoster(window.__rost || []);
-  }
-
-  /* NEW: single-audio controller (only one walk-up plays at a time) */
-  let ACTIVE_AUDIO = null;
-  let ACTIVE_CARD_ID = null;
-
-  function stopActiveAudio(){
-    if (ACTIVE_AUDIO){
-      try { ACTIVE_AUDIO.pause(); } catch {}
-      ACTIVE_AUDIO = null;
-      ACTIVE_CARD_ID = null;
-    }
-    $$('.playBadge').forEach(b=>b.textContent='▶');
-  }
-
-  function toggleWalkUp(cardId, audioUrl){
-    if (!audioUrl) return;
-
-    // If tapping same one, toggle
-    if (ACTIVE_CARD_ID === cardId && ACTIVE_AUDIO){
-      if (ACTIVE_AUDIO.paused){
-        ACTIVE_AUDIO.play().catch(()=>{});
-        const badge = document.querySelector(`[data-playbadge="${cardId}"]`);
-        if (badge) badge.textContent = '⏸';
-      } else {
-        ACTIVE_AUDIO.pause();
-        const badge = document.querySelector(`[data-playbadge="${cardId}"]`);
-        if (badge) badge.textContent = '▶';
-      }
-      return;
-    }
-
-    // Otherwise stop existing and start new
-    stopActiveAudio();
-
-    const audio = new Audio(audioUrl);
-    audio.preload = 'none';
-    ACTIVE_AUDIO = audio;
-    ACTIVE_CARD_ID = cardId;
-
-    const badge = document.querySelector(`[data-playbadge="${cardId}"]`);
-    if (badge) badge.textContent = '⏸';
-
-    audio.addEventListener('ended', ()=>{
-      const b = document.querySelector(`[data-playbadge="${cardId}"]`);
-      if (b) b.textContent='▶';
-      ACTIVE_AUDIO = null;
-      ACTIVE_CARD_ID = null;
-    });
-
-    audio.addEventListener('error', ()=>{
-      const b = document.querySelector(`[data-playbadge="${cardId}"]`);
-      if (b) b.textContent='⚠';
-      ACTIVE_AUDIO = null;
-      ACTIVE_CARD_ID = null;
-      alert("Couldn't play this walk-up clip. Make sure the Walk Up Audio URL is a direct https link to an audio file (mp3/m4a/wav).");
-    });
-
-    audio.play().catch(()=>{
-      // Some phones require a user gesture—tap again if it blocks
-      const b = document.querySelector(`[data-playbadge="${cardId}"]`);
-      if (b) b.textContent='▶';
-    });
+    renderMedia(window.__media || []);
+    renderMusic(window.__music || []);
   }
 
   function renderAnnouncements(items){
@@ -709,44 +747,30 @@
   function renderSchedule(items){
     const body = $('#scheduleBody');
     const f = items.filter(g=>matchTeam(g.team));
-
     if (!f.length){
-      body.innerHTML = `<tr><td colspan="6">No schedule yet — add rows in the <b>Schedule</b> tab.</td></tr>`;
-      $('#nextGameTag').innerHTML = `👑 <b>Oklahoma Royals</b> • 8U &amp; 9U`;
+      body.innerHTML = `<tr><td colspan="5">No schedule yet — add rows in the <b>Schedule</b> tab.</td></tr>`;
+      $('#nextGameTag').innerHTML = `<b>Oklahoma Royals</b> • 8U &amp; 9U`;
       window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
       return;
     }
-
     body.innerHTML = f.map(g=>{
       const date = escapeHtml(g.date);
       const time = escapeHtml(g.time);
       const opp  = escapeHtml(g.opponent);
       const field= escapeHtml(g.field);
       const status = escapeHtml(g.status||'Game');
-      const uniform = escapeHtml(g.uniform || '');
-      const needs = escapeHtml(g.needs || '');
-
       const cls = status.toLowerCase().includes('practice') ? 'warn' : (status.toLowerCase().includes('game') ? 'good' : '');
-
-      const uniNeeds = `
-        ${uniform ? `<div class="meta"><b style="color:var(--text)">Uniform:</b> ${uniform}</div>` : `<div class="meta">—</div>`}
-        ${needs ? `<div class="meta"><b style="color:var(--text)">Needs:</b> ${needs}</div>` : ``}
-      `;
-
       return `
         <tr>
           <td>${date}</td>
           <td>${time}</td>
           <td>${opp}${g.team?` <span class="pill" style="margin-left:8px">${escapeHtml(g.team)}</span>`:''}</td>
           <td>${field}</td>
-          <td>${uniNeeds}</td>
           <td class="right"><span class="status ${cls}">${status}</span></td>
         </tr>
       `;
     }).join('');
-
     window.__scheduleRows = Array.from(body.querySelectorAll('tr'));
-
     const next = f[0];
     const nextLine = `${next.date||''} ${next.time||''} • ${next.opponent||''}`.trim();
     if (nextLine) $('#nextGameTag').innerHTML = `⚾ <b>Next:</b> ${escapeHtml(nextLine)}`;
@@ -755,7 +779,6 @@
   function renderRoster(items){
     const grid = $('#rosterGrid');
     const f = items.filter(p=>matchTeam(p.team));
-
     if (!f.length){
       grid.innerHTML = `
         <div class="player">
@@ -772,31 +795,13 @@
       window.__rosterCards = Array.from(grid.querySelectorAll('.player'));
       return;
     }
-
-    grid.innerHTML = f.map((p, idx)=>{
+    grid.innerHTML = f.map(p=>{
       const num = escapeHtml(p.number||'');
       const name= escapeHtml(p.name||'Player');
       const pos = escapeHtml(p.position||'');
       const note= escapeHtml(p.note||'');
       const team= escapeHtml(p.team||'');
-
-      // NEW fields (these map from your Sheet headers)
-      const photo = (p.photo_url || p.photo || '').trim(); // supports either "Photo URL" -> photo_url
-      const quote = escapeHtml(p.quote || '');
-      const song  = escapeHtml(p.walk_up_song || p.walkup_song || '');
-      const audio = (p.walk_up_audio_url || p.walkup_audio_url || p.audio_url || '').trim();
-
-      const cardId = `player_${idx}_${(p.number||'').replace(/\W/g,'')}_${(p.name||'').replace(/\W/g,'')}`.slice(0,80);
-
-      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team} ${quote} ${song}`.toLowerCase());
-
-      const hasAudio = !!audio;
-      const badge = hasAudio ? `<div class="playBadge" data-playbadge="${cardId}">▶</div>` : '';
-
-      const photoInner = photo
-        ? `<img src="${escapeHtml(photo)}" alt="${name} photo" onload="this.style.display='block'; this.parentElement.querySelector('.ph').style.display='none';" onerror="this.style.display='none'; this.parentElement.querySelector('.ph').style.display='grid';">`
-        : '';
-
+      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team}`.toLowerCase());
       return `
         <div class="player" data-search="${hay}">
           <div class="playerTop">
@@ -806,25 +811,10 @@
               <p class="meta">${pos}${team?` • ${team}`:''}</p>
             </div>
           </div>
-
-          <div class="playerMediaRow">
-            <div class="playerPhotoWrap" role="button" aria-label="Play walk up song"
-              onclick="${hasAudio ? `toggleWalkUp('${cardId}', '${escapeHtml(audio)}')` : ``}">
-              ${photoInner}
-              <div class="ph">Photo</div>
-              ${badge}
-            </div>
-
-            <div style="flex:1">
-              ${song ? `<div class="songLine">🎵 <b>Walk-up:</b> ${song}</div>` : `<div class="songLine">🎵 <b>Walk-up:</b> —</div>`}
-              ${quote ? `<div class="quote">“${quote}”</div>` : ``}
-              ${note ? `<div class="meta" style="margin-top:6px">${note}</div>` : ``}
-            </div>
-          </div>
+          <p class="meta">${note}</p>
         </div>
       `;
     }).join('');
-
     window.__rosterCards = Array.from(grid.querySelectorAll('.player'));
   }
 
@@ -858,11 +848,28 @@
     const s = items[0] || {};
     $('#homeFieldName').textContent = s.home_field_name || 'Stroud Little League Field 2';
     $('#homeFieldAddr').textContent = s.home_field_address || '';
+
     const chatLabel = s.team_chat_label || 'Join Oklahoma Royals 9U on GameChanger';
     const chatUrl = s.team_chat_url || 'https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link';
     const link = $('#teamChatLink');
     link.textContent = chatLabel;
     link.href = chatUrl;
+
+    const gcLiveUrl = s.gc_live_url || chatUrl;
+    $('#gcLiveBtn').href = gcLiveUrl;
+    $('#gcTeamBtn').href = chatUrl;
+    $('#gcLink2').href = chatUrl;
+
+    const embedUrl = (s.gc_live_embed_url || '').trim();
+    const iframe = $('#liveEmbed');
+    const ph = $('#liveEmbedPh');
+    if (embedUrl){
+      iframe.src = embedUrl;
+      ph.textContent = '';
+    } else {
+      iframe.src = '';
+      ph.textContent = 'No embed URL set. Add gc_live_embed_url in the Site tab if you have a stream that allows embeds.';
+    }
   }
 
   function renderFundraisers(items){
@@ -903,7 +910,7 @@
   function renderSponsors(items){
     const grid = $('#sponsorGrid');
     if (!items.length){
-      grid.innerHTML = `<div class="sponsor"><div class="ph" style="color:rgba(230,237,247,.7)">Add sponsor logos in <b>Sponsors</b> tab</div></div>`;
+      grid.innerHTML = `<div class="sponsor"><div class="ph">Add sponsor logos in <b>Sponsors</b> tab</div></div>`;
       return;
     }
     grid.innerHTML = items.slice(0,24).map(s=>{
@@ -911,7 +918,7 @@
       const url  = (s.website_url||'').trim();
       const inner = logo
         ? `<img src="${escapeHtml(logo)}" alt="Sponsor logo" onerror="this.style.display='none'">`
-        : `<div class="ph" style="color:rgba(230,237,247,.7)">Logo</div>`;
+        : `<div class="ph">Logo</div>`;
       return url
         ? `<a class="sponsor" href="${escapeHtml(url)}" target="_blank" rel="noopener">${inner}</a>`
         : `<div class="sponsor">${inner}</div>`;
@@ -920,13 +927,159 @@
 
   function setupDonateQr(){
     const cashLink = 'https://cash.app/$OkRoyals';
-    const qrUrl = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${encodeURIComponent(cashLink)}`;
+    const qrUrl = `https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl=${encodeURIComponent(cashLink)}`;
     const img = $('#donateQrImg');
     const ph = $('#donateQrPh');
     img.src = qrUrl;
     img.style.display = 'block';
     ph.style.display = 'none';
     img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
+  }
+
+  // ====== MEDIA (HIGHLIGHTS) ======
+  function parseYouTube(input){
+    const url = String(input||'').trim();
+    if (!url) return { kind:'unknown', id:'' };
+
+    // playlist
+    const plMatch = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+    if (plMatch) return { kind:'playlist', id: plMatch[1] };
+
+    // youtu.be
+    const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]{6,})/);
+    if (shortMatch) return { kind:'video', id: shortMatch[1] };
+
+    // watch?v=
+    const vMatch = url.match(/[?&]v=([a-zA-Z0-9_-]{6,})/);
+    if (vMatch) return { kind:'video', id: vMatch[1] };
+
+    // embed/ID
+    const eMatch = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/);
+    if (eMatch) return { kind:'video', id: eMatch[1] };
+
+    return { kind:'unknown', id:'' };
+  }
+
+  function mediaEmbedUrl(item){
+    const parsed = parseYouTube(item.url);
+    const kind = (item.type||'').toLowerCase() || parsed.kind;
+    if (kind === 'playlist' && parsed.id){
+      return `https://www.youtube.com/embed/videoseries?list=${encodeURIComponent(parsed.id)}&rel=0&modestbranding=1`;
+    }
+    if (parsed.kind === 'video' && parsed.id){
+      return `https://www.youtube.com/embed/${encodeURIComponent(parsed.id)}?rel=0&modestbranding=1`;
+    }
+    // fallback (may or may not work)
+    return '';
+  }
+
+  let __mediaActiveIndex = 0;
+  let __mediaTimer = null;
+
+  function setActiveMedia(index){
+    const items = window.__mediaFiltered || [];
+    if (!items.length) return;
+    __mediaActiveIndex = Math.max(0, Math.min(index, items.length-1));
+
+    const item = items[__mediaActiveIndex];
+    const src = mediaEmbedUrl(item);
+    $('#ytPlayer').src = src || '';
+    // highlight active
+    $$('#mediaList .plItem').forEach((el,i)=>el.classList.toggle('active', i===__mediaActiveIndex));
+  }
+
+  function startAutoRotate(){
+    if (__mediaTimer) clearInterval(__mediaTimer);
+    const items = window.__mediaFiltered || [];
+    if (items.length <= 1) return;
+    __mediaTimer = setInterval(()=>{
+      const next = (__mediaActiveIndex + 1) % items.length;
+      setActiveMedia(next);
+    }, 45000); // rotate every 45 sec
+  }
+
+  function renderMedia(items){
+    const list = $('#mediaList');
+    const filtered = (items || [])
+      .filter(m=>matchTeam(m.team))
+      .slice()
+      .sort((a,b)=>Number(a.order||0)-Number(b.order||0));
+
+    window.__mediaFiltered = filtered;
+
+    if (!filtered.length){
+      list.innerHTML = `
+        <div class="plItem">
+          <div>
+            <b>No highlights yet</b>
+            <div class="small">Add rows in the <b>Media</b> tab (YouTube video/playlist URLs).</div>
+          </div>
+        </div>
+      `;
+      $('#ytPlayer').src = '';
+      return;
+    }
+
+    list.innerHTML = filtered.map((m, idx)=>{
+      const title = escapeHtml(m.title || 'Highlights');
+      const team  = escapeHtml(m.team || 'All');
+      const type  = escapeHtml(m.type || parseYouTube(m.url).kind || 'video');
+      return `
+        <div class="plItem" data-idx="${idx}">
+          <div>
+            <b>${title}</b>
+            <div class="small">${team} • ${type}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    $$('#mediaList .plItem').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const idx = Number(el.getAttribute('data-idx')||0);
+        setActiveMedia(idx);
+        startAutoRotate();
+      });
+    });
+
+    setActiveMedia(0);
+    startAutoRotate();
+  }
+
+  // ====== MUSIC ======
+  function renderMusic(items){
+    const filtered = (items||[])
+      .filter(m=>matchTeam(m.team))
+      .slice()
+      .sort((a,b)=>Number(a.order||0)-Number(b.order||0));
+
+    const audio = $('#bgAudio');
+    const wrap = $('#musicList');
+
+    if (!filtered.length){
+      wrap.textContent = 'No music loaded. Add rows in the Music tab (public MP3 URLs).';
+      audio.src = '';
+      return;
+    }
+
+    // simple track list + click to load
+    wrap.innerHTML = filtered.map((m,i)=>{
+      const t = escapeHtml(m.title || `Track ${i+1}`);
+      return `<div style="margin:6px 0"><a href="#" data-track="${i}" style="color:var(--gold)">${t}</a></div>`;
+    }).join('');
+
+    wrap.querySelectorAll('a[data-track]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const idx = Number(a.getAttribute('data-track'));
+        const track = filtered[idx];
+        audio.src = (track.url||'').trim();
+        audio.play().catch(()=>{ /* user gesture might be required */ });
+      });
+    });
+
+    // load first track (doesn't auto-play)
+    audio.src = (filtered[0].url||'').trim();
   }
 
   // Search wiring
@@ -952,21 +1105,20 @@
   $('#resetRoster').addEventListener('click', ()=>{ rosterSearch.value=''; filterRoster(); });
 
   // Team filter buttons
-  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>{
-    stopActiveAudio();
-    setTeam(btn.getAttribute('data-team-filter')||'All');
-  }));
+  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>setTeam(btn.getAttribute('data-team-filter')||'All')));
 
   async function loadAll(){
     try{
-      const [annCsv, schedCsv, rostCsv, rotwCsv, siteCsv, sponsorCsv, fundCsv] = await Promise.all([
+      const [annCsv, schedCsv, rostCsv, rotwCsv, siteCsv, sponsorCsv, fundCsv, mediaCsv, musicCsv] = await Promise.all([
         fetchTabCsv('Announcements'),
         fetchTabCsv('Schedule'),
         fetchTabCsv('Roster'),
         fetchTabCsv('RoyalOfTheWeek'),
         fetchTabCsv('Site'),
         fetchOptionalTab('Sponsors'),
-        fetchOptionalTab('Fundraisers')
+        fetchOptionalTab('Fundraisers'),
+        fetchOptionalTab('Media'),
+        fetchOptionalTab('Music')
       ]);
 
       const ann = annCsv ? rowsToObjects(csvToRows(annCsv)) : [];
@@ -976,10 +1128,14 @@
       const site = siteCsv ? rowsToObjects(csvToRows(siteCsv)) : [];
       const sponsors = sponsorCsv ? rowsToObjects(csvToRows(sponsorCsv)) : [];
       const fund = fundCsv ? rowsToObjects(csvToRows(fundCsv)) : [];
+      const media = mediaCsv ? rowsToObjects(csvToRows(mediaCsv)) : [];
+      const music = musicCsv ? rowsToObjects(csvToRows(musicCsv)) : [];
 
       window.__ann = ann;
       window.__sched = sched;
       window.__rost = rost;
+      window.__media = media;
+      window.__music = music;
 
       renderSite(site);
       renderAnnouncements(ann);
@@ -988,6 +1144,8 @@
       renderRotw(rotw);
       renderFundraisers(fund);
       renderSponsors(sponsors);
+      renderMedia(media);
+      renderMusic(music);
 
       setTeam('All');
       setupDonateQr();
