@@ -167,7 +167,7 @@
 
     .rosterGrid{display:grid; grid-template-columns: repeat(4, 1fr); gap:12px}
 
-    /* ===== upgraded roster card ===== */
+    /* ===== roster card (NO walk-up songs) ===== */
     .player{
       border-radius:16px;border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
@@ -178,7 +178,15 @@
       min-height: 160px;
     }
     .playerTop{display:flex; align-items:center; justify-content:space-between; gap:8px}
-    .num{width:34px; height:34px; border-radius: 14px;display:grid; place-items:center;background: radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));border:1px solid rgba(255,255,255,.10);font-weight:900;}
+    .num{
+      width:34px; height:34px; border-radius: 14px;
+      display:grid; place-items:center;
+      background:
+        radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.25), transparent 70%),
+        linear-gradient(135deg, rgba(37,99,235,.22), rgba(17,24,39,.18));
+      border:1px solid rgba(255,255,255,.10);
+      font-weight:900;
+    }
     .player h4{margin:0; font-size:14px}
     .meta{margin:0; color:var(--muted); font-size:12px}
 
@@ -193,20 +201,12 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(0,0,0,.25);
       flex:0 0 auto;
-      cursor:pointer;
       display:grid; place-items:center;
       position:relative;
     }
     .playerPhoto img{width:100%; height:100%; object-fit:cover; display:none}
     .playerPhoto .ph{position:absolute; inset:0; display:grid; place-items:center; color:rgba(230,237,247,.7)}
-    .playBadge{
-      position:absolute; right:6px; bottom:6px;
-      width:22px; height:22px; border-radius:999px;
-      display:grid; place-items:center;
-      background: rgba(0,0,0,.55);
-      border:1px solid rgba(255,255,255,.18);
-      font-size:12px;
-    }
+
     .quote{
       font-size:12px;
       color:rgba(230,237,247,.88);
@@ -214,27 +214,6 @@
       padding-left:10px;
       margin:0;
       display:none;
-    }
-    .songRow{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-      margin-top:4px;
-    }
-    .songBtn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      cursor:pointer;
-      font-weight:900;
-      font-size:12px;
-      user-select:none;
-    }
-    .songBtn:hover{background: rgba(255,255,255,.09)}
-    .songLabel{
-      font-size:12px; color:var(--muted);
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-      max-width: 220px;
     }
 
     .announceList{display:grid; gap:10px; padding:14px}
@@ -251,6 +230,7 @@
     .donateGrid{display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:center}
     .qr{width:180px; height:180px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background: rgba(0,0,0,.25);display:grid; place-items:center;}
     .qr img{width:100%; height:100%; object-fit:cover; display:none}
+    .ph{display:grid; place-items:center; color:rgba(230,237,247,.7)}
 
     .sponsorGrid{display:grid;grid-template-columns: repeat(6, 1fr);gap:12px;padding:14px;}
     .sponsor{border-radius:16px;border:1px solid rgba(255,255,255,.10);background: rgba(0,0,0,.18);aspect-ratio: 1/1;display:grid;place-items:center;overflow:hidden;}
@@ -834,62 +814,16 @@
     if (nextLine) $('#nextGameTag').innerHTML = `⚾ <b>Next:</b> ${escapeHtml(nextLine)}`;
   }
 
-  /* ===== ROSTER UPGRADE: photo + quote + walk-up song (tap photo to play) =====
-     Sheet columns supported (add what you want):
+  /* ===== ROSTER: photo + quote ONLY (NO walk-up songs) =====
+     Sheet columns supported:
        number, name, position, note, team,
        photo_url (or photo),
-       quote (or saying),
-       walkup_song (or walkup_title),
-       walkup_audio_url (or walkup_url or audio_url)
+       quote (or saying)
   */
-  let CURRENT_AUDIO = null;
-  let CURRENT_BTN = null;
-
-  function stopCurrentAudio(){
-    if (CURRENT_AUDIO){
-      CURRENT_AUDIO.pause();
-      CURRENT_AUDIO.currentTime = 0;
-    }
-    if (CURRENT_BTN){
-      CURRENT_BTN.textContent = "▶ Play";
-    }
-    CURRENT_AUDIO = null;
-    CURRENT_BTN = null;
-  }
-
-  function toggleAudio(audio, btn){
-    if (!audio) return;
-
-    // if same audio toggled
-    if (CURRENT_AUDIO === audio){
-      if (!audio.paused){
-        audio.pause();
-        btn.textContent = "▶ Play";
-      } else {
-        audio.play().catch(()=>{});
-        btn.textContent = "⏸ Pause";
-      }
-      return;
-    }
-
-    // new audio: stop old first
-    stopCurrentAudio();
-    CURRENT_AUDIO = audio;
-    CURRENT_BTN = btn;
-
-    audio.play().catch(()=>{});
-    btn.textContent = "⏸ Pause";
-
-    audio.onended = ()=>{
-      if (CURRENT_AUDIO === audio){
-        stopCurrentAudio();
-      }
-    };
-  }
-
   function renderRoster(items){
     const grid = $('#rosterGrid');
     const f = items.filter(p=>matchTeam(p.team));
+
     if (!f.length){
       grid.innerHTML = `
         <div class="player">
@@ -917,17 +851,9 @@
       const photo = (p.photo_url || p.photo || "").trim();
       const quote = (p.quote || p.saying || "").trim();
 
-      const songTitle = (p.walkup_song || p.walkup_title || "").trim();
-      const songUrl = (p.walkup_audio_url || p.walkup_url || p.audio_url || "").trim();
-
-      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team} ${quote} ${songTitle}`.toLowerCase());
-
-      const hasSong = !!songUrl;
+      const hay = escapeHtml(`${num} ${name} ${pos} ${note} ${team} ${quote}`.toLowerCase());
       const hasQuote = !!quote;
       const qHtml = hasQuote ? `<p class="quote" data-quote style="display:block">“${escapeHtml(quote)}”</p>` : ``;
-
-      // unique ids per card
-      const audioId = `aud_${idx}`;
 
       return `
         <div class="player" data-search="${hay}">
@@ -944,21 +870,14 @@
           ${qHtml}
 
           <div class="playerMedia">
-            <div class="playerPhoto" data-photo-tap="${audioId}" title="${hasSong ? 'Tap to play walk-up song' : 'Player photo'}">
+            <div class="playerPhoto" title="${photo ? 'Tap to open photo' : 'Player photo'}" data-open-photo="${escapeHtml(photo)}">
               <img data-photo-img alt="${name} photo" src="${escapeHtml(photo)}" />
               <div class="ph">Photo</div>
-              ${hasSong ? `<div class="playBadge">♪</div>` : ``}
             </div>
 
             <div style="min-width:0; flex:1">
-              <div class="songRow">
-                ${hasSong ? `<button class="songBtn" type="button" data-play-btn="${audioId}">▶ Play</button>` : ``}
-                <div class="songLabel">${hasSong ? escapeHtml(songTitle || "Walk-up Song") : `<span style="color:var(--muted)">No walk-up song yet</span>`}</div>
-              </div>
-              ${hasSong ? `<div class="small" style="margin-top:6px;color:var(--muted)">Tap the photo or press Play</div>` : ``}
+              <div class="small" style="color:var(--muted)">${photo ? 'Tap photo to view' : 'No photo yet'}</div>
             </div>
-
-            ${hasSong ? `<audio id="${audioId}" preload="none" src="${escapeHtml(songUrl)}"></audio>` : ``}
           </div>
         </div>
       `;
@@ -984,23 +903,12 @@
       }
     });
 
-    // play buttons
-    grid.querySelectorAll('[data-play-btn]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const id = btn.getAttribute('data-play-btn');
-        const audio = document.getElementById(id);
-        toggleAudio(audio, btn);
-      });
-    });
-
-    // photo tap -> play
-    grid.querySelectorAll('[data-photo-tap]').forEach(photo=>{
-      photo.addEventListener('click', ()=>{
-        const id = photo.getAttribute('data-photo-tap');
-        const audio = document.getElementById(id);
-        const btn = grid.querySelector(`[data-play-btn="${id}"]`);
-        if (audio && btn) toggleAudio(audio, btn);
-      });
+    // tap photo -> open in new tab (mobile-friendly)
+    grid.querySelectorAll('[data-open-photo]').forEach(el=>{
+      const src = (el.getAttribute('data-open-photo') || "").trim();
+      if (!src) return;
+      el.style.cursor = "pointer";
+      el.addEventListener('click', ()=> window.open(src, '_blank', 'noopener'));
     });
   }
 
