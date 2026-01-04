@@ -8,21 +8,24 @@
 
   <style>
     :root{
-      /* ===== ROYAL + BRIGHT THEME ===== */
-      --bg:#f4f7ff;
+      /* ===== ROYAL + BRIGHT (SOFTER) THEME ===== */
+      --bg:#eef3ff;                /* slightly less bright */
       --text:#0b1020;
       --muted:#55627a;
 
       --royal:#1E3EFF;
       --royal2:#0F1E7A;
-      --gold:#f5c84b;
+
+      /* Gold tuned away from “yellow” */
+      --gold:#d7b35c;              /* rich antique gold */
+      --goldSoft: rgba(215,179,92,.18);
 
       --good:#16a34a;
       --warn:#f59e0b;
       --bad:#dc2626;
 
       --card:#ffffff;
-      --line: rgba(15,30,122,.10);
+      --line: rgba(15,30,122,.12);
 
       --shadow: 0 18px 45px rgba(10,20,60,.12);
       --shadow2: 0 10px 24px rgba(10,20,60,.10);
@@ -30,8 +33,8 @@
       --ring: 0 0 0 3px rgba(30,62,255,.18);
       --max: 1120px;
 
-      --glowRoyal: 0 0 22px rgba(30,62,255,.22);
-      --glowGold: 0 0 20px rgba(245,200,75,.25);
+      --glowRoyal: 0 0 22px rgba(30,62,255,.18);
+      --glowGold: 0 0 18px rgba(215,179,92,.18);
     }
 
     *{box-sizing:border-box}
@@ -43,12 +46,12 @@
       color:var(--text);
       line-height:1.45;
 
-      /* Bright royal background with a subtle watermark image */
+      /* Primary still white-ish, but pulled down with royal */
       background:
-        radial-gradient(900px 520px at 10% -10%, rgba(30,62,255,.18), transparent 60%),
-        radial-gradient(900px 520px at 90% 0%, rgba(245,200,75,.22), transparent 60%),
-        radial-gradient(900px 520px at 70% 110%, rgba(30,62,255,.10), transparent 60%),
-        linear-gradient(180deg, #ffffff, var(--bg) 55%, #ffffff);
+        radial-gradient(900px 520px at 12% -10%, rgba(30,62,255,.16), transparent 62%),
+        radial-gradient(900px 520px at 92% 0%, rgba(215,179,92,.20), transparent 62%),
+        radial-gradient(900px 520px at 70% 110%, rgba(15,30,122,.10), transparent 60%),
+        linear-gradient(180deg, #fbfcff, var(--bg) 56%, #fbfcff);
       background-attachment: fixed;
     }
 
@@ -62,8 +65,8 @@
       background-repeat:no-repeat;
       background-position:center;
       background-size: min(1200px, 92vw);
-      opacity:.08;
-      filter: saturate(1.1) contrast(1.05);
+      opacity:.06;
+      filter: saturate(1.05) contrast(1.05);
       transform: translateZ(0);
     }
 
@@ -76,7 +79,7 @@
       top:0;
       z-index:60;
       backdrop-filter: blur(12px);
-      background: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.82);
       border-bottom: 1px solid rgba(15,30,122,.12);
     }
     .nav{
@@ -88,12 +91,12 @@
       position:relative;
     }
 
-    .brand{display:flex;align-items:center;gap:10px;min-width: 240px; position:relative; z-index:1}
+    .brand{display:flex;align-items:center;gap:10px;min-width: 240px; position:relative; z-index:2}
 
     .logo{
       width:44px; height:44px; border-radius:16px;
       background:
-        radial-gradient(120px 120px at 30% 20%, rgba(245,200,75,.65), transparent 55%),
+        radial-gradient(120px 120px at 30% 20%, rgba(215,179,92,.50), transparent 55%),
         linear-gradient(135deg, rgba(30,62,255,.95), rgba(15,30,122,.55));
       box-shadow: var(--shadow2), var(--glowRoyal);
       display:grid; place-items:center;
@@ -112,65 +115,101 @@
     .brand h1{font-size:14px; margin:0}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
 
-    nav ul{
-      display:flex; gap:10px; list-style:none; margin:0; padding:0;
-      flex-wrap:wrap; justify-content:flex-end;
-      position:relative; z-index:1;
+    /* ===== HEADER SLIDESHOW (REPLACES TOP BUTTONS) ===== */
+    .headerShowcase{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      z-index:1;
+      min-width: 160px;
     }
-    nav a{
-      display:inline-flex; align-items:center;
-      padding:8px 10px; border-radius:12px;
-      color: rgba(15,30,122,.78);
-      border: 1px solid transparent;
-      background: transparent;
-      font-weight:800;
-    }
-    nav a:hover{
-      color: var(--royal2);
-      border-color: rgba(30,62,255,.18);
-      background: rgba(30,62,255,.06);
-      box-shadow: var(--glowRoyal);
-    }
-
-    .cta{
-      display:flex; gap:10px; align-items:center; justify-content:flex-end;
-      min-width: 240px;
-      position:relative; z-index:1;
-    }
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:10px 12px;border-radius:14px;
+    .showcaseBox{
+      width: min(520px, 52vw);
+      height: 52px;
+      border-radius: 18px;
+      overflow:hidden;
       border:1px solid rgba(15,30,122,.14);
-      background: rgba(255,255,255,.80);
-      color:var(--royal2);
-      cursor:pointer;
-      user-select:none;
-      font-weight:1000;
-      box-shadow: 0 10px 22px rgba(10,20,60,.08);
-    }
-    .btn:hover{background: #ffffff; box-shadow: var(--shadow2)}
-    .btn.primary{
-      border-color: rgba(30,62,255,.35);
       background:
-        radial-gradient(420px 160px at 20% 0%, rgba(245,200,75,.30), transparent 60%),
-        linear-gradient(135deg, rgba(30,62,255,.14), rgba(245,200,75,.18));
-      color: var(--royal2);
-      box-shadow: var(--shadow), var(--glowRoyal);
+        radial-gradient(320px 80px at 20% 0%, rgba(30,62,255,.12), transparent 60%),
+        radial-gradient(280px 80px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
+        rgba(255,255,255,.88);
+      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
+      position:relative;
+    }
+    .showcaseBox:before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
+      opacity:.35;
+      pointer-events:none;
+    }
+    .showcaseInner{
+      position:absolute; inset:6px;
+      border-radius: 14px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.12);
+      background: rgba(255,255,255,.92);
+    }
+    .showcaseImg{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      opacity:0;
+      transform: scale(1.02);
+      transition: opacity 600ms ease, transform 1200ms ease;
+      display:block;
+    }
+    .showcaseImg.on{
+      opacity:1;
+      transform: scale(1);
+    }
+    .showcasePh{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      color: rgba(15,30,122,.70);
+      font-weight:900;
+      font-size:12px;
+      padding: 0 10px;
+      text-align:center;
+    }
+    .showcaseDots{
+      position:absolute;
+      right:10px;
+      bottom:8px;
+      display:flex;
+      gap:6px;
+      z-index:2;
+    }
+    .sdot{
+      width:8px; height:8px;
+      border-radius:999px;
+      border:1px solid rgba(15,30,122,.18);
+      background: rgba(15,30,122,.10);
+      box-shadow: 0 0 14px rgba(30,62,255,.14);
+    }
+    .sdot.on{
+      background: rgba(215,179,92,.95);
+      border-color: rgba(215,179,92,.55);
+      box-shadow: var(--glowGold);
     }
 
-    /* ===== MOBILE HAMBURGER ===== */
+    /* ===== MOBILE HAMBURGER (MENU) ===== */
     .hamburger{
-      display:none;
       width:44px; height:44px;
       border-radius:16px;
       border:1px solid rgba(15,30,122,.14);
       background:
-        radial-gradient(90px 50px at 20% 0%, rgba(245,200,75,.30), transparent 60%),
+        radial-gradient(90px 50px at 20% 0%, rgba(215,179,92,.22), transparent 60%),
         linear-gradient(135deg, rgba(30,62,255,.14), rgba(255,255,255,.60));
       box-shadow: var(--shadow2), var(--glowRoyal);
       cursor:pointer;
       position:relative;
+      z-index:3;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .hamburger:hover{filter:brightness(1.02)}
     .hamburger span{
@@ -178,6 +217,7 @@
       height:2px; border-radius:2px;
       background: rgba(15,30,122,.92);
       box-shadow: 0 0 14px rgba(30,62,255,.18);
+      pointer-events:none;
     }
     .hamburger span:nth-child(1){top:14px}
     .hamburger span:nth-child(2){top:21px; opacity:.85}
@@ -199,8 +239,8 @@
       border: 1px solid rgba(15,30,122,.16);
       background:
         radial-gradient(900px 260px at 20% 0%, rgba(30,62,255,.18), transparent 60%),
-        radial-gradient(700px 260px at 90% 40%, rgba(245,200,75,.26), transparent 60%),
-        rgba(255,255,255,.95);
+        radial-gradient(700px 260px at 90% 40%, rgba(215,179,92,.22), transparent 60%),
+        rgba(255,255,255,.96);
       box-shadow: 0 20px 60px rgba(10,20,60,.22), var(--glowRoyal), var(--glowGold);
       padding:14px;
       display:none;
@@ -222,6 +262,8 @@
       color: var(--royal2);
       cursor:pointer;
       font-weight:1000;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .drawerClose:hover{background:#fff}
 
@@ -248,12 +290,13 @@
     body.menuOpen .drawerOverlay{display:block}
     body.menuOpen .drawer{display:block}
 
-    .hero{padding: 28px 0 10px; position:relative; z-index:1}
+    /* ===== PAGE CONTENT ===== */
+    .hero{padding: 22px 0 10px; position:relative; z-index:1}
     .heroGrid{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch;}
 
     .card{
       border-radius: var(--radius);
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       border:1px solid rgba(15,30,122,.12);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -267,9 +310,9 @@
       position:absolute;
       inset:-2px;
       background:
-        radial-gradient(800px 260px at 10% 0%, rgba(30,62,255,.18), transparent 60%),
-        radial-gradient(700px 280px at 90% 30%, rgba(245,200,75,.26), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,0));
+        radial-gradient(800px 260px at 10% 0%, rgba(30,62,255,.16), transparent 60%),
+        radial-gradient(700px 280px at 90% 30%, rgba(215,179,92,.20), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.40), rgba(255,255,255,0));
       pointer-events:none;
     }
     .heroMain > *{position:relative}
@@ -278,7 +321,7 @@
       display:inline-flex;align-items:center;gap:8px;
       padding:6px 10px;border-radius:999px;
       border:1px solid rgba(15,30,122,.14);
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.74);
       color: rgba(15,30,122,.76);
       font-size:12px;
       font-weight:900;
@@ -298,21 +341,43 @@
     }
     .heroTitle .glow{
       color: var(--royal);
-      text-shadow: 0 0 18px rgba(30,62,255,.22);
+      text-shadow: 0 0 18px rgba(30,62,255,.18);
     }
     .heroDesc{margin:0 0 16px; color:var(--muted); max-width: 62ch}
     .heroActions{display:flex;gap:10px;flex-wrap:wrap}
 
-    .heroSide{padding:16px; display:flex; flex-direction:column; gap:12px;}
     .miniCard{
       border-radius:16px;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.86);
       padding:14px;
       box-shadow: 0 10px 24px rgba(10,20,60,.06);
     }
     .miniCard h3{margin:0 0 6px; font-size:14px; color: var(--royal2)}
     .miniCard p{margin:0; color:var(--muted); font-size:13px}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 12px;border-radius:14px;
+      border:1px solid rgba(15,30,122,.14);
+      background: rgba(255,255,255,.84);
+      color:var(--royal2);
+      cursor:pointer;
+      user-select:none;
+      font-weight:1000;
+      box-shadow: 0 10px 22px rgba(10,20,60,.08);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .btn:hover{background: #ffffff; box-shadow: var(--shadow2)}
+    .btn.primary{
+      border-color: rgba(30,62,255,.30);
+      background:
+        radial-gradient(420px 160px at 20% 0%, rgba(215,179,92,.24), transparent 62%),
+        linear-gradient(135deg, rgba(30,62,255,.14), rgba(215,179,92,.14));
+      color: var(--royal2);
+      box-shadow: var(--shadow), var(--glowRoyal);
+    }
 
     section{padding: 18px 0; position:relative; z-index:1}
     .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom: 12px;}
@@ -326,7 +391,7 @@
       border:1px solid rgba(15,30,122,.14);
       padding:4px 8px;
       border-radius:999px;
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.72);
       font-weight:900;
     }
 
@@ -335,7 +400,7 @@
       display:inline-flex;
       border:1px solid rgba(15,30,122,.14);
       color: rgba(15,30,122,.78);
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.72);
       font-weight:900;
     }
     .status.good{border-color: rgba(22,163,74,.30); color: rgba(20,90,40,1); background: rgba(22,163,74,.10)}
@@ -347,7 +412,7 @@
       flex:1;min-width: 220px;
       padding:10px 12px;border-radius:14px;
       border:1px solid rgba(15,30,122,.14);
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.88);
       color: var(--text);
       outline:none;
       box-shadow: inset 0 0 0 1px rgba(30,62,255,.04);
@@ -361,7 +426,7 @@
       overflow:hidden;
       border-radius: 16px;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
     }
     th,td{
       padding:10px 10px;
@@ -373,7 +438,7 @@
     }
     th{
       background: rgba(30,62,255,.06);
-      color: rgba(15,30,122,.80);
+      color: rgba(15,30,122,.82);
       font-weight:1000
     }
     tr:last-child td{border-bottom:none}
@@ -384,7 +449,7 @@
     .player{
       border-radius:16px;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       padding:12px;
       display:flex;
       flex-direction:column;
@@ -397,7 +462,7 @@
       width:34px; height:34px; border-radius: 14px;
       display:grid; place-items:center;
       background:
-        radial-gradient(80px 40px at 50% 0%, rgba(245,200,75,.40), transparent 70%),
+        radial-gradient(80px 40px at 50% 0%, rgba(215,179,92,.26), transparent 70%),
         linear-gradient(135deg, rgba(30,62,255,.14), rgba(15,30,122,.10));
       border:1px solid rgba(15,30,122,.12);
       font-weight:1000;
@@ -425,12 +490,11 @@
 
     .quote{
       font-size:12px;
-      color: rgba(15,30,122,.90);
-      border-left:3px solid rgba(245,200,75,.95);
-      padding-left:10px;
+      color: rgba(15,30,122,.92);
+      border-left:3px solid rgba(215,179,92,.95);
       margin:0;
       display:none;
-      background: rgba(245,200,75,.10);
+      background: rgba(215,179,92,.10);
       border-radius: 12px;
       padding:10px;
     }
@@ -439,7 +503,7 @@
     .announce{
       padding:12px;border-radius:14px;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       box-shadow: 0 10px 22px rgba(10,20,60,.06);
     }
     .announceTop{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
@@ -456,7 +520,7 @@
     .fundGrid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
     .fundCard{
       border-radius:16px;border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       padding:14px;display:flex;flex-direction:column;gap:10px;min-height:160px;
       box-shadow: 0 10px 22px rgba(10,20,60,.06);
     }
@@ -470,9 +534,9 @@
       overflow:hidden;
       border:1px solid rgba(15,30,122,.16);
       background:
-        radial-gradient(220px 140px at 30% 10%, rgba(30,62,255,.18), transparent 60%),
-        radial-gradient(220px 140px at 80% 90%, rgba(245,200,75,.24), transparent 60%),
-        rgba(255,255,255,.88);
+        radial-gradient(220px 140px at 30% 10%, rgba(30,62,255,.16), transparent 60%),
+        radial-gradient(220px 140px at 80% 90%, rgba(215,179,92,.18), transparent 60%),
+        rgba(255,255,255,.90);
       display:grid; place-items:center;
       box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
       position:relative;
@@ -481,8 +545,8 @@
       content:"";
       position:absolute; inset:-1px;
       border-radius:22px;
-      background: linear-gradient(135deg, rgba(30,62,255,.26), rgba(245,200,75,.24));
-      opacity:.45;
+      background: linear-gradient(135deg, rgba(30,62,255,.24), rgba(215,179,92,.18));
+      opacity:.40;
       pointer-events:none;
       filter: blur(.2px);
     }
@@ -493,7 +557,7 @@
       border-radius:16px;
       overflow:hidden;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       display:grid; place-items:center;
     }
     .qr img{width:100%; height:100%; object-fit:cover; display:none}
@@ -502,7 +566,7 @@
     .sponsorGrid{display:grid;grid-template-columns: repeat(6, 1fr);gap:12px;padding:14px;}
     .sponsor{
       border-radius:16px;border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       aspect-ratio: 1/1;
       display:grid;place-items:center;overflow:hidden;
       box-shadow: 0 10px 22px rgba(10,20,60,.06);
@@ -515,7 +579,7 @@
       aspect-ratio:16/9;
       border-radius:16px;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       display:none;
       box-shadow: 0 10px 22px rgba(10,20,60,.06);
     }
@@ -525,7 +589,7 @@
       padding:12px;
       border-radius:14px;
       border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.90);
       cursor:pointer;
       box-shadow: 0 10px 22px rgba(10,20,60,.06);
     }
@@ -537,19 +601,21 @@
       border:1px solid rgba(15,30,122,.18);
       background: rgba(15,30,122,.10);
     }
-    .dot.on{background: rgba(245,200,75,.95); border-color: rgba(245,200,75,.60)}
+    .dot.on{background: rgba(215,179,92,.95); border-color: rgba(215,179,92,.60)}
     .miniRow{display:flex; gap:10px; flex-wrap:wrap}
     .miniBtn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:10px 12px;
       border-radius:14px;
       border:1px solid rgba(15,30,122,.14);
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.88);
       color:var(--royal2);
       cursor:pointer;
       font-weight:1000;
       user-select:none;
       box-shadow: 0 10px 22px rgba(10,20,60,.06);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .miniBtn:hover{background:#fff}
 
@@ -557,7 +623,7 @@
     .rosterScroll{
       border-radius: 18px;
       border: 1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.60);
       padding:12px;
       overflow:auto;
       max-height: 560px;
@@ -578,25 +644,31 @@
 
     @media (max-width: 1020px){
       .heroGrid{grid-template-columns: 1fr}
-      .cta{min-width:auto}
-      .brand{min-width:auto}
       .rosterGrid{grid-template-columns: repeat(3, 1fr)}
       .sponsorGrid{grid-template-columns: repeat(4, 1fr)}
       .fundGrid{grid-template-columns: repeat(2, 1fr)}
       .donateGrid{grid-template-columns: 1fr}
       .mediaGrid{grid-template-columns: 1fr}
       .rosterScroll{max-height: 540px}
+      .showcaseBox{width: min(520px, 46vw)}
     }
 
     @media (max-width: 720px){
-      nav ul{display:none}
-      .hamburger{display:inline-block}
       .grid2{grid-template-columns: 1fr}
       .rosterGrid{grid-template-columns: repeat(2, 1fr)}
       .sponsorGrid{grid-template-columns: repeat(3, 1fr)}
       .fundGrid{grid-template-columns: 1fr}
       .heroTitle{font-size: 32px}
       .rosterScroll{max-height: 540px}
+      .brand{min-width:auto}
+      .showcaseBox{
+        width: 58vw;
+        height: 48px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .showcaseBox{width: 56vw}
     }
   </style>
 </head>
@@ -616,32 +688,22 @@
         </div>
       </a>
 
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#announcements">Announcements</a></li>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#roster">Roster</a></li>
-          <li><a href="#royal">Royal of the Week</a></li>
-          <li><a href="#donate">Donate</a></li>
-          <li><a href="#fundraisers">Fundraisers</a></li>
-          <li><a href="#highlights">Highlights</a></li>
-          <li><a href="#sponsors">Sponsors</a></li>
-          <li><a href="#links">Links</a></li>
-
-          <!-- ✅ USSSA link (desktop) -->
-          <li><a id="usssaTopNav" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener">USSSA</a></li>
-        </ul>
-      </nav>
-
-      <div class="cta">
-        <a class="btn" href="#schedule">Schedule</a>
-        <a class="btn primary" href="#donate">Donate</a>
-
-        <!-- mobile hamburger -->
-        <button class="hamburger" id="openMenu" type="button" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+      <!-- ✅ Slideshow box replaces the top buttons -->
+      <div class="headerShowcase" aria-label="Header slideshow">
+        <div class="showcaseBox" id="showcaseBox" title="Royals photos">
+          <div class="showcaseInner">
+            <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
+            <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
+            <div class="showcasePh" id="showcasePh">Add photos to the slideshow (see Site tab: <b>slideshow_urls</b> or <b>slide_1_url</b>…)</div>
+          </div>
+          <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
+        </div>
       </div>
+
+      <!-- ✅ Menu button only (all nav links are inside the drawer) -->
+      <button class="hamburger" id="openMenu" type="button" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -666,18 +728,17 @@
     <a href="#announcements" data-close-menu><span>Announcements</span><small>Updates & reminders</small></a>
     <a href="#schedule" data-close-menu><span>Schedule</span><small>Games & practices</small></a>
     <a href="#roster" data-close-menu><span>Roster</span><small>Players</small></a>
-
-    <!-- ✅ USSSA link (mobile drawer) -->
-    <a id="usssaDrawer" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener" data-close-menu>
-      <span>USSSA Team Page</span><small>Events / details</small>
-    </a>
-
     <a href="#royal" data-close-menu><span>Royal of the Week</span><small>Spotlight</small></a>
     <a href="#donate" data-close-menu><span>Donate</span><small>Cash App QR</small></a>
     <a href="#fundraisers" data-close-menu><span>Fundraisers</span><small>Ways to support</small></a>
     <a href="#highlights" data-close-menu><span>Highlights</span><small>YouTube playlist</small></a>
     <a href="#sponsors" data-close-menu><span>Sponsors</span><small>Supporters</small></a>
     <a href="#links" data-close-menu><span>Links</span><small>Quick links</small></a>
+
+    <!-- ✅ USSSA link (drawer) -->
+    <a id="usssaDrawer" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener" data-close-menu>
+      <span>USSSA Team Page</span><small>Events / details</small>
+    </a>
   </div>
 
   <div class="drawerCtas">
@@ -710,15 +771,13 @@
             <a class="btn" href="#schedule">📅 Schedule</a>
             <a class="btn" href="#announcements">📣 Announcements</a>
             <a class="btn" href="#highlights">🎬 Highlights</a>
-
-            <!-- ✅ USSSA button (hero) -->
             <a class="btn" id="usssaHero" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener">🏟️ USSSA</a>
           </div>
 
           <p class="small" style="margin:12px 0 0; color:var(--muted)">Stay Royal 👑</p>
         </div>
 
-        <div class="card heroSide">
+        <div class="card" style="padding:16px; display:flex; flex-direction:column; gap:12px;">
           <div class="miniCard">
             <h3>Home Field</h3>
             <p><b id="homeFieldName">Stroud Little League Field 2</b><br><span style="color: var(--muted)" id="homeFieldAddr"></span></p>
@@ -727,8 +786,6 @@
             <h3>GameChanger</h3>
             <p><a id="teamChatLink" href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener" style="color:var(--royal)">Join Oklahoma Royals 9U on GameChanger</a></p>
           </div>
-
-          <!-- ✅ USSSA mini card (side) -->
           <div class="miniCard">
             <h3>USSSA</h3>
             <p><a id="usssaSide" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener" style="color:var(--royal)">Open our USSSA team page</a></p>
@@ -821,7 +878,7 @@
 
       <div class="card" style="padding:14px">
         <div class="grid2" style="align-items:center">
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <div style="display:flex; justify-content:space-between; gap:12px; align-items:flex-start">
               <div>
                 <h3 id="rotwName" style="margin:0 0 6px; font-size:18px"></h3>
@@ -832,7 +889,7 @@
             <p id="rotwBio" style="margin:10px 0 0; color:var(--muted)"></p>
           </div>
 
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <div style="display:flex; gap:12px; align-items:center">
               <div class="rotwPhoto">
                 <img id="rotwImg" alt="Royal of the Week photo" src="" />
@@ -859,7 +916,7 @@
 
       <div class="card" style="padding:14px">
         <div class="donateGrid">
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <h3 style="margin:0 0 6px">Support the Oklahoma Royals</h3>
             <p style="margin:0; color:var(--muted)">Scan the QR code to donate via Cash App.</p>
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
@@ -870,7 +927,7 @@
             </p>
           </div>
 
-          <div class="miniCard" style="background: rgba(255,255,255,.86); display:flex; justify-content:center; align-items:center">
+          <div class="miniCard" style="display:flex; justify-content:center; align-items:center">
             <div class="qr" title="Donation QR">
               <div class="qrInner">
                 <img id="donateQrImg" alt="Donation QR code" src="" />
@@ -909,12 +966,12 @@
 
       <div class="card">
         <div class="mediaGrid">
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <iframe id="ytPlayer" class="embed" title="Highlights player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
 
-            <div id="ytPlayerPh" class="ph" style="aspect-ratio:16/9;border-radius:16px;border:1px solid rgba(15,30,122,.12);background:rgba(255,255,255,.86);display:grid;place-items:center;color:rgba(15,30,122,.65)">
+            <div id="ytPlayerPh" class="ph" style="aspect-ratio:16/9;border-radius:16px;border:1px solid rgba(15,30,122,.12);background:rgba(255,255,255,.90);display:grid;place-items:center;color:rgba(15,30,122,.65)">
               Add YouTube links in the <b>Highlights</b> tab to start playing.
             </div>
 
@@ -926,7 +983,7 @@
           </div>
 
           <div>
-            <div class="miniCard" style="background: rgba(255,255,255,.86)">
+            <div class="miniCard">
               <h3 style="margin:0 0 6px">Playlist</h3>
               <p class="small" style="margin:0;color:var(--muted)">
                 Add rows in the <b>Highlights</b> tab (status=active). Team filter buttons apply.
@@ -964,29 +1021,28 @@
 
       <div class="grid2">
         <div class="card" style="padding:14px">
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <h3>GameChanger</h3>
             <p><a href="https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link" target="_blank" rel="noopener" style="color:var(--royal)">Join Oklahoma Royals 9U on GameChanger</a></p>
           </div>
 
-          <!-- ✅ USSSA link (links section) -->
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <h3>USSSA</h3>
             <p><a id="usssaLinks" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener" style="color:var(--royal)">View our USSSA team page</a></p>
           </div>
 
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <h3>Home Field</h3>
             <p><b>Stroud Little League Field 2</b></p>
           </div>
         </div>
 
         <div class="card" style="padding:14px">
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <h3>Contact</h3>
             <p>Check GameChanger for live updates and messaging.</p>
           </div>
-          <div class="miniCard" style="background: rgba(255,255,255,.86)">
+          <div class="miniCard">
             <h3>Donate</h3>
             <p>Cash App: <a id="cashAppLink" href="https://cash.app/$OkRoyals" target="_blank" rel="noopener" style="color:var(--royal)">cash.app/$OkRoyals</a></p>
           </div>
@@ -1024,8 +1080,8 @@
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
 
-  // Ensure all USSSA anchors point to the correct URL (in case you ever change it above)
-  ['usssaTopNav','usssaDrawer','usssaDrawerBtn','usssaHero','usssaSide','usssaLinks'].forEach(id=>{
+  // Ensure all USSSA anchors point to the correct URL
+  ['usssaDrawer','usssaDrawerBtn','usssaHero','usssaSide','usssaLinks'].forEach(id=>{
     const el = document.getElementById(id);
     if (el){ el.href = USSSA_URL; }
   });
@@ -1206,7 +1262,7 @@
       return;
     }
 
-    grid.innerHTML = f.map((p, idx)=>{
+    grid.innerHTML = f.map((p)=>{
       const num = escapeHtml(p.number||'');
       const name= escapeHtml(p.name||'Player');
       const pos = escapeHtml(p.position||'');
@@ -1316,14 +1372,18 @@
     $('#cashAppLink').href = cash;
     $('#cashAppLink').textContent = cash.replace(/^https?:\/\//,'');
 
-    // Optional: if you ever add usssa_url in Site tab, it will override the constant above
+    // Optional override: if you ever add usssa_url in Site tab
     const usssa = (s.usssa_url || "").trim();
     if (usssa){
-      ['usssaTopNav','usssaDrawer','usssaDrawerBtn','usssaHero','usssaSide','usssaLinks'].forEach(id=>{
+      ['usssaDrawer','usssaDrawerBtn','usssaHero','usssaSide','usssaLinks'].forEach(id=>{
         const el = document.getElementById(id);
         if (el){ el.href = usssa; }
       });
     }
+
+    // Slideshow setup
+    setupHeaderSlideshow(s);
+    return s; // helpful for callers
   }
 
   function renderFundraisers(items){
@@ -1395,6 +1455,119 @@
     img.style.display = 'block';
     ph.style.display = 'none';
     img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
+  }
+
+  /* ===== HEADER SLIDESHOW =====
+     In your Site tab, you can use ANY of these:
+     - slideshow_urls  (comma OR newline separated)
+     - slide_1_url, slide_2_url, slide_3_url, slide_4_url, slide_5_url
+     - header_photo_1, header_photo_2, ...
+  */
+  let SHOW = { urls: [], i: 0, t: null, usingA: true };
+
+  function splitUrls(v){
+    return String(v||"")
+      .split(/[\n,]+/g)
+      .map(s=>s.trim())
+      .filter(Boolean);
+  }
+
+  function buildSlideshowUrls(site){
+    const s = site || {};
+    let urls = [];
+
+    urls = urls.concat(splitUrls(s.slideshow_urls));
+    urls = urls.concat(splitUrls(s.slides));
+    urls = urls.concat(splitUrls(s.slideshow));
+
+    for (let k=1;k<=10;k++){
+      urls.push(String(s[`slide_${k}_url`] || s[`slide${k}_url`] || s[`header_photo_${k}`] || "").trim());
+    }
+
+    urls = urls.filter(Boolean);
+
+    // Optional: dedupe
+    const seen = new Set();
+    urls = urls.filter(u=>{
+      if (seen.has(u)) return false;
+      seen.add(u);
+      return true;
+    });
+
+    return urls;
+  }
+
+  function renderShowcaseDots(){
+    const dots = $('#showcaseDots');
+    if (!dots) return;
+    dots.innerHTML = "";
+    SHOW.urls.forEach((_, idx)=>{
+      const d = document.createElement('div');
+      d.className = 'sdot' + (idx===SHOW.i ? ' on' : '');
+      dots.appendChild(d);
+    });
+  }
+
+  function setShowcaseUrl(url){
+    const a = $('#showcaseImgA');
+    const b = $('#showcaseImgB');
+    const ph = $('#showcasePh');
+
+    if (!url){
+      ph.style.display = 'grid';
+      a.classList.remove('on');
+      b.classList.remove('on');
+      return;
+    }
+
+    ph.style.display = 'none';
+
+    const next = SHOW.usingA ? a : b;
+    const cur  = SHOW.usingA ? b : a;
+
+    next.src = url;
+    next.onload = ()=>{
+      cur.classList.remove('on');
+      next.classList.add('on');
+      SHOW.usingA = !SHOW.usingA;
+    };
+    next.onerror = ()=>{
+      // skip bad image
+      advanceShowcase(true);
+    };
+  }
+
+  function advanceShowcase(fromError=false){
+    if (!SHOW.urls.length) return;
+    SHOW.i = (SHOW.i + 1) % SHOW.urls.length;
+    renderShowcaseDots();
+    setShowcaseUrl(SHOW.urls[SHOW.i]);
+
+    if (fromError && SHOW.urls.length === 1){
+      // avoid infinite loop if single broken url
+      $('#showcasePh').style.display = 'grid';
+    }
+  }
+
+  function setupHeaderSlideshow(site){
+    const urls = buildSlideshowUrls(site);
+    SHOW.urls = urls;
+    SHOW.i = 0;
+
+    renderShowcaseDots();
+
+    if (!urls.length){
+      setShowcaseUrl("");
+      if (SHOW.t) clearInterval(SHOW.t);
+      SHOW.t = null;
+      return;
+    }
+
+    // start with first
+    setShowcaseUrl(urls[0]);
+
+    if (SHOW.t) clearInterval(SHOW.t);
+    SHOW.t = setInterval(()=>advanceShowcase(false), 4200);
   }
 
   /* ===== YouTube Highlights ===== */
@@ -1531,6 +1704,7 @@
 
   $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>setTeam(btn.getAttribute('data-team-filter')||'All')));
 
+  /* ===== MENU (FIXED + EXTRA SAFE) ===== */
   function openMenu(){
     document.body.classList.add('menuOpen');
     $('#openMenu')?.setAttribute('aria-expanded','true');
@@ -1539,8 +1713,16 @@
     document.body.classList.remove('menuOpen');
     $('#openMenu')?.setAttribute('aria-expanded','false');
   }
-  $('#openMenu')?.addEventListener('click', openMenu);
-  $('#closeMenu')?.addEventListener('click', closeMenu);
+
+  // click + touch support (some mobile browsers are weird)
+  const openBtn = $('#openMenu');
+  const closeBtn = $('#closeMenu');
+  openBtn?.addEventListener('click', (e)=>{ e.preventDefault(); openMenu(); });
+  openBtn?.addEventListener('touchend', (e)=>{ e.preventDefault(); openMenu(); }, {passive:false});
+
+  closeBtn?.addEventListener('click', (e)=>{ e.preventDefault(); closeMenu(); });
+  closeBtn?.addEventListener('touchend', (e)=>{ e.preventDefault(); closeMenu(); }, {passive:false});
+
   $('#drawerOverlay')?.addEventListener('click', closeMenu);
   $$('[data-close-menu]').forEach(a=>a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeMenu(); });
@@ -1572,7 +1754,7 @@
       window.__rost = rost;
       window.__hl = highlights;
 
-      renderSite(site);
+      const siteObj = renderSite(site);
       renderAnnouncements(ann);
       renderSchedule(sched);
       renderRoster(rost);
@@ -1582,7 +1764,7 @@
       renderHighlights(highlights);
 
       setTeam('All');
-      setupDonateQr(site[0] || {});
+      setupDonateQr(siteObj || site[0] || {});
 
     } catch(err){
       console.error(err);
@@ -1596,4 +1778,4 @@
 </script>
 
 </body>
-</html>
+  </html>
