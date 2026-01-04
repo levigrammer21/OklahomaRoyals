@@ -9,14 +9,15 @@
   <style>
     :root{
       /* ===== ROYAL + BRIGHT (SOFTER) THEME ===== */
-      --bg:#eef3ff;
+      --bg:#eef3ff;                /* slightly less bright */
       --text:#0b1020;
       --muted:#55627a;
 
       --royal:#1E3EFF;
       --royal2:#0F1E7A;
 
-      --gold:#d7b35c;
+      /* Gold tuned away from “yellow” */
+      --gold:#d7b35c;              /* rich antique gold */
       --goldSoft: rgba(215,179,92,.18);
 
       --good:#16a34a;
@@ -44,6 +45,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       line-height:1.45;
+
       background:
         radial-gradient(900px 520px at 12% -10%, rgba(30,62,255,.16), transparent 62%),
         radial-gradient(900px 520px at 92% 0%, rgba(215,179,92,.20), transparent 62%),
@@ -111,6 +113,87 @@
 
     .brand h1{font-size:14px; margin:0}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
+
+    /* ===== HEADER SLIDESHOW (TOP) ===== */
+    .headerShowcase{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      z-index:1;
+      min-width: 160px;
+    }
+    .showcaseBox{
+      width: min(520px, 52vw);
+      height: 52px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.14);
+      background:
+        radial-gradient(320px 80px at 20% 0%, rgba(30,62,255,.12), transparent 60%),
+        radial-gradient(280px 80px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
+        rgba(255,255,255,.88);
+      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
+      position:relative;
+    }
+    .showcaseBox:before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
+      opacity:.35;
+      pointer-events:none;
+    }
+    .showcaseInner{
+      position:absolute; inset:6px;
+      border-radius: 14px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.12);
+      background: rgba(255,255,255,.92);
+    }
+    .showcaseImg{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      opacity:0;
+      transform: scale(1.02);
+      transition: opacity 600ms ease, transform 1200ms ease;
+      display:block;
+    }
+    .showcaseImg.on{
+      opacity:1;
+      transform: scale(1);
+    }
+    .showcasePh{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      color: rgba(15,30,122,.70);
+      font-weight:900;
+      font-size:12px;
+      padding: 0 10px;
+      text-align:center;
+    }
+    .showcaseDots{
+      position:absolute;
+      right:10px;
+      bottom:8px;
+      display:flex;
+      gap:6px;
+      z-index:2;
+    }
+    .sdot{
+      width:8px; height:8px;
+      border-radius:999px;
+      border:1px solid rgba(15,30,122,.18);
+      background: rgba(15,30,122,.10);
+      box-shadow: 0 0 14px rgba(30,62,255,.14);
+    }
+    .sdot.on{
+      background: rgba(215,179,92,.95);
+      border-color: rgba(215,179,92,.55);
+      box-shadow: var(--glowGold);
+    }
 
     /* ===== MOBILE HAMBURGER (MENU) ===== */
     .hamburger{
@@ -294,6 +377,13 @@
       box-shadow: var(--shadow), var(--glowRoyal);
     }
 
+    section{padding: 18px 0; position:relative; z-index:1}
+    .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom: 12px;}
+    .sectionHead h2{margin:0; font-size:18px; color: var(--royal2)}
+    .sectionHead p{margin:0; color:var(--muted); font-size:13px}
+
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+
     .pill{
       font-size:12px; color: rgba(15,30,122,.78);
       border:1px solid rgba(15,30,122,.14);
@@ -313,13 +403,6 @@
     }
     .status.good{border-color: rgba(22,163,74,.30); color: rgba(20,90,40,1); background: rgba(22,163,74,.10)}
     .status.warn{border-color: rgba(245,158,11,.35); color: rgba(120,65,0,1); background: rgba(245,158,11,.12)}
-
-    section{padding: 18px 0; position:relative; z-index:1}
-    .sectionHead{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom: 12px;}
-    .sectionHead h2{margin:0; font-size:18px; color: var(--royal2)}
-    .sectionHead p{margin:0; color:var(--muted); font-size:13px}
-
-    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
 
     .wrap{padding:14px}
     .controls{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
@@ -549,84 +632,6 @@
     .rosterScroll::-webkit-scrollbar-thumb:hover{background: rgba(15,30,122,.26)}
     .rosterScroll::-webkit-scrollbar-track{background: rgba(15,30,122,.06); border-radius:999px}
 
-    /* ===== HERO SLIDESHOW (BIG SQUARE) ===== */
-    .heroShowcaseRow{
-      display:flex;
-      align-items:flex-start;
-      justify-content:flex-start;
-      margin-top:14px;
-    }
-    .showcaseBox{
-      width: min(340px, 92vw);
-      height: min(340px, 92vw);
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid rgba(15,30,122,.14);
-      background:
-        radial-gradient(380px 140px at 20% 0%, rgba(30,62,255,.12), transparent 60%),
-        radial-gradient(320px 160px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
-        rgba(255,255,255,.88);
-      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
-      position:relative;
-    }
-    .showcaseBox:before{
-      content:"";
-      position:absolute; inset:-1px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
-      opacity:.35;
-      pointer-events:none;
-    }
-    .showcaseInner{
-      position:absolute; inset:8px;
-      border-radius: 16px;
-      overflow:hidden;
-      border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.92);
-    }
-    .showcaseImg{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:0;
-      transform: scale(1.02);
-      transition: opacity 600ms ease, transform 1200ms ease;
-      display:block;
-    }
-    .showcaseImg.on{
-      opacity:1;
-      transform: scale(1);
-    }
-    .showcasePh{
-      position:absolute; inset:0;
-      display:grid; place-items:center;
-      color: rgba(15,30,122,.70);
-      font-weight:900;
-      font-size:13px;
-      padding: 0 14px;
-      text-align:center;
-    }
-    .showcaseDots{
-      position:absolute;
-      right:12px;
-      bottom:12px;
-      display:flex;
-      gap:7px;
-      z-index:2;
-    }
-    .sdot{
-      width:9px; height:9px;
-      border-radius:999px;
-      border:1px solid rgba(15,30,122,.18);
-      background: rgba(15,30,122,.10);
-      box-shadow: 0 0 14px rgba(30,62,255,.14);
-    }
-    .sdot.on{
-      background: rgba(215,179,92,.95);
-      border-color: rgba(215,179,92,.55);
-      box-shadow: var(--glowGold);
-    }
-
     footer{padding: 28px 0 44px; color: var(--muted); position:relative; z-index:1}
     .foot{
       display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
@@ -643,6 +648,7 @@
       .donateGrid{grid-template-columns: 1fr}
       .mediaGrid{grid-template-columns: 1fr}
       .rosterScroll{max-height: 540px}
+      .showcaseBox{width: min(520px, 46vw)}
     }
 
     @media (max-width: 720px){
@@ -653,6 +659,14 @@
       .heroTitle{font-size: 32px}
       .rosterScroll{max-height: 540px}
       .brand{min-width:auto}
+      .showcaseBox{
+        width: 58vw;
+        height: 48px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .showcaseBox{width: 56vw}
     }
   </style>
 </head>
@@ -672,7 +686,19 @@
         </div>
       </a>
 
-      <!-- ✅ Menu button only (all nav links are inside the drawer) -->
+      <!-- ✅ Slideshow box (TOP) -->
+      <div class="headerShowcase" aria-label="Header slideshow">
+        <div class="showcaseBox" id="showcaseBox" title="Royals photos">
+          <div class="showcaseInner">
+            <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
+            <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
+            <div class="showcasePh" id="showcasePh">Add photos in Site tab column <b>slideshow_urls</b> (one per row is OK)</div>
+          </div>
+          <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- ✅ Menu button only -->
       <button class="hamburger" id="openMenu" type="button" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -713,9 +739,7 @@
   </div>
 
   <div class="drawerCtas">
-    <button class="btn" type="button" data-team-filter="All">All</button>
-    <button class="btn" type="button" data-team-filter="9U">🔥 9U</button>
-    <button class="btn" type="button" data-team-filter="8U">⚡ 8U</button>
+    <a class="btn" href="#schedule" data-close-menu>📅 Schedule</a>
     <a class="btn primary" href="#donate" data-close-menu>❤️ Donate</a>
     <a class="btn" id="usssaDrawerBtn" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener" data-close-menu>🏟️ USSSA</a>
   </div>
@@ -735,17 +759,7 @@
           <h2 class="heroTitle">Royals <span class="glow">HQ</span></h2>
           <p class="heroDesc">Schedules, updates, links, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
 
-          <!-- ✅ BIG SQUARE SLIDESHOW (MOVED HERE) -->
-          <div class="heroShowcaseRow" aria-label="Royals hero slideshow">
-            <div class="showcaseBox" id="showcaseBox" title="Royals photos">
-              <div class="showcaseInner">
-                <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
-                <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
-                <div class="showcasePh" id="showcasePh">Add photos in the <b>Site</b> tab: <b>slideshow_urls</b> (or <b>slide_1_url</b>…)</div>
-              </div>
-              <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
-            </div>
-          </div>
+          <!-- ✅ Removed top nav buttons on purpose (menu covers navigation) -->
 
           <p class="small" style="margin:12px 0 0; color:var(--muted)">Stay Royal 👑</p>
         </div>
@@ -895,9 +909,6 @@
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
               <a class="btn primary" id="cashAppBtn" href="https://cash.app/$OkRoyals" target="_blank" rel="noopener">Open Cash App</a>
             </div>
-            <p class="small" style="margin:10px 0 0; color:rgba(85,98,122,.92)">
-              Tip: you can set your own QR image in the <b>Site</b> tab with <b>donate_qr_url</b> (or <b>qr_url</b>).
-            </p>
           </div>
 
           <div class="miniCard" style="display:flex; justify-content:center; align-items:center">
@@ -959,7 +970,7 @@
             <div class="miniCard">
               <h3 style="margin:0 0 6px">Playlist</h3>
               <p class="small" style="margin:0;color:var(--muted)">
-                Add rows in the <b>Highlights</b> tab (status=active). Team filter applies from menu.
+                Add rows in the <b>Highlights</b> tab (status=active). Team filter buttons apply.
               </p>
             </div>
 
@@ -1128,8 +1139,8 @@
   }
 
   function setTeam(team){
-    ACTIVE_TEAM = team || "All";
-    $$('[data-team-filter]').forEach(b=>b.classList.toggle('primary', b.getAttribute('data-team-filter')===ACTIVE_TEAM));
+    ACTIVE_TEAM = team;
+    $$('[data-team-filter]').forEach(b=>b.classList.toggle('primary', b.getAttribute('data-team-filter')===team));
     renderAnnouncements(window.__ann || []);
     renderSchedule(window.__sched || []);
     renderRoster(window.__rost || []);
@@ -1329,24 +1340,38 @@
     }
   }
 
+  /* =======================
+     SITE TAB (FIXED)
+     - you can add 1 slideshow image PER ROW in column slideshow_urls
+     - other settings use the first non-empty value down their column
+  ======================= */
   function renderSite(items){
-    const s = items[0] || {};
-    $('#homeFieldName').textContent = s.home_field_name || 'Stroud Little League Field 2';
-    $('#homeFieldAddr').textContent = s.home_field_address || '';
+    const rows = Array.isArray(items) ? items : [];
+    const first = rows[0] || {};
 
-    const chatLabel = s.team_chat_label || 'Join Oklahoma Royals 9U on GameChanger';
-    const chatUrl = s.team_chat_url || 'https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link';
+    const pick = (key, fallback="")=>{
+      for (const r of rows){
+        const v = String((r && r[key]) || "").trim();
+        if (v) return v;
+      }
+      return fallback;
+    };
+
+    $('#homeFieldName').textContent = pick('home_field_name', 'Stroud Little League Field 2');
+    $('#homeFieldAddr').textContent = pick('home_field_address', '');
+
+    const chatLabel = pick('team_chat_label', 'Join Oklahoma Royals 9U on GameChanger');
+    const chatUrl   = pick('team_chat_url', 'https://web.gc.com/teams/MoEKfeIw0z3C/live/?pid=team_share_link&c=team_share_link');
     const link = $('#teamChatLink');
     link.textContent = chatLabel;
     link.href = chatUrl;
 
-    const cash = (s.cash_app_url || 'https://cash.app/$OkRoyals').trim();
+    const cash = pick('cash_app_url', 'https://cash.app/$OkRoyals');
     $('#cashAppBtn').href = cash;
     $('#cashAppLink').href = cash;
     $('#cashAppLink').textContent = cash.replace(/^https?:\/\//,'');
 
-    // Optional override: if you ever add usssa_url in Site tab
-    const usssa = (s.usssa_url || "").trim();
+    const usssa = pick('usssa_url', '');
     if (usssa){
       ['usssaDrawer','usssaDrawerBtn','usssaSide','usssaLinks'].forEach(id=>{
         const el = document.getElementById(id);
@@ -1354,9 +1379,21 @@
       });
     }
 
-    // Slideshow setup (now HERO)
-    setupHeroSlideshow(s);
-    return s;
+    // ✅ slideshow reads ALL Site rows
+    setupHeaderSlideshow(rows);
+
+    // return merged-ish object for donate qr
+    return {
+      ...first,
+      home_field_name: pick('home_field_name', first.home_field_name || ''),
+      home_field_address: pick('home_field_address', first.home_field_address || ''),
+      team_chat_label: pick('team_chat_label', first.team_chat_label || ''),
+      team_chat_url: pick('team_chat_url', first.team_chat_url || ''),
+      cash_app_url: pick('cash_app_url', first.cash_app_url || ''),
+      donate_qr_url: pick('donate_qr_url', first.donate_qr_url || ''),
+      qr_url: pick('qr_url', first.qr_url || ''),
+      usssa_url: pick('usssa_url', first.usssa_url || '')
+    };
   }
 
   function renderFundraisers(items){
@@ -1430,7 +1467,7 @@
     img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
   }
 
-  /* ===== HERO SLIDESHOW ===== */
+  /* ===== HEADER SLIDESHOW ===== */
   let SHOW = { urls: [], i: 0, t: null, usingA: true };
 
   function splitUrls(v){
@@ -1440,20 +1477,36 @@
       .filter(Boolean);
   }
 
-  function buildSlideshowUrls(site){
-    const s = site || {};
+  // ✅ FIX: build slideshow urls from ALL Site rows
+  function buildSlideshowUrls(siteRows){
+    const rows = Array.isArray(siteRows) ? siteRows : [siteRows || {}];
     let urls = [];
 
-    urls = urls.concat(splitUrls(s.slideshow_urls));
-    urls = urls.concat(splitUrls(s.slides));
-    urls = urls.concat(splitUrls(s.slideshow));
+    rows.forEach(s=>{
+      if (!s) return;
 
-    for (let k=1;k<=10;k++){
-      urls.push(String(s[`slide_${k}_url`] || s[`slide${k}_url`] || s[`header_photo_${k}`] || "").trim());
-    }
+      urls = urls.concat(splitUrls(s.slideshow_urls));
+      urls = urls.concat(splitUrls(s.slides));
+      urls = urls.concat(splitUrls(s.slideshow));
+
+      // optional aliases
+      urls = urls.concat(splitUrls(s.slideshow_url));
+      urls = urls.concat(splitUrls(s.photo_url));
+
+      for (let k=1;k<=20;k++){
+        urls.push(String(
+          s[`slide_${k}_url`] ||
+          s[`slide${k}_url`] ||
+          s[`header_photo_${k}`] ||
+          s[`header_photo${k}`] ||
+          ""
+        ).trim());
+      }
+    });
 
     urls = urls.filter(Boolean);
 
+    // dedupe
     const seen = new Set();
     urls = urls.filter(u=>{
       if (seen.has(u)) return false;
@@ -1514,8 +1567,9 @@
     }
   }
 
-  function setupHeroSlideshow(site){
-    const urls = buildSlideshowUrls(site);
+  // ✅ FIX: setup uses ALL rows, not just first
+  function setupHeaderSlideshow(siteRows){
+    const urls = buildSlideshowUrls(siteRows);
     SHOW.urls = urls;
     SHOW.i = 0;
 
@@ -1666,12 +1720,7 @@
   rosterSearch.addEventListener('input', filterRoster);
   $('#resetRoster').addEventListener('click', ()=>{ rosterSearch.value=''; filterRoster(); });
 
-  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>{
-    setTeam(btn.getAttribute('data-team-filter')||'All');
-    closeMenu();
-  }));
-
-  /* ===== MENU (FIXED + EXTRA SAFE) ===== */
+  /* ===== MENU ===== */
   function openMenu(){
     document.body.classList.add('menuOpen');
     $('#openMenu')?.setAttribute('aria-expanded','true');
