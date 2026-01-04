@@ -9,15 +9,14 @@
   <style>
     :root{
       /* ===== ROYAL + BRIGHT (SOFTER) THEME ===== */
-      --bg:#eef3ff;                /* slightly less bright */
+      --bg:#eef3ff;
       --text:#0b1020;
       --muted:#55627a;
 
       --royal:#1E3EFF;
       --royal2:#0F1E7A;
 
-      /* Gold tuned away from “yellow” */
-      --gold:#d7b35c;              /* rich antique gold */
+      --gold:#d7b35c;
       --goldSoft: rgba(215,179,92,.18);
 
       --good:#16a34a;
@@ -54,7 +53,6 @@
       background-attachment: fixed;
     }
 
-    /* watermark layer */
     body:before{
       content:"";
       position:fixed;
@@ -113,87 +111,6 @@
 
     .brand h1{font-size:14px; margin:0}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
-
-    /* ===== HEADER SLIDESHOW (TOP) ===== */
-    .headerShowcase{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      z-index:1;
-      min-width: 160px;
-    }
-    .showcaseBox{
-      width: min(520px, 52vw);
-      height: 52px;
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(15,30,122,.14);
-      background:
-        radial-gradient(320px 80px at 20% 0%, rgba(30,62,255,.12), transparent 60%),
-        radial-gradient(280px 80px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
-        rgba(255,255,255,.88);
-      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
-      position:relative;
-    }
-    .showcaseBox:before{
-      content:"";
-      position:absolute; inset:-1px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
-      opacity:.35;
-      pointer-events:none;
-    }
-    .showcaseInner{
-      position:absolute; inset:6px;
-      border-radius: 14px;
-      overflow:hidden;
-      border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.92);
-    }
-    .showcaseImg{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:0;
-      transform: scale(1.02);
-      transition: opacity 600ms ease, transform 1200ms ease;
-      display:block;
-    }
-    .showcaseImg.on{
-      opacity:1;
-      transform: scale(1);
-    }
-    .showcasePh{
-      position:absolute; inset:0;
-      display:grid; place-items:center;
-      color: rgba(15,30,122,.70);
-      font-weight:900;
-      font-size:12px;
-      padding: 0 10px;
-      text-align:center;
-    }
-    .showcaseDots{
-      position:absolute;
-      right:10px;
-      bottom:8px;
-      display:flex;
-      gap:6px;
-      z-index:2;
-    }
-    .sdot{
-      width:8px; height:8px;
-      border-radius:999px;
-      border:1px solid rgba(15,30,122,.18);
-      background: rgba(15,30,122,.10);
-      box-shadow: 0 0 14px rgba(30,62,255,.14);
-    }
-    .sdot.on{
-      background: rgba(215,179,92,.95);
-      border-color: rgba(215,179,92,.55);
-      box-shadow: var(--glowGold);
-    }
 
     /* ===== MOBILE HAMBURGER (MENU) ===== */
     .hamburger{
@@ -342,7 +259,83 @@
       color: var(--royal);
       text-shadow: 0 0 18px rgba(30,62,255,.18);
     }
-    .heroDesc{margin:0 0 16px; color:var(--muted); max-width: 62ch}
+    .heroDesc{margin:0 0 14px; color:var(--muted); max-width: 62ch}
+
+    /* ===== HERO SLIDESHOW (UNDER ROYALS HQ) ===== */
+    .heroShowcase{
+      margin-top: 12px;
+      width: 100%;
+    }
+    .showcaseBox{
+      width: 100%;
+      height: 190px;               /* ✅ big like your screenshot box */
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.14);
+      background:
+        radial-gradient(520px 220px at 10% 0%, rgba(30,62,255,.12), transparent 60%),
+        radial-gradient(480px 240px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
+        rgba(255,255,255,.88);
+      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
+      position:relative;
+    }
+    .showcaseBox:before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
+      opacity:.35;
+      pointer-events:none;
+    }
+    .showcaseInner{
+      position:absolute; inset:10px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.12);
+      background: rgba(255,255,255,.92);
+    }
+    .showcaseImg{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      opacity:0;
+      transform: scale(1.02);
+      transition: opacity 650ms ease, transform 1200ms ease;
+      display:block;
+    }
+    .showcaseImg.on{
+      opacity:1;
+      transform: scale(1);
+    }
+    .showcasePh{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      color: rgba(15,30,122,.70);
+      font-weight:1000;
+      font-size:14px;
+      padding: 0 18px;
+      text-align:center;
+    }
+    .showcaseDots{
+      position:absolute;
+      right:16px;
+      bottom:16px;
+      display:flex;
+      gap:8px;
+      z-index:2;
+    }
+    .sdot{
+      width:10px; height:10px;
+      border-radius:999px;
+      border:1px solid rgba(15,30,122,.18);
+      background: rgba(15,30,122,.10);
+      box-shadow: 0 0 14px rgba(30,62,255,.14);
+    }
+    .sdot.on{
+      background: rgba(215,179,92,.95);
+      border-color: rgba(215,179,92,.55);
+      box-shadow: var(--glowGold);
+    }
 
     .miniCard{
       border-radius:16px;
@@ -617,7 +610,6 @@
     }
     .miniBtn:hover{background:#fff}
 
-    /* roster scroll box */
     .rosterScroll{
       border-radius: 18px;
       border: 1px solid rgba(15,30,122,.12);
@@ -648,7 +640,6 @@
       .donateGrid{grid-template-columns: 1fr}
       .mediaGrid{grid-template-columns: 1fr}
       .rosterScroll{max-height: 540px}
-      .showcaseBox{width: min(520px, 46vw)}
     }
 
     @media (max-width: 720px){
@@ -659,14 +650,7 @@
       .heroTitle{font-size: 32px}
       .rosterScroll{max-height: 540px}
       .brand{min-width:auto}
-      .showcaseBox{
-        width: 58vw;
-        height: 48px;
-      }
-    }
-
-    @media (max-width: 420px){
-      .showcaseBox{width: 56vw}
+      .showcaseBox{height: 210px}
     }
   </style>
 </head>
@@ -686,19 +670,8 @@
         </div>
       </a>
 
-      <!-- ✅ Slideshow box (TOP) -->
-      <div class="headerShowcase" aria-label="Header slideshow">
-        <div class="showcaseBox" id="showcaseBox" title="Royals photos">
-          <div class="showcaseInner">
-            <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
-            <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
-            <div class="showcasePh" id="showcasePh">Add photos in Site tab column <b>slideshow_urls</b> (one per row is OK)</div>
-          </div>
-          <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
-        </div>
-      </div>
+      <!-- ✅ no slideshow in header now -->
 
-      <!-- ✅ Menu button only -->
       <button class="hamburger" id="openMenu" type="button" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -706,7 +679,6 @@
   </div>
 </header>
 
-<!-- Mobile menu drawer -->
 <div class="drawerOverlay" id="drawerOverlay" aria-hidden="true"></div>
 <aside class="drawer" id="mobileDrawer" aria-label="Mobile menu" role="dialog" aria-modal="true">
   <div class="drawerTop">
@@ -759,7 +731,19 @@
           <h2 class="heroTitle">Royals <span class="glow">HQ</span></h2>
           <p class="heroDesc">Schedules, updates, links, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
 
-          <!-- ✅ Removed top nav buttons on purpose (menu covers navigation) -->
+          <!-- ✅ PUT BACK THE BIG ROTATING BOX UNDER ROYALS HQ -->
+          <div class="heroShowcase" aria-label="Hero slideshow">
+            <div class="showcaseBox" id="showcaseBox" title="Royals photos">
+              <div class="showcaseInner">
+                <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
+                <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
+                <div class="showcasePh" id="showcasePh">
+                  Add photos in the Site tab column <b>slideshow_urls</b> (one per row is OK)
+                </div>
+              </div>
+              <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
+            </div>
+          </div>
 
           <p class="small" style="margin:12px 0 0; color:var(--muted)">Stay Royal 👑</p>
         </div>
@@ -1064,7 +1048,6 @@
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
 
-  // Ensure all USSSA anchors point to the correct URL
   ['usssaDrawer','usssaDrawerBtn','usssaSide','usssaLinks'].forEach(id=>{
     const el = document.getElementById(id);
     if (el){ el.href = USSSA_URL; }
@@ -1136,15 +1119,6 @@
     if (!t || t.toLowerCase()==='all') return true;
     if (ACTIVE_TEAM==='All') return true;
     return t.toLowerCase()===ACTIVE_TEAM.toLowerCase();
-  }
-
-  function setTeam(team){
-    ACTIVE_TEAM = team;
-    $$('[data-team-filter]').forEach(b=>b.classList.toggle('primary', b.getAttribute('data-team-filter')===team));
-    renderAnnouncements(window.__ann || []);
-    renderSchedule(window.__sched || []);
-    renderRoster(window.__rost || []);
-    renderHighlights(window.__hl || []);
   }
 
   function renderAnnouncements(items){
@@ -1342,8 +1316,8 @@
 
   /* =======================
      SITE TAB (FIXED)
-     - you can add 1 slideshow image PER ROW in column slideshow_urls
-     - other settings use the first non-empty value down their column
+     - 1 image per row in column slideshow_urls
+     - rotation reads ALL rows
   ======================= */
   function renderSite(items){
     const rows = Array.isArray(items) ? items : [];
@@ -1380,9 +1354,8 @@
     }
 
     // ✅ slideshow reads ALL Site rows
-    setupHeaderSlideshow(rows);
+    setupHeroSlideshow(rows);
 
-    // return merged-ish object for donate qr
     return {
       ...first,
       home_field_name: pick('home_field_name', first.home_field_name || ''),
@@ -1467,7 +1440,7 @@
     img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
   }
 
-  /* ===== HEADER SLIDESHOW ===== */
+  /* ===== HERO SLIDESHOW (UNDER ROYALS HQ) ===== */
   let SHOW = { urls: [], i: 0, t: null, usingA: true };
 
   function splitUrls(v){
@@ -1477,7 +1450,6 @@
       .filter(Boolean);
   }
 
-  // ✅ FIX: build slideshow urls from ALL Site rows
   function buildSlideshowUrls(siteRows){
     const rows = Array.isArray(siteRows) ? siteRows : [siteRows || {}];
     let urls = [];
@@ -1489,11 +1461,10 @@
       urls = urls.concat(splitUrls(s.slides));
       urls = urls.concat(splitUrls(s.slideshow));
 
-      // optional aliases
       urls = urls.concat(splitUrls(s.slideshow_url));
       urls = urls.concat(splitUrls(s.photo_url));
 
-      for (let k=1;k<=20;k++){
+      for (let k=1;k<=30;k++){
         urls.push(String(
           s[`slide_${k}_url`] ||
           s[`slide${k}_url`] ||
@@ -1506,7 +1477,6 @@
 
     urls = urls.filter(Boolean);
 
-    // dedupe
     const seen = new Set();
     urls = urls.filter(u=>{
       if (seen.has(u)) return false;
@@ -1567,8 +1537,7 @@
     }
   }
 
-  // ✅ FIX: setup uses ALL rows, not just first
-  function setupHeaderSlideshow(siteRows){
+  function setupHeroSlideshow(siteRows){
     const urls = buildSlideshowUrls(siteRows);
     SHOW.urls = urls;
     SHOW.i = 0;
@@ -1778,7 +1747,6 @@
       renderSponsors(sponsors);
       renderHighlights(highlights);
 
-      setTeam('All');
       setupDonateQr(siteObj || site[0] || {});
 
     } catch(err){
