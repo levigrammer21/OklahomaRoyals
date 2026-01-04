@@ -115,87 +115,6 @@
     .brand h1{font-size:14px; margin:0}
     .brand p{margin:0; font-size:12px; color:var(--muted)}
 
-    /* ===== HEADER SLIDESHOW (REPLACES TOP BUTTONS) ===== */
-    .headerShowcase{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      z-index:1;
-      min-width: 160px;
-    }
-    .showcaseBox{
-      width: min(520px, 52vw);
-      height: 52px;
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(15,30,122,.14);
-      background:
-        radial-gradient(320px 80px at 20% 0%, rgba(30,62,255,.12), transparent 60%),
-        radial-gradient(280px 80px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
-        rgba(255,255,255,.88);
-      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
-      position:relative;
-    }
-    .showcaseBox:before{
-      content:"";
-      position:absolute; inset:-1px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
-      opacity:.35;
-      pointer-events:none;
-    }
-    .showcaseInner{
-      position:absolute; inset:6px;
-      border-radius: 14px;
-      overflow:hidden;
-      border:1px solid rgba(15,30,122,.12);
-      background: rgba(255,255,255,.92);
-    }
-    .showcaseImg{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:0;
-      transform: scale(1.02);
-      transition: opacity 600ms ease, transform 1200ms ease;
-      display:block;
-    }
-    .showcaseImg.on{
-      opacity:1;
-      transform: scale(1);
-    }
-    .showcasePh{
-      position:absolute; inset:0;
-      display:grid; place-items:center;
-      color: rgba(15,30,122,.70);
-      font-weight:900;
-      font-size:12px;
-      padding: 0 10px;
-      text-align:center;
-    }
-    .showcaseDots{
-      position:absolute;
-      right:10px;
-      bottom:8px;
-      display:flex;
-      gap:6px;
-      z-index:2;
-    }
-    .sdot{
-      width:8px; height:8px;
-      border-radius:999px;
-      border:1px solid rgba(15,30,122,.18);
-      background: rgba(15,30,122,.10);
-      box-shadow: 0 0 14px rgba(30,62,255,.14);
-    }
-    .sdot.on{
-      background: rgba(215,179,92,.95);
-      border-color: rgba(215,179,92,.55);
-      box-shadow: var(--glowGold);
-    }
-
     /* ===== MOBILE HAMBURGER (MENU) ===== */
     .hamburger{
       width:44px; height:44px;
@@ -344,7 +263,86 @@
       text-shadow: 0 0 18px rgba(30,62,255,.18);
     }
     .heroDesc{margin:0 0 16px; color:var(--muted); max-width: 62ch}
-    .heroActions{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* ===== HERO SLIDESHOW (SQUARE) ===== */
+    .heroShowcaseRow{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .showcaseBox{
+      width: 230px;
+      height: 230px;
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.14);
+      background:
+        radial-gradient(320px 120px at 20% 0%, rgba(30,62,255,.12), transparent 60%),
+        radial-gradient(280px 140px at 90% 100%, rgba(215,179,92,.18), transparent 62%),
+        rgba(255,255,255,.88);
+      box-shadow: var(--shadow2), var(--glowRoyal), var(--glowGold);
+      position:relative;
+      flex: 0 0 auto;
+    }
+    .showcaseBox:before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(30,62,255,.22), rgba(215,179,92,.18));
+      opacity:.35;
+      pointer-events:none;
+    }
+    .showcaseInner{
+      position:absolute; inset:8px;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(15,30,122,.12);
+      background: rgba(255,255,255,.92);
+    }
+    .showcaseImg{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      opacity:0;
+      transform: scale(1.03);
+      transition: opacity 600ms ease, transform 1200ms ease;
+      display:block;
+    }
+    .showcaseImg.on{
+      opacity:1;
+      transform: scale(1);
+    }
+    .showcasePh{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      color: rgba(15,30,122,.72);
+      font-weight:1000;
+      font-size:12px;
+      padding: 14px;
+      text-align:center;
+    }
+    .showcaseDots{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      display:flex;
+      gap:7px;
+      z-index:2;
+    }
+    .sdot{
+      width:9px; height:9px;
+      border-radius:999px;
+      border:1px solid rgba(15,30,122,.18);
+      background: rgba(15,30,122,.10);
+      box-shadow: 0 0 14px rgba(30,62,255,.14);
+    }
+    .sdot.on{
+      background: rgba(215,179,92,.95);
+      border-color: rgba(215,179,92,.55);
+      box-shadow: var(--glowGold);
+    }
 
     .miniCard{
       border-radius:16px;
@@ -650,7 +648,7 @@
       .donateGrid{grid-template-columns: 1fr}
       .mediaGrid{grid-template-columns: 1fr}
       .rosterScroll{max-height: 540px}
-      .showcaseBox{width: min(520px, 46vw)}
+      .showcaseBox{width: 220px; height:220px}
     }
 
     @media (max-width: 720px){
@@ -661,14 +659,11 @@
       .heroTitle{font-size: 32px}
       .rosterScroll{max-height: 540px}
       .brand{min-width:auto}
-      .showcaseBox{
-        width: 58vw;
-        height: 48px;
-      }
+      .showcaseBox{width: 210px; height:210px}
     }
 
     @media (max-width: 420px){
-      .showcaseBox{width: 56vw}
+      .showcaseBox{width: 200px; height:200px}
     }
   </style>
 </head>
@@ -688,19 +683,7 @@
         </div>
       </a>
 
-      <!-- ✅ Slideshow box replaces the top buttons -->
-      <div class="headerShowcase" aria-label="Header slideshow">
-        <div class="showcaseBox" id="showcaseBox" title="Royals photos">
-          <div class="showcaseInner">
-            <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
-            <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
-            <div class="showcasePh" id="showcasePh">Add photos to the slideshow (see Site tab: <b>slideshow_urls</b> or <b>slide_1_url</b>…)</div>
-          </div>
-          <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
-        </div>
-      </div>
-
-      <!-- ✅ Menu button only (all nav links are inside the drawer) -->
+      <!-- ✅ Menu button only (nav links are inside the drawer) -->
       <button class="hamburger" id="openMenu" type="button" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -762,16 +745,24 @@
           <h2 class="heroTitle">Royals <span class="glow">HQ</span></h2>
           <p class="heroDesc">Schedules, updates, links, and highlights for Oklahoma Royals 8U &amp; 9U.</p>
 
-          <div class="heroActions">
-            <button class="btn primary" type="button" data-team-filter="All">
-              <img class="tagLogo" src="images/royals-logo.png" alt="" onerror="this.style.display='none'"> All
-            </button>
-            <button class="btn" type="button" data-team-filter="9U">🔥 9U</button>
-            <button class="btn" type="button" data-team-filter="8U">⚡ 8U</button>
-            <a class="btn" href="#schedule">📅 Schedule</a>
-            <a class="btn" href="#announcements">📣 Announcements</a>
-            <a class="btn" href="#highlights">🎬 Highlights</a>
-            <a class="btn" id="usssaHero" href="https://www.usssa.events/teams/?usssa_team_id=3318193" target="_blank" rel="noopener">🏟️ USSSA</a>
+          <!-- ✅ SLIDESHOW MOVED HERE + SQUARE (buttons removed) -->
+          <div class="heroShowcaseRow" aria-label="Royals slideshow">
+            <div class="showcaseBox" id="showcaseBox" title="Royals photos">
+              <div class="showcaseInner">
+                <img class="showcaseImg" id="showcaseImgA" alt="Royals slideshow photo" />
+                <img class="showcaseImg" id="showcaseImgB" alt="Royals slideshow photo" />
+                <div class="showcasePh" id="showcasePh">Add photos in the <b>Site</b> tab: <b>slideshow_urls</b> (or <b>slide_1_url</b>…)</div>
+              </div>
+              <div class="showcaseDots" id="showcaseDots" aria-hidden="true"></div>
+            </div>
+
+            <div class="miniCard" style="flex:1; min-width: 240px;">
+              <h3 style="margin:0 0 6px">Quick tip</h3>
+              <p style="margin:0">Your menu covers all navigation now — just hit the ☰ and you’re in.</p>
+              <p class="small" style="margin:10px 0 0; color:var(--muted)">
+                Slideshow accepts comma or newline-separated URLs in <b>slideshow_urls</b>.
+              </p>
+            </div>
           </div>
 
           <p class="small" style="margin:12px 0 0; color:var(--muted)">Stay Royal 👑</p>
@@ -986,7 +977,7 @@
             <div class="miniCard">
               <h3 style="margin:0 0 6px">Playlist</h3>
               <p class="small" style="margin:0;color:var(--muted)">
-                Add rows in the <b>Highlights</b> tab (status=active). Team filter buttons apply.
+                Add rows in the <b>Highlights</b> tab (status=active).
               </p>
             </div>
 
@@ -1081,7 +1072,7 @@
   const $$ = (s) => Array.from(document.querySelectorAll(s));
 
   // Ensure all USSSA anchors point to the correct URL
-  ['usssaDrawer','usssaDrawerBtn','usssaHero','usssaSide','usssaLinks'].forEach(id=>{
+  ['usssaDrawer','usssaDrawerBtn','usssaSide','usssaLinks'].forEach(id=>{
     const el = document.getElementById(id);
     if (el){ el.href = USSSA_URL; }
   });
@@ -1156,7 +1147,6 @@
 
   function setTeam(team){
     ACTIVE_TEAM = team;
-    $$('[data-team-filter]').forEach(b=>b.classList.toggle('primary', b.getAttribute('data-team-filter')===team));
     renderAnnouncements(window.__ann || []);
     renderSchedule(window.__sched || []);
     renderRoster(window.__rost || []);
@@ -1375,15 +1365,15 @@
     // Optional override: if you ever add usssa_url in Site tab
     const usssa = (s.usssa_url || "").trim();
     if (usssa){
-      ['usssaDrawer','usssaDrawerBtn','usssaHero','usssaSide','usssaLinks'].forEach(id=>{
+      ['usssaDrawer','usssaDrawerBtn','usssaSide','usssaLinks'].forEach(id=>{
         const el = document.getElementById(id);
         if (el){ el.href = usssa; }
       });
     }
 
-    // Slideshow setup
-    setupHeaderSlideshow(s);
-    return s; // helpful for callers
+    // Slideshow setup (now in HERO)
+    setupHeroSlideshow(s);
+    return s;
   }
 
   function renderFundraisers(items){
@@ -1457,7 +1447,7 @@
     img.onerror = ()=>{ img.style.display='none'; ph.style.display='grid'; };
   }
 
-  /* ===== HEADER SLIDESHOW =====
+  /* ===== HERO SLIDESHOW =====
      In your Site tab, you can use ANY of these:
      - slideshow_urls  (comma OR newline separated)
      - slide_1_url, slide_2_url, slide_3_url, slide_4_url, slide_5_url
@@ -1549,7 +1539,7 @@
     }
   }
 
-  function setupHeaderSlideshow(site){
+  function setupHeroSlideshow(site){
     const urls = buildSlideshowUrls(site);
     SHOW.urls = urls;
     SHOW.i = 0;
@@ -1702,8 +1692,6 @@
   rosterSearch.addEventListener('input', filterRoster);
   $('#resetRoster').addEventListener('click', ()=>{ rosterSearch.value=''; filterRoster(); });
 
-  $$('[data-team-filter]').forEach(btn=>btn.addEventListener('click', ()=>setTeam(btn.getAttribute('data-team-filter')||'All')));
-
   /* ===== MENU (FIXED + EXTRA SAFE) ===== */
   function openMenu(){
     document.body.classList.add('menuOpen');
@@ -1714,7 +1702,6 @@
     $('#openMenu')?.setAttribute('aria-expanded','false');
   }
 
-  // click + touch support (some mobile browsers are weird)
   const openBtn = $('#openMenu');
   const closeBtn = $('#closeMenu');
   openBtn?.addEventListener('click', (e)=>{ e.preventDefault(); openMenu(); });
@@ -1778,4 +1765,4 @@
 </script>
 
 </body>
-  </html>
+</html>
